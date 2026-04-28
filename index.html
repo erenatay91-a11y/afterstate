@@ -2313,14 +2313,14 @@ async function syncWaitlistEntry(entry){
   if(!isSupabaseConfigured()){
     return {ok:false,mode:'local'};
   }
-  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/waitlist_entries?on_conflict=email';
+  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/waitlist_entries';
   var response=await fetch(url,{
     method:'POST',
     headers:{
       'Content-Type':'application/json',
       apikey:SUPABASE_CONFIG.anonKey,
       Authorization:'Bearer '+SUPABASE_CONFIG.anonKey,
-      Prefer:'resolution=merge-duplicates,return=representation'
+      Prefer:'rreturn=minimal'
     },
     body:JSON.stringify([entry])
   });
