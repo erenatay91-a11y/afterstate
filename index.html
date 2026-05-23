@@ -2140,21 +2140,11 @@ function cacheCheckoutEntry(entry){
   saveCheckoutCache(entries);
 }
 function buildCheckoutEntry(fullName,email,plan,user){
-  var coverage=getCoverageData();
-  var contacts=getTrustedContacts();
-  var checkin=getCheckinData();
   return {
     email:email,
     full_name:fullName,
-    selected_plan:plan,
-    status:'checkout_started',
-    source:'afterstate-web',
-    joined_at:new Date().toISOString(),
-    session_email:user&&user.email?user.email:email,
-    platform_count:coverage.total,
-    trusted_contact_count:contacts.length,
-    final_message_saved:Boolean(localStorage.getItem(FINAL_MESSAGE_KEY)),
-    checkin_period_months:checkin&&checkin.periodMonths?checkin.periodMonths:null
+    status:'launch_interest',
+    source:'afterstate-web'
   };
 }
 async function syncCheckoutEntry(entry){
@@ -2162,20 +2152,24 @@ async function syncCheckoutEntry(entry){
   if(!isSupabaseConfigured()){
     return {ok:false,mode:'local'};
   }
-  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/waitlist_entries?on_conflict=email';
+  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/waitlist_entries';
   var response=await fetch(url,{
     method:'POST',
     headers:{
       'Content-Type':'application/json',
       apikey:SUPABASE_CONFIG.anonKey,
       Authorization:'Bearer '+SUPABASE_CONFIG.anonKey,
-      Prefer:'resolution=merge-duplicates,return=representation'
+      Prefer:'return=minimal'
     },
     body:JSON.stringify([entry])
   });
   if(!response.ok){
     var errorText='';
     try{errorText=await response.text();}catch(err){}
+    if(response.status===409&&errorText.indexOf('duplicate key')!==-1){
+      return {ok:true,mode:'supabase-duplicate'};
+    }
+    console.error('Waitlist sync failed',response.status,errorText);
     throw new Error(errorText||('Supabase sync failed with status '+response.status));
   }
   return {ok:true,mode:'supabase'};
@@ -2424,7 +2418,7 @@ function selectPayPlan(plan){
     greeting.style.display='none';
   }
 }
-function subPayment(e){
+async function subPayment(e){
   e.preventDefault();
   var plan=document.getElementById('pm-plan').value;
   var fullName=document.getElementById('pm-waitlist-name').value.trim();
@@ -2445,7 +2439,12 @@ function subPayment(e){
     updateAuthUI();
     hydrateMemberPage(user);
   }
-  syncCheckoutEntry(buildCheckoutEntry(fullName,email,plan,user)).catch(function(){});
+  try{
+    await syncCheckoutEntry(buildCheckoutEntry(fullName,email,plan,user));
+  }catch(err){
+    showError('payment-error','Could not save launch interest. Please try again or email hello@afterstate.xyz.');
+    return;
+  }
   var stripeUrl=STRIPE_PAYMENT_LINK;
   if(!stripeUrl){
     document.getElementById('pm-form-wrap').style.display='none';
@@ -2715,9 +2714,7 @@ async function subC(){
     name:name,
     email:email,
     message:message,
-    source:'afterstate-web',
-    page_url:location.href,
-    created_at:new Date().toISOString()
+    source:'afterstate-web'
   };
   try{
     await syncContactMessage(entry);
