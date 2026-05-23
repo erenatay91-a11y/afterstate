@@ -258,6 +258,12 @@ body.member-view #member-area{display:block}
 .plat-field input,.plat-field select{width:100%;border:none;border-bottom:1px solid var(--r);background:transparent;font-family:'EB Garamond',serif;font-size:19px;color:var(--ink);padding:8px 0;outline:none}
 .plat-field select{appearance:none;cursor:pointer}
 .plat-field input:focus,.plat-field select:focus{border-bottom-color:var(--a)}
+.plat-field.full{grid-column:1/-1}
+.plat-action-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:8px}
+.plat-action-option{border:1px solid rgba(212,204,188,.9);background:rgba(255,255,255,.14);padding:12px 14px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:rgba(14,14,14,.64);cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.plat-action-option:hover{border-color:rgba(200,64,26,.34);background:rgba(255,255,255,.22);color:var(--ink)}
+.plat-action-option.active{border-color:rgba(200,64,26,.65);background:rgba(200,64,26,.06);color:var(--a)}
+.plat-action-option.active::before{content:'✓';margin-right:8px;color:var(--a)}
 .plat-save-row{grid-column:1/-1;display:flex;gap:10px;padding-top:12px;border-top:1px solid var(--r);align-items:center;margin-top:4px}
 .health-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--r)}
 .health-item:last-child{border-bottom:none}
@@ -1892,7 +1898,11 @@ function renderPlatformList(cat){
     var s=saved[p.id];
     var isCfg=Boolean(s);
     var pid=p.id;
-    var actionsHtml=p.actions.map(function(a){return '<option'+(s&&s.action===a?' selected':'')+'>'+escapeHtml(a)+'</option>';}).join('');
+    var selectedAction=(s&&s.action)||p.actions[0]||'Review';
+    var actionsHtml=p.actions.map(function(a){
+      var active=a===selectedAction;
+      return '<button class="plat-action-option'+(active?' active':'')+'" type="button" onclick="event.stopPropagation();selectPlatformAction(\''+pid+'\',this,\''+escapeAttr(a)+'\')">'+escapeHtml(a)+'</button>';
+    }).join('');
     var displayName=(p.custom&&s&&s.platformName)?s.platformName:p.name;
     return '<div class="plat-item'+(isCfg?' configured':'')+'" id="plat-'+pid+'">'+
       '<div class="plat-item-top" onclick="togglePlatformOpen(\''+pid+'\')">'+
@@ -1906,9 +1916,9 @@ function renderPlatformList(cat){
         '<div class="plat-field"><label>Your username or handle</label><input id="pi-user-'+pid+'" placeholder="e.g. @username" value="'+escapeAttr(s&&s.username?s.username:'')+'" /></div>'+
         '<div class="plat-field"><label>Email used to log in</label><input id="pi-email-'+pid+'" type="email" placeholder="e.g. you@gmail.com" value="'+escapeAttr(s&&s.regemail?s.regemail:'')+'" /></div>'+
         '<div class="plat-field"><label>Profile or account link</label><input id="pi-link-'+pid+'" type="url" placeholder="https://..." value="'+escapeAttr(s&&s.link?s.link:'')+'" /></div>'+
-        '<div class="plat-field"><label>What should happen</label><select id="pi-action-'+pid+'">'+actionsHtml+'</select></div>'+
-        '<div class="plat-field" style="grid-column:1/-1"><label>Assign to trusted contact</label>'+buildTCSelect('pi-contact-'+pid,s&&s.contact?s.contact:'')+'</div>'+
-        '<div class="plat-field" style="grid-column:1/-1"><label>Other details</label><input id="pi-notes-'+pid+'" placeholder="Account ID, billing note, specific request, support URL, or extra context" value="'+escapeAttr(s&&s.notes?s.notes:'')+'" /></div>'+
+        '<div class="plat-field full"><label>What should happen</label><input type="hidden" id="pi-action-'+pid+'" value="'+escapeAttr(selectedAction)+'"/><div class="plat-action-grid">'+actionsHtml+'</div></div>'+
+        '<div class="plat-field full"><label>Assign to trusted contact</label>'+buildTCSelect('pi-contact-'+pid,s&&s.contact?s.contact:'')+'</div>'+
+        '<div class="plat-field full"><label>Other details</label><input id="pi-notes-'+pid+'" placeholder="Account ID, billing note, specific request, support URL, or extra context" value="'+escapeAttr(s&&s.notes?s.notes:'')+'" /></div>'+
       (p.legal?'<div style="grid-column:1/-1;border-left:2px solid rgba(200,64,26,.35);padding:10px 14px;background:rgba(200,64,26,.03)"><p style="font-family:\'JetBrains Mono\',monospace;font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--a);margin-bottom:4px">Request note</p><p style="font-family:\'JetBrains Mono\',monospace;font-size:11px;line-height:1.75;color:rgba(14,14,14,.65)">'+escapeHtml(p.legal)+'</p></div>':'')+
         '<div class="plat-save-row">'+
           '<button class="bp" style="font-size:10px;padding:10px 18px" onclick="event.stopPropagation();savePlatformItem(currentCategory,\''+pid+'\')">Save &#x2192;</button>'+
@@ -1926,6 +1936,15 @@ function togglePlatformOpen(platId){
   var isOpen=item.classList.contains('open');
   document.querySelectorAll('.plat-item.open').forEach(function(el){el.classList.remove('open');});
   if(!isOpen)item.classList.add('open');
+}
+function selectPlatformAction(platId,button,value){
+  var item=document.getElementById('plat-'+platId);
+  var input=document.getElementById('pi-action-'+platId);
+  if(input)input.value=value;
+  if(item){
+    item.querySelectorAll('.plat-action-option').forEach(function(btn){btn.classList.remove('active');});
+  }
+  button.classList.add('active');
 }
 function removePlatformItem(cat,platId){
   removePlatformEntry(cat,platId);
