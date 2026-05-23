@@ -123,6 +123,18 @@ h1.bh{font-size:clamp(50px,9vw,130px);letter-spacing:-.03em;margin-bottom:clamp(
 .st-arr{color:var(--a);font-size:18px;line-height:1}
 .st h3{font-size:clamp(22px,2vw,30px);margin-bottom:12px;position:relative;z-index:1;line-height:1.05}
 .st p{font-family:'JetBrains Mono',monospace;font-size:var(--meta);color:rgba(14,14,14,.66);line-height:1.8;position:relative;z-index:1;max-width:22ch}
+.scenario{margin-top:clamp(28px,4vw,46px);border:1px solid var(--r);background:rgba(255,255,255,.16);position:relative;z-index:1}
+.scenario-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start;padding:clamp(20px,2.6vw,30px);border-bottom:1px solid var(--r)}
+.scenario-head h3{font-size:clamp(28px,3.2vw,46px);line-height:1;margin-bottom:10px}
+.scenario-head p{font-family:'JetBrains Mono',monospace;font-size:var(--meta);line-height:1.8;color:rgba(14,14,14,.62);max-width:64ch}
+.scenario-badge{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--a);border:1px solid rgba(200,64,26,.24);padding:7px 9px;white-space:nowrap}
+.scenario-flow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0}
+.scenario-card{min-height:190px;padding:18px;border-right:1px solid var(--r);display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06))}
+.scenario-card:last-child{border-right:none}
+.scenario-num{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--a)}
+.scenario-card strong{font-family:'EB Garamond',serif;font-size:24px;font-weight:400;line-height:1.02;color:var(--ink)}
+.scenario-card p{font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:rgba(14,14,14,.62)}
+.scenario-chip{margin-top:auto;align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.3px;text-transform:uppercase;color:rgba(14,14,14,.58);border:1px solid rgba(14,14,14,.1);padding:5px 7px;background:rgba(255,255,255,.18)}
 
 /* FEATURES */
 #features{background:var(--s)}
@@ -447,12 +459,21 @@ select.fi2{appearance:none;cursor:pointer}
 [data-d="1"]{transition-delay:.1s}[data-d="2"]{transition-delay:.2s}[data-d="3"]{transition-delay:.3s}[data-d="4"]{transition-delay:.4s}[data-d="5"]{transition-delay:.5s}
 
 /* RESPONSIVE */
+@media(max-width:1180px){
+  .scenario-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .scenario-card{border-bottom:1px solid var(--r)}
+  .scenario-card:nth-child(3n){border-right:none}
+  .scenario-card:nth-last-child(-n+3){border-bottom:none}
+}
 @media(max-width:960px){
   #problem .grid2,.sec-grid,.faq-grid{grid-template-columns:1fr}
   .feat-grid{grid-template-columns:1fr}
   .pr-grid{grid-template-columns:1fr;max-width:460px}
   .steps{grid-template-columns:1fr 1fr}
   .how-head{grid-template-columns:1fr}
+  .scenario-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .scenario-card{border-right:none;border-bottom:1px solid var(--r)}
+  .scenario-card:nth-last-child(-n+2){border-bottom:none}
   .fi{grid-template-columns:1fr 1fr}
   .member-shell,.member-grid,.launch-steps{grid-template-columns:1fr}
   .platform-picker{grid-template-columns:1fr}
@@ -475,6 +496,12 @@ select.fi2{appearance:none;cursor:pointer}
   .ni{grid-template-columns:minmax(0,1fr) auto}
   .nl,.na{display:none}.hb{display:flex;justify-self:end}
   .steps{grid-template-columns:1fr}
+  .scenario-head{display:block}
+  .scenario-badge{display:inline-block;margin-top:14px}
+  .scenario-flow{grid-template-columns:1fr}
+  .scenario-card{min-height:auto;border-right:none;border-bottom:1px solid var(--r)}
+  .scenario-card:nth-last-child(-n+2){border-bottom:1px solid var(--r)}
+  .scenario-card:last-child{border-bottom:none}
   .fi{grid-template-columns:1fr}
   #hero{min-height:auto;padding-top:104px}
   h1.bh{font-size:clamp(42px,16vw,72px)}
@@ -614,6 +641,53 @@ select.fi2{appearance:none;cursor:pointer}
         <div class="st-n">4</div>
         <h3><span class="brand-word">Afterstate</span> starts the requests</h3>
         <p>After verification, <span class="brand-word">Afterstate</span> sends the prepared outreach and required details to the relevant platform process.</p>
+      </div>
+    </div>
+    <div class="scenario fu" data-d="2">
+      <div class="scenario-head">
+        <div>
+          <h3>Example: Instagram should be deleted.</h3>
+          <p>A member adds Instagram, chooses delete account, names a trusted contact, and keeps the plan alive with check-ins. If the check-in fails and verification is completed, the contact receives the right request package.</p>
+        </div>
+        <span class="scenario-badge">End-to-end flow</span>
+      </div>
+      <div class="scenario-flow">
+        <div class="scenario-card">
+          <span class="scenario-num">01 / Vault</span>
+          <strong>Add Instagram</strong>
+          <p>The member saves the handle, profile link, login email, and any notes a contact may need.</p>
+          <span class="scenario-chip">@username</span>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-num">02 / Rule</span>
+          <strong>Choose delete</strong>
+          <p>“What should happen” is set to delete account, so the request package is built around closure.</p>
+          <span class="scenario-chip">Delete account</span>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-num">03 / Network</span>
+          <strong>Name a contact</strong>
+          <p>A trusted person is assigned so they know they are responsible for starting the process.</p>
+          <span class="scenario-chip">Trusted contact</span>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-num">04 / I’m Alive</span>
+          <strong>Check in regularly</strong>
+          <p>The member taps I’m alive on schedule. Missed check-ins trigger reminders before anyone else is contacted.</p>
+          <span class="scenario-chip">Every 6 months</span>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-num">05 / Verify</span>
+          <strong>Confirm the event</strong>
+          <p>The trusted contact confirms, uploads the death certificate, and completes the activation steps.</p>
+          <span class="scenario-chip">Document review</span>
+        </div>
+        <div class="scenario-card">
+          <span class="scenario-num">06 / Package</span>
+          <strong>Use the request letter</strong>
+          <p>Afterstate prepares the Instagram deletion letter with the account details and document checklist.</p>
+          <span class="scenario-chip">Ready to send</span>
+        </div>
       </div>
     </div>
   </div>
