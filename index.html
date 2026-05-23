@@ -642,14 +642,14 @@ select.fi2{appearance:none;cursor:pointer}
     <div class="pr-header">
       <p class="lbl">Pricing</p>
       <h2 class="fu">Simple, <em>clear.</em></h2>
-      <p class="fu" data-d="1">One payment. Lifetime access.</p>
+      <p class="fu" data-d="1">Reserve lifetime access before launch.</p>
     </div>
     <div class="pr-grid">
       <div class="plan feat fu" data-d="1">
-        <span class="plan-badge">LIFETIME DEAL</span>
+        <span class="plan-badge">LAUNCH ACCESS</span>
         <span class="plan-n">Afterstate Lifetime</span>
         <div class="plan-p">$99.99</div>
-        <div class="plan-per">one-time payment</div>
+        <div class="plan-per">planned one-time payment</div>
         <ul class="plan-fs">
           <li>Unlimited platforms activated</li>
           <li>Unlimited trusted contacts</li>
@@ -659,7 +659,7 @@ select.fi2{appearance:none;cursor:pointer}
           <li>Unlimited plan updates</li>
           <li>Lifetime updates</li>
         </ul>
-        <button class="plan-btn p1" type="button" onclick="smartStartPlan('lifetime')">Buy Lifetime →</button>
+        <button class="plan-btn p1" type="button" onclick="smartStartPlan('lifetime')">Reserve Access →</button>
       </div>
     </div>
   </div>
@@ -683,9 +683,9 @@ select.fi2{appearance:none;cursor:pointer}
   <div class="wrap">
     <p class="lbl fu">Start</p>
     <h2 class="cta-h fu" data-d="1">Make the plan.<br><em>Leave less to chance.</em></h2>
-    <p class="cta-sub fu" data-d="2">Buy lifetime access and keep your setup ready.</p>
+    <p class="cta-sub fu" data-d="2">Join the launch list and keep your setup ready.</p>
     <div class="ca fu" data-d="3">
-      <a href="#" class="bp" onclick="smartStartPlan('lifetime');return false;">Buy Lifetime →</a>
+      <a href="#" class="bp" onclick="smartStartPlan('lifetime');return false;">Reserve Access →</a>
       <a href="#how" class="bo">Learn More</a>
     </div>
   </div>
@@ -943,7 +943,7 @@ select.fi2{appearance:none;cursor:pointer}
               <label class="member-label">Plan</label>
               <div id="member-plan-display" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--r)">
                 <span id="member-plan-name" style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ink)">No plan selected</span>
-                <button type="button" onclick="selectPayPlan('lifetime');oM('pm')" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--a);border:1px solid rgba(200,64,26,.28);padding:6px 10px;background:transparent;cursor:pointer">Buy lifetime →</button>
+                <button type="button" onclick="selectPayPlan('lifetime');oM('pm')" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--a);border:1px solid rgba(200,64,26,.28);padding:6px 10px;background:transparent;cursor:pointer">Reserve access →</button>
               </div>
               <input type="hidden" id="member-plan" value="none"/>
             </div>
@@ -1179,7 +1179,7 @@ select.fi2{appearance:none;cursor:pointer}
         <div class="fg"><label class="fl" for="fpass">Password</label><input type="password" class="fi2" id="fpass" name="password" autocomplete="new-password" placeholder="Create a password" required/></div>
         <div class="fg"><label class="fl" for="fpass2">Confirm password</label><input type="password" class="fi2" id="fpass2" name="passwordConfirm" autocomplete="new-password" placeholder="Repeat your password" required/></div>
         <input type="hidden" id="fp" value="none"/>
-        <p class="fnote">After setup, you can buy lifetime access with a one-time Stripe checkout.</p>
+        <p class="fnote">After setup, you can reserve lifetime access for launch.</p>
         <p class="ferr" id="signup-error" role="alert"></p>
         <button class="bp" style="width:100%;justify-content:center" type="submit">Create Account →</button>
       </form>
@@ -1366,20 +1366,20 @@ select.fi2{appearance:none;cursor:pointer}
   <div class="mb" role="dialog" aria-modal="true" aria-labelledby="payment-title">
     <button class="mc-btn" type="button" onclick="cM('pm')" aria-label="Close">✕</button>
     <div id="pm-form-wrap">
-      <h3 id="payment-title">Buy <em>lifetime.</em></h3>
+      <h3 id="payment-title">Reserve <em>access.</em></h3>
       <p id="pm-user-greeting" class="msub" style="display:none"></p>
-      <p class="msub" style="color:var(--a);border-left:2px solid var(--a);padding-left:12px;margin-bottom:24px">$99.99 one-time payment. Checkout opens in Stripe.</p>
+      <p class="msub" style="color:var(--a);border-left:2px solid var(--a);padding-left:12px;margin-bottom:24px">Join the launch list for planned $99.99 lifetime access. No payment is collected in this preview.</p>
       <form id="payment-form" novalidate>
         <input type="hidden" id="pm-plan" value="lifetime"/>
         <div class="fg"><label class="fl" for="pm-waitlist-name">Full name</label><input type="text" class="fi2" id="pm-waitlist-name" autocomplete="name" placeholder="Your full name" required/></div>
         <div class="fg"><label class="fl" for="pm-waitlist-email">Email address</label><input type="email" class="fi2" id="pm-waitlist-email" autocomplete="email" inputmode="email" placeholder="you@email.com" required/></div>
-        <p class="fnote">If live checkout is configured, you will be redirected to Stripe. Otherwise, your interest will be saved for launch follow-up.</p>
+        <p class="fnote">We will use this to follow up when live checkout opens.</p>
         <p class="ferr" id="payment-error" role="alert"></p>
-        <button class="bp" style="width:100%;justify-content:center;margin-top:8px" type="submit">Continue →</button>
+        <button class="bp" style="width:100%;justify-content:center;margin-top:8px" type="submit">Join Launch List →</button>
       </form>
       <button type="button" onclick="cM('pm')" style="display:block;width:100%;text-align:center;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--m);background:none;border:none;cursor:pointer;padding:8px">Maybe later — keep my setup saved</button>
     </div>
-    <div id="pm-success" style="display:none;text-align:center;padding:16px 0"><span style="font-size:44px;display:block;margin-bottom:14px">✓</span><h4 id="pm-success-title" style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ok);margin-bottom:8px">Opening Stripe.</h4><p id="pm-success-copy" style="font-family:'JetBrains Mono',monospace;font-size:var(--micro);color:var(--m);line-height:1.7">Your setup is saved locally before checkout.</p></div>
+    <div id="pm-success" style="display:none;text-align:center;padding:16px 0"><span style="font-size:44px;display:block;margin-bottom:14px">✓</span><h4 id="pm-success-title" style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ok);margin-bottom:8px">Launch interest saved.</h4><p id="pm-success-copy" style="font-family:'JetBrains Mono',monospace;font-size:var(--micro);color:var(--m);line-height:1.7">You are on the launch list. We will follow up when access opens.</p></div>
   </div>
 </div>
 
@@ -1488,7 +1488,7 @@ select.fi2{appearance:none;cursor:pointer}
           <li><strong style="color:var(--ink)">Data export:</strong> During the notice period, every user will be provided with a full export of their stored data in a readable format (JSON or PDF) at no charge.</li>
           <li><strong style="color:var(--ink)">Trusted contact notification:</strong> Registered trusted contacts will be notified of the service discontinuation so they are aware the platform will no longer be available.</li>
           <li><strong style="color:var(--ink)">Data deletion:</strong> All user data will be permanently deleted within 30 days of the service shutdown date. A deletion confirmation will be sent to the registered email address.</li>
-          <li><strong style="color:var(--ink)">Lifetime checkout:</strong> Afterstate uses a one-time Stripe checkout for lifetime access. No subscription is created.</li>
+          <li><strong style="color:var(--ink)">Lifetime checkout:</strong> Afterstate is preparing one-time lifetime checkout for launch. No subscription is created in this preview.</li>
           <li><strong style="color:var(--ink)">Deceased users:</strong> For accounts where a verification process has been initiated, we will make reasonable efforts to complete pending requests or transfer documentation to the designated trusted contact before shutdown.</li>
         </ul>
         <p style="margin-top:12px;color:rgba(14,14,14,.6)">We reserve the right to transfer user data and service obligations to a successor entity rather than discontinuing the service entirely. In such cases, users will be notified and given the option to opt out of the transfer and request data deletion.</p>
@@ -1559,9 +1559,8 @@ select.fi2{appearance:none;cursor:pointer}
     <p class="msub">Ask a question or leave your details if you want to talk to us.</p>
     <form id="contact-form" novalidate>
       <div class="fg"><label class="fl" for="cn">Full name</label><input type="text" class="fi2" id="cn" name="name" autocomplete="name" placeholder="Your full name" required/></div>
-      <div class="fg"><label class="fl" for="ce">Email</label><input type="email" class="fi2" id="ce" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required/></div>
-      <div class="fg"><label class="fl" for="cc">Company</label><input type="text" class="fi2" id="cc" name="company" autocomplete="organization" placeholder="Company name"/></div>
-      <div class="fg"><label class="fl" for="cmg">Message</label><input type="text" class="fi2" id="cmg" name="message" placeholder="How can we help?" required/></div>
+      <div class="fg"><label class="fl" for="ce">Email</label><input type="email" class="fi2" id="ce" name="email" autocomplete="email" inputmode="email" placeholder="name@email.com" required/></div>
+      <div class="fg"><label class="fl" for="cmg">Message</label><textarea class="fi2" id="cmg" name="message" placeholder="How can we help?" required style="min-height:150px;resize:vertical;line-height:1.55"></textarea></div>
       <p class="ferr" id="contact-error" role="alert"></p>
       <button class="bp" style="width:100%;justify-content:center" type="submit">Send →</button>
     </form>
@@ -1989,7 +1988,7 @@ function updatePlanLimitBanner(totalPlats){
   if(plan==='none'){
     if(totalPlats>0){
       banner.style.display='block';
-      text.innerHTML='<strong style="color:var(--a)">No plan selected.</strong> Your platforms are saved. Buy lifetime access so your setup is ready. <button onclick="smartStartPlan(\'lifetime\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Buy lifetime →</button>';
+      text.innerHTML='<strong style="color:var(--a)">No plan selected.</strong> Your platforms are saved. Reserve lifetime access so your setup is ready for launch. <button onclick="smartStartPlan(\'lifetime\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Reserve access →</button>';
     }else{
       banner.style.display='none';
     }
@@ -1999,12 +1998,12 @@ function updatePlanLimitBanner(totalPlats){
   if(remaining<=2&&remaining>=0){
     banner.style.display='block';
     var planLabel=plan==='none'?'No plan selected':'Lifetime';
-    var ctaBtn='<button onclick="smartStartPlan(\'lifetime\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Buy lifetime →</button>';
+    var ctaBtn='<button onclick="smartStartPlan(\'lifetime\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Reserve access →</button>';
     text.innerHTML='<strong style="color:var(--ink)">'+planLabel+'</strong> — your saved setup currently fits <strong style="color:var(--ink)">'+limits.platforms+'</strong> activated platforms. '+(remaining>0?remaining+' slot'+(remaining>1?'s':'')+' remaining. ':'This plan is full. ')+ctaBtn;
   }else if(remaining<0){
     banner.style.display='block';
     var up='lifetime';
-    var upLabel='Buy lifetime →';
+    var upLabel='Reserve access →';
     text.innerHTML='<strong style="color:var(--a)">Plan limit reached.</strong> You can keep adding platforms, but only '+limits.platforms+' fit inside your current plan. <button onclick="smartStartPlan(\''+up+'\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">'+upLabel+'</button>';
   }else{
     banner.style.display='none';
@@ -2211,6 +2210,7 @@ async function syncContactMessage(entry){
   if(!response.ok){
     var errorText='';
     try{errorText=await response.text();}catch(err){}
+    console.error('Contact sync failed',response.status,errorText);
     throw new Error(errorText||('Contact sync failed with status '+response.status));
   }
   return {ok:true,mode:'supabase'};
@@ -2419,7 +2419,7 @@ function selectPayPlan(plan){
   if(emailInput&&user&&user.email)emailInput.value=user.email;
   if(greeting&&user){
     greeting.style.display='block';
-    greeting.textContent='Signed in as '+user.email+'. Your profile is saved. Continue to Stripe for '+label+' access.';
+    greeting.textContent='Signed in as '+user.email+'. Your profile is saved. Join the launch list for '+label+' access.';
   }else if(greeting){
     greeting.style.display='none';
   }
@@ -2451,7 +2451,7 @@ function subPayment(e){
     document.getElementById('pm-form-wrap').style.display='none';
     document.getElementById('pm-success').style.display='block';
     document.getElementById('pm-success-title').textContent='Launch interest saved.';
-    document.getElementById('pm-success-copy').textContent='Live Stripe checkout is not configured yet. Your details were saved for launch follow-up.';
+    document.getElementById('pm-success-copy').textContent='You are on the launch list. We will follow up when access opens.';
     return;
   }
   document.getElementById('pm-form-wrap').style.display='none';
@@ -2492,7 +2492,7 @@ function saveMemberProfile(){
 function saveFinalMessage(){
   var limits=getCurrentPlanLimits();
   if(!limits.finalMessage){
-    toast('Buy lifetime access to save it.','dark');
+    toast('Reserve lifetime access to save it.','dark');
     selectPayPlan('lifetime');
     setTimeout(function(){oM('pm');},200);
     return;
@@ -2700,7 +2700,6 @@ function forgotPassword(){
 async function subC(){
   var name=document.getElementById('cn').value.trim();
   var email=document.getElementById('ce').value.trim();
-  var company=document.getElementById('cc').value.trim();
   var message=document.getElementById('cmg').value.trim();
   if(!name){showError('contact-error','Full name is required.');document.getElementById('cn').focus();return;}
   if(!validEmail(email)){showError('contact-error','Enter a valid email address.');document.getElementById('ce').focus();return;}
@@ -2715,7 +2714,6 @@ async function subC(){
   var entry={
     name:name,
     email:email,
-    company:company||null,
     message:message,
     source:'afterstate-web',
     page_url:location.href,
