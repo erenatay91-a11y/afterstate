@@ -1631,6 +1631,7 @@ var DEMO_ITEMS_KEY='afterstate-demo-items';
 var FINAL_MESSAGE_KEY='afterstate-final-message';
 var CHECKOUT_CACHE_KEY='afterstate-checkout-cache';
 var CONTACT_CACHE_KEY='afterstate-contact-cache';
+var SIGNUP_LEADS_CACHE_KEY='afterstate-signup-leads-cache';
 var STRIPE_PAYMENT_LINK=window.AFTERSTATE_STRIPE_PAYMENT_LINK||'';
 var MESSAGE_UNLOCKED=false;
 var PLATFORMS_KEY='afterstate-platforms-v2';
@@ -2209,6 +2210,41 @@ async function syncContactMessage(entry){
   }
   return {ok:true,mode:'supabase'};
 }
+function getSignupLeadsCache(){
+  try{return JSON.parse(localStorage.getItem(SIGNUP_LEADS_CACHE_KEY)||'[]');}catch(e){return [];}
+}
+function saveSignupLeadsCache(entries){
+  localStorage.setItem(SIGNUP_LEADS_CACHE_KEY,JSON.stringify(entries));
+}
+function cacheSignupLead(entry){
+  var entries=getSignupLeadsCache().filter(function(item){return item.email!==entry.email;});
+  entries.unshift(entry);
+  saveSignupLeadsCache(entries.slice(0,50));
+}
+async function syncSignupLead(entry){
+  cacheSignupLead(entry);
+  if(!isSupabaseConfigured()){
+    return {ok:false,mode:'local'};
+  }
+  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/signup_leads';
+  var response=await fetch(url,{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      apikey:SUPABASE_CONFIG.anonKey,
+      Authorization:'Bearer '+SUPABASE_CONFIG.anonKey,
+      Prefer:'return=minimal'
+    },
+    body:JSON.stringify([entry])
+  });
+  if(!response.ok){
+    var errorText='';
+    try{errorText=await response.text();}catch(err){}
+    console.error('Signup lead sync failed',response.status,errorText);
+    throw new Error(errorText||('Signup lead sync failed with status '+response.status));
+  }
+  return {ok:true,mode:'supabase'};
+}
 function goHomeView(event){
   if(event)event.preventDefault();
   document.body.classList.remove('member-view');
@@ -2623,7 +2659,7 @@ function logoutDemo(){
   syncPageLock();
   toast('Signed out successfully.','dark');
 }
-function subF(){
+async function subF(){
   var n=document.getElementById('fn').value.trim(),em=document.getElementById('fe').value.trim(),pw=document.getElementById('fpass').value,pw2=document.getElementById('fpass2').value;
   if(!n){showError('signup-error','Enter your name to continue.');document.getElementById('fn').focus();return;}
   if(!validEmail(em)){showError('signup-error','Enter a valid email address.');document.getElementById('fe').focus();return;}
@@ -2633,7 +2669,30 @@ function subF(){
   showError('signup-error','');
   var fp=(document.getElementById('fp')?document.getElementById('fp').value:'pro');
   var intended=(fp==='basic'||fp==='plus'||fp==='pro')?fp:'pro';
-  var createdUser={fullName:n,email:normalizeEmail(em),password:pw,plan:'none',intendedPlan:intended};
+  var normalizedEmail=normalizeEmail(em);
+  var submit=document.querySelector('#signup-form button[type="submit"]');
+  var originalText=submit.textContent;
+  submit.disabled=true;
+  submit.style.opacity='.55';
+  submit.textContent='Creating...';
+  try{
+    await syncSignupLead({
+      email:normalizedEmail,
+      full_name:n,
+      intended_plan:intended,
+      source:'afterstate-web'
+    });
+  }catch(err){
+    submit.disabled=false;
+    submit.style.opacity='';
+    submit.textContent=originalText;
+    showError('signup-error','Signup could not be saved. Please try again or email hello@afterstate.xyz.');
+    return;
+  }
+  submit.disabled=false;
+  submit.style.opacity='';
+  submit.textContent=originalText;
+  var createdUser={fullName:n,email:normalizedEmail,password:pw,plan:'none',intendedPlan:intended};
   localStorage.setItem(CUSTOM_KEY,JSON.stringify(createdUser));
   localStorage.setItem(SESSION_KEY,createdUser.email);
   document.getElementById('mfi').style.display='none';
