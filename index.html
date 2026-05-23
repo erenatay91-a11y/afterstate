@@ -12,6 +12,7 @@ html{scroll-behavior:smooth}
 html:focus-within{scroll-behavior:smooth}
 body{background:var(--p);color:var(--ink);font-family:'EB Garamond',serif;overflow-x:hidden;font-size:var(--body);line-height:1.55}
 body.app-mode{overflow:hidden}
+body::before{content:'Preview build - do not enter sensitive passwords, seed phrases, government IDs, or financial account numbers.';display:block;position:fixed;left:0;right:0;bottom:0;z-index:120;background:#0e0e0e;color:#f5f0e8;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.6px;text-align:center;padding:8px 12px}
 body.member-view #hero,
 body.member-view #problem,
 body.member-view #how,
@@ -139,7 +140,7 @@ h1.bh{font-size:clamp(50px,9vw,130px);letter-spacing:-.03em;margin-bottom:clamp(
 .pr-header{text-align:left;margin-bottom:clamp(24px,3vw,36px)}
 .pr-header h2{font-size:clamp(32px,4.5vw,66px)}
 .pr-header p{font-family:'JetBrains Mono',monospace;font-size:var(--micro);color:var(--m);margin-top:12px;letter-spacing:1px}
-.pr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1040px;margin:0 auto;align-items:stretch}
+.pr-grid{display:grid;grid-template-columns:minmax(0,520px);gap:2px;max-width:520px;margin:0;align-items:stretch}
 .plan{padding:clamp(22px,2.5vw,32px);border:1px solid var(--r);background:rgba(255,255,255,.15);position:relative;display:flex;flex-direction:column}
 .plan.feat{border-color:var(--a);background:rgba(200,64,26,.04)}
 .plan-badge{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2.5px;text-transform:uppercase;color:var(--a);margin-bottom:8px;display:block;min-height:16px}
@@ -193,11 +194,13 @@ body.member-view #member-area{display:block}
 .member-hero h1{font-size:clamp(42px,6vw,88px);letter-spacing:-.03em;margin-bottom:16px}
 .member-hero p{font-family:'JetBrains Mono',monospace;font-size:var(--meta);line-height:1.8;color:rgba(14,14,14,.62);max-width:54ch}
 .member-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
-.member-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
-.member-stat{border-top:1px solid var(--r);padding:18px 0 0;background:transparent;transition:opacity .2s}
-.member-stat:hover{opacity:.65}
-.member-stat strong{display:block;font-family:'EB Garamond',serif;font-size:34px;font-style:italic;font-weight:400;color:var(--a);line-height:1}
-.member-stat span{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--m)}
+.launch-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:28px}
+.launch-step{border:1px solid var(--r);padding:18px;background:rgba(255,255,255,.12);text-align:left;cursor:pointer;transition:border-color .2s,background .2s,transform .2s;width:100%;font:inherit;color:inherit}
+.launch-step:hover,.launch-step:focus-visible{border-color:rgba(200,64,26,.45);background:rgba(255,255,255,.24);transform:translateY(-2px);outline:none}
+.launch-step span{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.8px;text-transform:uppercase;color:var(--a);display:block;margin-bottom:10px}
+.launch-step strong{display:block;font-family:'EB Garamond',serif;font-size:24px;font-weight:400;line-height:1.05;color:var(--ink)}
+.launch-step p{font-family:'JetBrains Mono',monospace;font-size:10px;line-height:1.65;color:rgba(14,14,14,.58);margin-top:10px}
+.launch-step em{display:block;font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.4px;text-transform:uppercase;color:var(--a);font-style:normal;margin-top:14px}
 .member-main h3{font-size:clamp(28px,3vw,42px);line-height:1.02;margin-bottom:10px}
 .member-copy{font-family:'JetBrains Mono',monospace;font-size:var(--meta);line-height:1.8;color:rgba(14,14,14,.62)}
 .member-field{margin-bottom:18px}
@@ -208,10 +211,6 @@ body.member-view #member-area{display:block}
 .member-input:focus,.member-textarea:focus{border-bottom-color:var(--a)}
 .member-input[type="date"],.member-input[type="number"]{font-family:'EB Garamond',serif;font-size:24px;color:var(--ink);line-height:1.2}
 .member-input[type="date"]::-webkit-calendar-picker-indicator{filter:sepia(1) saturate(1.4) hue-rotate(330deg);opacity:.65;cursor:pointer}
-.future-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid var(--r);border-left:1px solid var(--r);margin-top:22px}
-.future-form-grid .member-field{margin:0;padding:18px 20px;border-right:1px solid var(--r);border-bottom:1px solid var(--r);min-height:104px;background:rgba(255,255,255,.04)}
-.future-form-grid .full{grid-column:1/-1}
-.future-form-grid .member-input,.future-form-grid .member-textarea{padding:9px 0 0}
 .member-textarea{min-height:190px;resize:vertical;line-height:1.45}
 .member-unlock{max-width:360px;margin-top:24px}
 .member-platforms{display:grid;gap:0;margin-top:24px}
@@ -288,12 +287,6 @@ select.member-input{appearance:none;cursor:pointer}
 .tc-panel-grid input.member-input{font-size:19px}
 .tc-panel-actions{display:flex;gap:10px;align-items:center;margin-top:14px;border-top:1px solid var(--r);padding-top:14px}
 .tc-panel-note{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(14,14,14,.55);line-height:1.7;margin-left:auto}
-.fm-card{border:1px solid var(--r);padding:18px 20px;background:rgba(255,255,255,.1);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;margin-bottom:2px}
-.fm-title{font-family:'EB Garamond',serif;font-size:24px;line-height:1.05;color:var(--ink);margin-bottom:6px}
-.fm-meta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.6px;color:var(--m);line-height:1.7}
-.fm-preview{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(14,14,14,.58);line-height:1.75;margin-top:10px;max-width:70ch}
-.fm-actions{display:flex;gap:12px;align-items:center}
-.fm-count{font-family:'EB Garamond',serif;font-style:italic;font-size:34px;color:var(--a);line-height:1}
 
 /* FOOTER */
 footer{background:var(--ink);color:rgba(245,240,232,.4);padding:clamp(32px,4vw,52px) 0 0}
@@ -380,10 +373,6 @@ select.fi2{appearance:none;cursor:pointer}
 .db-k{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.8px;text-transform:uppercase;color:var(--m);display:block;margin-bottom:12px}
 .db-h{font-size:clamp(36px,4vw,58px);line-height:.96;max-width:8ch;margin-bottom:18px}
 .db-sub{font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.8;color:rgba(14,14,14,.62);max-width:48ch;margin-bottom:24px}
-.db-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
-.db-stat{border:1px solid var(--r);padding:16px 18px;background:rgba(255,255,255,.22)}
-.db-stat strong{display:block;font-family:'EB Garamond',serif;font-size:34px;font-style:italic;font-weight:400;color:var(--a);line-height:1}
-.db-stat span{display:block;margin-top:8px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.6px;text-transform:uppercase;color:var(--m)}
 .db-list{display:grid;gap:10px}
 .db-card{border:1px solid var(--r);padding:18px;background:rgba(255,255,255,.16)}
 .db-card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:10px}
@@ -448,14 +437,11 @@ select.fi2{appearance:none;cursor:pointer}
   .steps{grid-template-columns:1fr 1fr}
   .how-head{grid-template-columns:1fr}
   .fi{grid-template-columns:1fr 1fr}
-  .member-shell,.member-stats,.member-grid{grid-template-columns:1fr}
-  .future-form-grid{grid-template-columns:1fr}
+  .member-shell,.member-grid,.launch-steps{grid-template-columns:1fr}
   .platform-picker{grid-template-columns:1fr}
   .plat-item.open{grid-column:auto}
   .plat-form{grid-template-columns:1fr}
-  .future-form-grid .full{grid-column:1}
   .tc-panel-grid{grid-template-columns:1fr}
-  .fm-card{grid-template-columns:1fr}
   .member-nav{position:static;border-right:none;padding-right:0;padding-bottom:10px;border-bottom:1px solid var(--r)}
   .faq-lh{position:static}
   .db-main{grid-template-columns:1fr}
@@ -492,7 +478,6 @@ select.fi2{appearance:none;cursor:pointer}
   .db{padding:0}
   .db-shell{height:100%;max-width:none}
   .db-top{padding:18px}
-  .db-stats{grid-template-columns:1fr}
 }
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -657,57 +642,24 @@ select.fi2{appearance:none;cursor:pointer}
     <div class="pr-header">
       <p class="lbl">Pricing</p>
       <h2 class="fu">Simple, <em>clear.</em></h2>
-      <p class="fu" data-d="1">Join the waitlist. Lock early access.</p>
+      <p class="fu" data-d="1">One payment. Lifetime access.</p>
     </div>
     <div class="pr-grid">
-      <div class="plan fu">
-        <span class="plan-badge" aria-hidden="true"></span>
-        <span class="plan-n">Signal</span>
-        <div class="plan-p">$49</div>
-        <div class="plan-per">launch tier</div>
-        <ul class="plan-fs">
-          <li>5 platforms activated</li>
-          <li>2 trusted contacts</li>
-          <li>Platform request letters</li>
-          <li>I'm alive check-in</li>
-          <li>1 plan update per year</li>
-          <li>2 years of updates</li>
-        </ul>
-        <button class="plan-btn p2" type="button" onclick="smartStartPlan('basic')">Join Signal</button>
-      </div>
-      <div class="plan fu" data-d="1">
-        <span class="plan-badge" aria-hidden="true"></span>
-        <span class="plan-n">Relay</span>
-        <div class="plan-p">$99</div>
-        <div class="plan-per">launch tier</div>
-        <ul class="plan-fs">
-          <li>15 platforms activated</li>
-          <li>5 trusted contacts</li>
-          <li>20 future messages</li>
-          <li>Final message + assisted drafting</li>
-          <li>Platform request letters</li>
-          <li>I'm alive check-in</li>
-          <li>10 plan updates per year</li>
-          <li>5 years of updates</li>
-        </ul>
-        <button class="plan-btn p2" type="button" onclick="smartStartPlan('plus')">Join Relay</button>
-      </div>
       <div class="plan feat fu" data-d="1">
-        <span class="plan-badge">MOST POPULAR</span>
-        <span class="plan-n">Legacy</span>
-        <div class="plan-p">$149</div>
-        <div class="plan-per">launch tier</div>
+        <span class="plan-badge">LIFETIME DEAL</span>
+        <span class="plan-n">Afterstate Lifetime</span>
+        <div class="plan-p">$99.99</div>
+        <div class="plan-per">one-time payment</div>
         <ul class="plan-fs">
           <li>Unlimited platforms activated</li>
           <li>Unlimited trusted contacts</li>
-          <li>20 future messages</li>
-          <li>Final message + assisted drafting</li>
+          <li>Final message</li>
           <li>Platform request letters</li>
           <li>I'm alive check-in</li>
           <li>Unlimited plan updates</li>
           <li>Lifetime updates</li>
         </ul>
-        <button class="plan-btn p1" type="button" onclick="smartStartPlan('pro')">Join Legacy →</button>
+        <button class="plan-btn p1" type="button" onclick="smartStartPlan('lifetime')">Buy Lifetime →</button>
       </div>
     </div>
   </div>
@@ -731,9 +683,9 @@ select.fi2{appearance:none;cursor:pointer}
   <div class="wrap">
     <p class="lbl fu">Start</p>
     <h2 class="cta-h fu" data-d="1">Make the plan.<br><em>Leave less to chance.</em></h2>
-    <p class="cta-sub fu" data-d="2">Choose your tier now and keep your setup ready for launch.</p>
+    <p class="cta-sub fu" data-d="2">Buy lifetime access and keep your setup ready.</p>
     <div class="ca fu" data-d="3">
-      <a href="#" class="bp" onclick="smartStartPlan('pro');return false;">Join Waitlist →</a>
+      <a href="#" class="bp" onclick="smartStartPlan('lifetime');return false;">Buy Lifetime →</a>
       <a href="#how" class="bo">Learn More</a>
     </div>
   </div>
@@ -747,7 +699,7 @@ select.fi2{appearance:none;cursor:pointer}
         <p class="member-nav-title">Account Menu</p>
         <div class="member-nav-list">
           <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-overview')">Overview</button>
-          <button class="member-nav-btn" id="nav-platforms-btn" type="button" onclick="togglePlatformsNav()">Platforms</button>
+          <button class="member-nav-btn" id="nav-platforms-btn" type="button" onclick="openPlatformsNav();scrollToMemberCard('member-platforms')">Vault & Instructions</button>
           <div id="nav-platforms-sub" style="display:none;padding-left:16px;border-left:2px solid var(--r);margin-left:4px">
             <button class="member-nav-sub-btn" data-cat="social" type="button" onclick="openPlatformCategory('social')">Social</button>
             <button class="member-nav-sub-btn" data-cat="crypto" type="button" onclick="openPlatformCategory('crypto')">Crypto</button>
@@ -756,10 +708,9 @@ select.fi2{appearance:none;cursor:pointer}
             <button class="member-nav-sub-btn" data-cat="email" type="button" onclick="openPlatformCategory('email')">Email</button>
             <button class="member-nav-sub-btn" data-cat="finance" type="button" onclick="openPlatformCategory('finance')">Finance</button>
           </div>
-          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-final-message')">Final Message</button>
-          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-future-messages')">Future Messages</button>
-          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-trusted')">Trusted Contacts</button>
-          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-checkin')">I'm Alive</button>
+          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-final-message')">Protected Note</button>
+          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-trusted')">Trusted Network</button>
+          <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-verification')">Verification</button>
           <button class="member-nav-btn" type="button" onclick="scrollToMemberCard('member-profile')">Profile</button>
         </div>
       </aside>
@@ -767,32 +718,13 @@ select.fi2{appearance:none;cursor:pointer}
         <div class="member-section member-hero" id="member-overview">
           <p class="lbl">My Profile</p>
           <h1>Everything stays<br><em>in one place.</em></h1>
-          <p id="member-hero-copy">Your profile keeps your platform instructions, final note, and account details together.</p>
+          <p id="member-hero-copy">Your profile follows four steps: Vault, Instructions, Trusted Network, and Verification.</p>
 
-          <div style="margin-top:28px;border:1px solid var(--r);padding:24px;background:rgba(255,255,255,.1)">
-            <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:16px">
-              <p class="lbl" style="margin:0">Plan completeness</p>
-              <span id="health-score-pct" style="font-family:'EB Garamond',serif;font-style:italic;font-size:42px;line-height:1;color:var(--ink)">0%</span>
-            </div>
-            <div style="height:4px;background:var(--r);margin-bottom:20px;overflow:hidden">
-              <div id="health-bar" style="height:100%;background:var(--a);width:0%;transition:width .6s cubic-bezier(.4,0,.2,1)"></div>
-            </div>
-            <div id="health-unpaid-warning" style="display:none;border-left:3px solid var(--a);padding:16px 18px;background:rgba(200,64,26,.05);margin-bottom:16px">
-              <p style="font:inherit;color:var(--ink)">Without a selected tier, this setup will stay saved as a draft. <button onclick="selectPayPlan('pro');oM('pm')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Join waitlist →</button></p>
-            </div>
-            <div id="health-checklist" style="display:grid;gap:8px"></div>
-          </div>
-
-          <div class="member-stats">
-            <div class="member-stat" onclick="togglePlatformsNav();scrollToMemberCard('member-platforms')" style="cursor:pointer">
-              <strong id="member-stat-platforms">0</strong><span>Platforms</span>
-            </div>
-            <div class="member-stat" onclick="scrollToMemberCard('member-trusted')" style="cursor:pointer">
-              <strong id="member-stat-contacts">0</strong><span>Contacts</span>
-            </div>
-            <div class="member-stat" onclick="smartStartPlan('pro')" style="cursor:pointer">
-              <strong id="member-stat-plan">Not set</strong><span>Selected tier</span>
-            </div>
+          <div class="launch-steps">
+            <button class="launch-step" type="button" onclick="goToLaunchStep('vault')"><span>01</span><strong>Vault</strong><p>Add the accounts that matter. Start with templates for Gmail, Instagram, Coinbase, Apple ID, Shopify, or add a custom account.</p><em>Add accounts</em></button>
+            <button class="launch-step" type="button" onclick="goToLaunchStep('instructions')"><span>02</span><strong>Instructions</strong><p>Choose what should happen to each account: close it, transfer it, memorialize it, notify someone, or leave it as-is.</p><em>Set actions</em></button>
+            <button class="launch-step" type="button" onclick="goToLaunchStep('trusted')"><span>03</span><strong>Trusted Network</strong><p>Add 1-3 people who can be notified and help start the process when needed.</p><em>Add people</em></button>
+            <button class="launch-step" type="button" onclick="goToLaunchStep('verification')"><span>04</span><strong>Verification</strong><p>Activation requires a death certificate plus trusted-contact approval. Then platform request drafts are prepared.</p><em>Review flow</em></button>
           </div>
 
           <div id="plan-limit-banner" style="display:none;margin-top:16px;border-left:3px solid var(--a);padding:14px 18px;background:rgba(200,64,26,.04)">
@@ -849,9 +781,9 @@ select.fi2{appearance:none;cursor:pointer}
           </div>
         </div>
         <div class="member-section" id="member-final-message">
-          <p class="lbl">Final Message</p>
+          <p class="lbl">Instructions</p>
           <h3>Protected note</h3>
-          <p class="member-copy">This message is sealed with your password. Only you can read or edit it.</p>
+          <p class="member-copy">This note is sealed with your password. Use it for final platform and family instructions.</p>
           <div id="member-unlock-box">
             <div style="border:1px solid var(--r);padding:28px;background:rgba(255,255,255,.12);margin-top:20px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
               <div style="flex:1;min-width:200px">
@@ -905,69 +837,9 @@ select.fi2{appearance:none;cursor:pointer}
             </div>
           </div>
         </div>
-        <!-- FUTURE MESSAGES -->
-        <div class="member-section" id="member-future-messages">
-          <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:24px">
-            <div>
-              <p class="lbl">Future Messages</p>
-              <h3>Messages for later</h3>
-              <p class="member-copy">Write messages now for anyone you want. They are only prepared after activation, then follow the schedule you choose.</p>
-            </div>
-            <div style="text-align:right;min-width:160px">
-              <div class="fm-count" id="future-message-count">0 / 20</div>
-              <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--m);margin-top:6px">Message pool</p>
-            </div>
-          </div>
-          <div id="future-message-limit" style="display:none;border-left:3px solid var(--a);padding:14px 18px;background:rgba(200,64,26,.04);margin-bottom:18px">
-            <p style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.8;color:rgba(14,14,14,.7)" id="future-message-limit-text"></p>
-          </div>
-          <div id="future-messages-list" style="display:grid;gap:2px;margin-bottom:24px"></div>
-          <div style="border:1px solid var(--r);padding:24px;background:rgba(255,255,255,.08)">
-            <p class="lbl" style="margin-bottom:18px">Create future message</p>
-            <div class="future-form-grid">
-              <div class="member-field">
-                <label class="member-label" for="fm-recipient">Recipient</label>
-                <input class="member-input" id="fm-recipient" placeholder="Name or email"/>
-              </div>
-              <div class="member-field">
-                <label class="member-label" for="fm-trigger">After activation, when should it be sent?</label>
-                <select class="member-input" id="fm-trigger" onchange="toggleFutureDateField()">
-                  <option value="specific">On a specific date</option>
-                  <option value="6months">Every 6 months after activation</option>
-                  <option value="12months">Every 12 months after activation</option>
-                </select>
-              </div>
-              <div class="member-field" id="fm-date-wrap" style="display:none">
-                <label class="member-label" for="fm-date">Date</label>
-                <input class="member-input" id="fm-date" type="date"/>
-              </div>
-              <div class="member-field" id="fm-repeat-wrap" style="display:none">
-                <label class="member-label" for="fm-repeat-years">Repeat for how many years?</label>
-                <input class="member-input" id="fm-repeat-years" type="number" min="1" max="20" value="1" oninput="updateFutureCreditHint()"/>
-                <p id="fm-credit-hint" style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--m);line-height:1.7;margin-top:8px">Uses 1 message credit.</p>
-              </div>
-              <div class="member-field">
-                <label class="member-label" for="fm-tone">Tone</label>
-                <input class="member-input" id="fm-tone" placeholder="Warm, calm, practical"/>
-              </div>
-              <div class="member-field full">
-                <label class="member-label" for="fm-title">Title</label>
-                <input class="member-input" id="fm-title" placeholder="For Sarah, on the first birthday after"/>
-              </div>
-              <div class="member-field full">
-                <label class="member-label" for="fm-body">Message</label>
-                <textarea class="member-textarea" id="fm-body" placeholder="Write the message you want this person to receive later."></textarea>
-              </div>
-            </div>
-            <div class="member-actions">
-              <button class="bp" type="button" onclick="saveFutureMessage()">Save Future Message</button>
-              <button class="bo" type="button" onclick="draftFutureMessage()">Let AI handle the message</button>
-            </div>
-          </div>
-        </div>
         <!-- TRUSTED CONTACTS -->
         <div class="member-section" id="member-trusted">
-          <p class="lbl">Trusted Contacts</p>
+          <p class="lbl">Trusted Network</p>
           <h3>Who carries this forward</h3>
           <p class="member-copy" style="margin-bottom:28px">These people will be notified if your check-in lapses. They can also initiate the verification process when the time comes. They receive a portal link — they won't see your plan until activation.</p>
           <div id="trusted-contacts-list" style="display:grid;gap:2px;margin-bottom:24px"></div>
@@ -990,7 +862,7 @@ select.fi2{appearance:none;cursor:pointer}
             <button class="bp" type="button" onclick="addTrustedContact()">Add contact →</button>
           </div>
           <!-- VERIFICATION STEPS - collapsed inside trusted contacts -->
-          <div style="margin-top:32px;border-top:1px solid var(--r);padding-top:28px">
+          <div id="member-verification" style="margin-top:32px;border-top:1px solid var(--r);padding-top:28px;scroll-margin-top:106px">
             <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:18px">
               <div>
                 <p class="lbl" style="margin-bottom:4px">When the time comes</p>
@@ -1068,10 +940,10 @@ select.fi2{appearance:none;cursor:pointer}
               <input class="member-input" id="member-email" type="email" placeholder="you@email.com"/>
             </div>
             <div class="member-field">
-              <label class="member-label">Selected tier</label>
+              <label class="member-label">Plan</label>
               <div id="member-plan-display" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--r)">
-                <span id="member-plan-name" style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ink)">No tier selected</span>
-                <button type="button" onclick="selectPayPlan('pro');oM('pm')" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--a);border:1px solid rgba(200,64,26,.28);padding:6px 10px;background:transparent;cursor:pointer">Change tier →</button>
+                <span id="member-plan-name" style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ink)">No plan selected</span>
+                <button type="button" onclick="selectPayPlan('lifetime');oM('pm')" style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:1.6px;text-transform:uppercase;color:var(--a);border:1px solid rgba(200,64,26,.28);padding:6px 10px;background:transparent;cursor:pointer">Buy lifetime →</button>
               </div>
               <input type="hidden" id="member-plan" value="none"/>
             </div>
@@ -1128,7 +1000,7 @@ select.fi2{appearance:none;cursor:pointer}
     <div class="fc"><h4>Company</h4><a href="#" onclick="oM('about-modal');return false;">About</a><a href="#" onclick="oCM();return false;">Contact</a></div>
     <div class="fc"><h4>Legal</h4><a href="#" onclick="oM('terms-modal');return false;">Terms of Use</a><a href="#" onclick="oM('privacy-modal');return false;">Privacy Policy</a><a href="#" onclick="oM('data-rights-modal');return false;">Data Rights</a><a href="#" onclick="oM('cookies-modal');return false;">Cookies</a></div>
   </div>
-  <div class="fbot"><p>afterstate.io — post-death platform coordination</p></div>
+  <div class="fbot"><p>afterstate.xyz — post-death platform coordination</p></div>
 </footer>
 
 <!-- APP PAGE -->
@@ -1160,7 +1032,7 @@ select.fi2{appearance:none;cursor:pointer}
             </div>
             <div class="app-auth-card">
               <span class="db-k">Sign in</span>
-              <h3>Return to dashboard</h3>
+              <h3>Return to your plan</h3>
               <p>Use the sign-in popup to continue where you left off.</p>
               <button class="bo" style="width:100%;justify-content:center" type="button" onclick="oM('lm')">Open sign in</button>
             </div>
@@ -1172,11 +1044,11 @@ select.fi2{appearance:none;cursor:pointer}
         <div class="app-onb">
           <div class="app-onb-side">
             <div>
-              <span class="db-k">Step 1</span>
-              <h2>Choose the platforms you want <span class="brand-word">Afterstate</span> to handle.</h2>
-              <p>Choose a platform group, set the requested outcome, assign a contact, and continue to your dashboard.</p>
+              <span class="db-k">Vault -> Instructions -> Trusted Network -> Verification</span>
+              <h2>Set up your <span class="brand-word">Afterstate</span> plan.</h2>
+              <p>Choose what belongs in the vault, define platform instructions, assign your network, and keep verification ready.</p>
             </div>
-            <p class="db-note">At least one platform group is needed to continue.</p>
+            <p class="db-note">One configured platform group is enough to create the first version.</p>
           </div>
           <div class="app-onb-main">
             <div class="app-onb-grid">
@@ -1235,7 +1107,7 @@ select.fi2{appearance:none;cursor:pointer}
             </div>
             <div class="app-onb-actions">
               <p class="app-onb-summary" id="app-onb-summary">Select at least one platform group to continue.</p>
-              <button class="bp" id="app-onb-continue" type="button" onclick="finishAppOnboarding()">Continue to dashboard →</button>
+              <button class="bp" id="app-onb-continue" type="button" onclick="finishAppOnboarding()">Continue →</button>
             </div>
           </div>
         </div>
@@ -1246,7 +1118,7 @@ select.fi2{appearance:none;cursor:pointer}
           <div class="db-top">
             <div class="db-brand">
               <strong><span class="brand-word">Afterstate</span></strong>
-              <span>Dashboard</span>
+              <span>Launch Plan</span>
             </div>
             <div class="db-actions">
               <span class="db-user" id="app-db-user">Signed in as d</span>
@@ -1258,11 +1130,12 @@ select.fi2{appearance:none;cursor:pointer}
             <div class="db-pane">
               <span class="db-k">Overview</span>
               <h3 class="db-h" id="app-db-greeting">Welcome.</h3>
-              <p class="db-sub">This dashboard updates from the platforms, requested outcomes, and contacts you selected during setup.</p>
-              <div class="db-stats">
-                <div class="db-stat"><strong id="app-db-stat-accounts">0</strong><span>Selected platforms</span></div>
-                <div class="db-stat"><strong id="app-db-stat-recipients">0</strong><span>Contacts</span></div>
-                <div class="db-stat"><strong id="app-db-stat-plan">Signal</strong><span>Selected tier</span></div>
+              <p class="db-sub">Your plan is organized around the four launch steps: Vault, Instructions, Trusted Network, and Verification.</p>
+              <div class="launch-steps">
+                <button class="launch-step" type="button" onclick="goToLaunchStep('vault')"><span>01</span><strong>Vault</strong><p>Add the accounts that matter. Start with templates for Gmail, Instagram, Coinbase, Apple ID, Shopify, or add a custom account.</p><em>Add accounts</em></button>
+                <button class="launch-step" type="button" onclick="goToLaunchStep('instructions')"><span>02</span><strong>Instructions</strong><p>Choose what should happen to each account: close it, transfer it, memorialize it, notify someone, or leave it as-is.</p><em>Set actions</em></button>
+                <button class="launch-step" type="button" onclick="goToLaunchStep('trusted')"><span>03</span><strong>Trusted Network</strong><p>Add 1-3 people who can be notified and help start the process when needed.</p><em>Add people</em></button>
+                <button class="launch-step" type="button" onclick="goToLaunchStep('verification')"><span>04</span><strong>Verification</strong><p>Activation requires a death certificate plus trusted-contact approval. Then platform request drafts are prepared.</p><em>Review flow</em></button>
               </div>
               <div class="db-list" id="app-db-list"></div>
             </div>
@@ -1283,7 +1156,7 @@ select.fi2{appearance:none;cursor:pointer}
                   <strong>Add more items</strong>
                   <p>Use the setup step again whenever you want to add platforms or change requested outcomes.</p>
                 </div>
-                <p class="db-note">Your selected platforms stay here until you update them or sign out.</p>
+              <p class="db-note">Your selected platforms stay here until you update them or sign out.</p>
               </div>
             </div>
           </div>
@@ -1306,12 +1179,12 @@ select.fi2{appearance:none;cursor:pointer}
         <div class="fg"><label class="fl" for="fpass">Password</label><input type="password" class="fi2" id="fpass" name="password" autocomplete="new-password" placeholder="Create a password" required/></div>
         <div class="fg"><label class="fl" for="fpass2">Confirm password</label><input type="password" class="fi2" id="fpass2" name="passwordConfirm" autocomplete="new-password" placeholder="Repeat your password" required/></div>
         <input type="hidden" id="fp" value="none"/>
-        <p class="fnote">◈ No payment is being collected right now. After setup, you can join the waitlist for your preferred tier.</p>
+        <p class="fnote">After setup, you can buy lifetime access with a one-time Stripe checkout.</p>
         <p class="ferr" id="signup-error" role="alert"></p>
         <button class="bp" style="width:100%;justify-content:center" type="submit">Create Account →</button>
       </form>
     </div>
-    <div class="fsuc" id="fsuc"><span class="ck">✓</span><h4>Account created.</h4><p>Taking you to your dashboard now…</p></div>
+    <div class="fsuc" id="fsuc"><span class="ck">✓</span><h4>Account created.</h4><p>Taking you to your plan now...</p></div>
   </div>
 </div>
 
@@ -1339,11 +1212,11 @@ select.fi2{appearance:none;cursor:pointer}
   <div class="onb-shell">
     <div class="onb-side">
       <div>
-        <span class="onb-k">Step 1</span>
-        <h3 class="onb-h">Choose the platforms you want <span class="brand-word">Afterstate</span> to handle.</h3>
-        <p class="onb-sub">Click a platform group, choose what should be requested, and assign who should be contacted. Then continue to the dashboard.</p>
+        <span class="onb-k">Vault -> Instructions -> Trusted Network -> Verification</span>
+        <h3 class="onb-h">Set up the first version.</h3>
+        <p class="onb-sub">Choose a vault category, define the instruction, assign a trusted person, and keep verification ready.</p>
       </div>
-      <p class="onb-note">Choose what to include, assign the request, and continue to your dashboard.</p>
+      <p class="onb-note">Four steps only. You can add more detail later.</p>
     </div>
     <div class="onb-main">
       <div class="onb-grid">
@@ -1431,7 +1304,7 @@ select.fi2{appearance:none;cursor:pointer}
       </div>
       <div class="onb-actions">
         <p class="onb-summary" id="onb-summary">Select at least one platform group to continue.</p>
-        <button class="bp onb-go" id="onb-continue" type="button" onclick="finishOnboarding()">Continue to dashboard →</button>
+        <button class="bp onb-go" id="onb-continue" type="button" onclick="finishOnboarding()">Continue →</button>
       </div>
     </div>
   </div>
@@ -1443,7 +1316,7 @@ select.fi2{appearance:none;cursor:pointer}
     <div class="db-top">
       <div class="db-brand">
         <strong><span class="brand-word">Afterstate</span></strong>
-        <span>Dashboard</span>
+        <span>Launch Plan</span>
       </div>
       <div class="db-actions">
         <span class="db-user" id="db-user">Signed in as d</span>
@@ -1455,11 +1328,12 @@ select.fi2{appearance:none;cursor:pointer}
       <div class="db-pane">
         <span class="db-k">Overview</span>
         <h3 class="db-h" id="db-greeting">Welcome back.</h3>
-        <p class="db-sub">This view shows how your selected platforms, contacts, and request rules are organized after signup or sign in.</p>
-        <div class="db-stats">
-          <div class="db-stat"><strong id="db-stat-accounts">12</strong><span>Selected platforms</span></div>
-          <div class="db-stat"><strong id="db-stat-recipients">3</strong><span>Contacts</span></div>
-          <div class="db-stat"><strong id="db-stat-plan">Signal</strong><span>Selected tier</span></div>
+        <p class="db-sub">This view keeps the launch workflow focused: Vault, Instructions, Trusted Network, and Verification.</p>
+        <div class="launch-steps">
+          <button class="launch-step" type="button" onclick="goToLaunchStep('vault')"><span>01</span><strong>Vault</strong><p>Add the accounts that matter. Start with templates for Gmail, Instagram, Coinbase, Apple ID, Shopify, or add a custom account.</p><em>Add accounts</em></button>
+          <button class="launch-step" type="button" onclick="goToLaunchStep('instructions')"><span>02</span><strong>Instructions</strong><p>Choose what should happen to each account: close it, transfer it, memorialize it, notify someone, or leave it as-is.</p><em>Set actions</em></button>
+          <button class="launch-step" type="button" onclick="goToLaunchStep('trusted')"><span>03</span><strong>Trusted Network</strong><p>Add 1-3 people who can be notified and help start the process when needed.</p><em>Add people</em></button>
+          <button class="launch-step" type="button" onclick="goToLaunchStep('verification')"><span>04</span><strong>Verification</strong><p>Activation requires a death certificate plus trusted-contact approval. Then platform request drafts are prepared.</p><em>Review flow</em></button>
         </div>
         <div class="db-list" id="db-list"></div>
       </div>
@@ -1480,7 +1354,7 @@ select.fi2{appearance:none;cursor:pointer}
             <strong>Today</strong>
             <p>Your plan was updated recently. Platform rules and contacts are in sync.</p>
           </div>
-          <p class="db-note">This dashboard reflects the account state saved in this browser.</p>
+          <p class="db-note">This plan reflects the account state saved in this browser.</p>
         </div>
       </div>
     </div>
@@ -1492,46 +1366,20 @@ select.fi2{appearance:none;cursor:pointer}
   <div class="mb" role="dialog" aria-modal="true" aria-labelledby="payment-title">
     <button class="mc-btn" type="button" onclick="cM('pm')" aria-label="Close">✕</button>
     <div id="pm-form-wrap">
-      <h3 id="payment-title">Join the <em>waitlist.</em></h3>
+      <h3 id="payment-title">Buy <em>lifetime.</em></h3>
       <p id="pm-user-greeting" class="msub" style="display:none"></p>
-      <p class="msub" style="color:var(--a);border-left:2px solid var(--a);padding-left:12px;margin-bottom:24px">No charge today. Pick the tier you want, save your place, and we will reach out when Afterstate opens.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-bottom:24px">
-        <button type="button" id="pm-basic-btn" onclick="selectPayPlan('basic')" style="border:1px solid var(--r);padding:22px;background:rgba(255,255,255,.15);cursor:pointer;text-align:left;transition:all .2s;display:flex;flex-direction:column">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--m);display:block;margin-bottom:10px">Signal</span>
-          <span style="font-family:'EB Garamond',serif;font-style:italic;font-size:44px;color:var(--ink);display:block;line-height:1;margin-bottom:4px">$49</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--m);display:block;margin-bottom:18px">launch tier</span>
-          <span style="display:block;border-top:1px solid var(--r);padding-top:14px;flex:1">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(14,14,14,.65);line-height:2;display:block">5 platforms activated<br>2 trusted contacts<br>Platform request letters<br>I'm alive check-in<br>1 plan update/year<br>2 years of updates</span>
-          </span>
-        </button>
-        <button type="button" id="pm-plus-btn" onclick="selectPayPlan('plus')" style="border:1px solid var(--r);padding:22px;background:rgba(255,255,255,.15);cursor:pointer;text-align:left;transition:all .2s;display:flex;flex-direction:column">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--m);display:block;margin-bottom:10px">Relay</span>
-          <span style="font-family:'EB Garamond',serif;font-style:italic;font-size:44px;color:var(--ink);display:block;line-height:1;margin-bottom:4px">$99</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--m);display:block;margin-bottom:18px">launch tier</span>
-          <span style="display:block;border-top:1px solid var(--r);padding-top:14px;flex:1">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(14,14,14,.65);line-height:2;display:block">15 platforms activated<br>5 trusted contacts<br>20 future messages<br>Final message + assisted drafting<br>Platform request letters<br>I'm alive check-in<br>10 plan updates/year</span>
-          </span>
-        </button>
-        <button type="button" id="pm-pro-btn" onclick="selectPayPlan('pro')" style="border:1px solid var(--a);padding:22px;background:rgba(200,64,26,.04);cursor:pointer;text-align:left;transition:all .2s;display:flex;flex-direction:column">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--a);display:block;margin-bottom:10px">Legacy — Most Popular</span>
-          <span style="font-family:'EB Garamond',serif;font-style:italic;font-size:44px;color:var(--a);display:block;line-height:1;margin-bottom:4px">$149</span>
-          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--m);display:block;margin-bottom:18px">launch tier</span>
-          <span style="display:block;border-top:1px solid rgba(200,64,26,.2);padding-top:14px;flex:1">
-            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(14,14,14,.65);line-height:2;display:block">Unlimited platforms activated<br>Unlimited trusted contacts<br>20 future messages<br>Final message + assisted drafting<br>Platform request letters<br>I'm alive check-in<br>Lifetime updates</span>
-          </span>
-        </button>
-      </div>
+      <p class="msub" style="color:var(--a);border-left:2px solid var(--a);padding-left:12px;margin-bottom:24px">$99.99 one-time payment. Checkout opens in Stripe.</p>
       <form id="payment-form" novalidate>
-        <input type="hidden" id="pm-plan" value="pro"/>
+        <input type="hidden" id="pm-plan" value="lifetime"/>
         <div class="fg"><label class="fl" for="pm-waitlist-name">Full name</label><input type="text" class="fi2" id="pm-waitlist-name" autocomplete="name" placeholder="Your full name" required/></div>
         <div class="fg"><label class="fl" for="pm-waitlist-email">Email address</label><input type="email" class="fi2" id="pm-waitlist-email" autocomplete="email" inputmode="email" placeholder="you@email.com" required/></div>
-        <p class="fnote">◈ This reserves your preferred tier and launch updates. You are not paying today.</p>
+        <p class="fnote">If live checkout is configured, you will be redirected to Stripe. Otherwise, your interest will be saved for launch follow-up.</p>
         <p class="ferr" id="payment-error" role="alert"></p>
-        <button class="bp" style="width:100%;justify-content:center;margin-top:8px" type="submit">Join waitlist →</button>
+        <button class="bp" style="width:100%;justify-content:center;margin-top:8px" type="submit">Continue →</button>
       </form>
       <button type="button" onclick="cM('pm')" style="display:block;width:100%;text-align:center;margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--m);background:none;border:none;cursor:pointer;padding:8px">Maybe later — keep my setup saved</button>
     </div>
-    <div id="pm-success" style="display:none;text-align:center;padding:16px 0"><span style="font-size:44px;display:block;margin-bottom:14px">✓</span><h4 style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ok);margin-bottom:8px">You are on the list.</h4><p style="font-family:'JetBrains Mono',monospace;font-size:var(--micro);color:var(--m);line-height:1.7">We saved your preferred tier and will contact you when Afterstate opens.</p></div>
+    <div id="pm-success" style="display:none;text-align:center;padding:16px 0"><span style="font-size:44px;display:block;margin-bottom:14px">✓</span><h4 id="pm-success-title" style="font-family:'EB Garamond',serif;font-size:24px;color:var(--ok);margin-bottom:8px">Opening Stripe.</h4><p id="pm-success-copy" style="font-family:'JetBrains Mono',monospace;font-size:var(--micro);color:var(--m);line-height:1.7">Your setup is saved locally before checkout.</p></div>
   </div>
 </div>
 
@@ -1640,15 +1488,15 @@ select.fi2{appearance:none;cursor:pointer}
           <li><strong style="color:var(--ink)">Data export:</strong> During the notice period, every user will be provided with a full export of their stored data in a readable format (JSON or PDF) at no charge.</li>
           <li><strong style="color:var(--ink)">Trusted contact notification:</strong> Registered trusted contacts will be notified of the service discontinuation so they are aware the platform will no longer be available.</li>
           <li><strong style="color:var(--ink)">Data deletion:</strong> All user data will be permanently deleted within 30 days of the service shutdown date. A deletion confirmation will be sent to the registered email address.</li>
-          <li><strong style="color:var(--ink)">Launch reservations:</strong> While Afterstate is in waitlist mode, joining a tier does not create a paid subscription or charge.</li>
+          <li><strong style="color:var(--ink)">Lifetime checkout:</strong> Afterstate uses a one-time Stripe checkout for lifetime access. No subscription is created.</li>
           <li><strong style="color:var(--ink)">Deceased users:</strong> For accounts where a verification process has been initiated, we will make reasonable efforts to complete pending requests or transfer documentation to the designated trusted contact before shutdown.</li>
         </ul>
         <p style="margin-top:12px;color:rgba(14,14,14,.6)">We reserve the right to transfer user data and service obligations to a successor entity rather than discontinuing the service entirely. In such cases, users will be notified and given the option to opt out of the transfer and request data deletion.</p>
       </div>
 
       <div>
-        <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">6. Data Security</p>
-        <p>We implement industry-standard security measures including AES-256 encryption and zero-knowledge architecture for sensitive fields. However, no method of data storage or transmission is 100% secure. You acknowledge that you provide information at your own risk. We are not liable for unauthorized access resulting from circumstances beyond our reasonable control.</p>
+        <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">6. Preview Data Security</p>
+        <p>This preview build stores account setup data in your browser's local storage. Do not enter sensitive passwords, seed phrases, government ID numbers, financial account numbers, or other secrets. A production backend, server-side authentication, and audited storage controls are required before using Afterstate for sensitive customer data.</p>
       </div>
 
       <div>
@@ -1668,7 +1516,7 @@ select.fi2{appearance:none;cursor:pointer}
 
       <div>
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">10. Contact</p>
-        <p>For questions about these terms, data requests, or service discontinuation inquiries, contact us at legal@afterstate.io.</p>
+        <p>For questions about these terms, data requests, or service discontinuation inquiries, contact us at legal@afterstate.xyz.</p>
       </div>
 
     </div>
@@ -1685,19 +1533,19 @@ select.fi2{appearance:none;cursor:pointer}
     <div style="font-family:'JetBrains Mono',monospace;font-size:12px;line-height:1.9;color:rgba(14,14,14,.72);display:grid;gap:22px">
       <div>
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">What we collect</p>
-        <p>Name, email address, and password (hashed). Platform account identifiers you choose to enter. Trusted contact names and email addresses. Your final message (encrypted client-side before transmission). Check-in activity timestamps. Waitlist tier preference and join timestamp.</p>
+        <p>In this preview build, account setup data is stored locally in your browser. This can include your name, email address, chosen platform labels, trusted contact details, final note text, check-in timestamps, and checkout interest status. Do not enter sensitive credentials, seed phrases, government IDs, or financial account numbers.</p>
       </div>
       <div>
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">What we never collect</p>
-        <p>Platform passwords or credentials. Government ID numbers. Financial account numbers. Any biometric data.</p>
+        <p>Afterstate does not ask for platform passwords, seed phrases, government ID numbers, financial account numbers, or biometric data. Do not put those details into free-text fields.</p>
       </div>
       <div>
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">How we use it</p>
-        <p>Solely to provide the service you signed up for. We do not sell, rent, or share your data with third parties for marketing purposes. We do not display advertising. Data is shared only with trusted contacts you designate, and only upon verified activation.</p>
+        <p>Preview data is used to let you test the product flow on this device and to record checkout interest if submitted. We do not sell or rent this data. A production release should replace local-only storage with a proper backend privacy model before handling sensitive customer data.</p>
       </div>
       <div>
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">Your rights</p>
-        <p>You may request a full export of your data at any time. You may request permanent deletion of your account and all associated data. For GDPR users, you have the right to access, rectify, port, and erase your personal data. Contact privacy@afterstate.io for any data requests.</p>
+        <p>You may request a full export of your data at any time. You may request permanent deletion of your account and all associated data. For GDPR users, you have the right to access, rectify, port, and erase your personal data. Contact privacy@afterstate.xyz for any data requests.</p>
       </div>
     </div>
   </div>
@@ -1782,7 +1630,9 @@ var CUSTOM_KEY='afterstate-custom-user';
 var SESSION_KEY='afterstate-session-email';
 var DEMO_ITEMS_KEY='afterstate-demo-items';
 var FINAL_MESSAGE_KEY='afterstate-final-message';
-var WAITLIST_CACHE_KEY='afterstate-waitlist-cache';
+var CHECKOUT_CACHE_KEY='afterstate-checkout-cache';
+var CONTACT_CACHE_KEY='afterstate-contact-cache';
+var STRIPE_PAYMENT_LINK=window.AFTERSTATE_STRIPE_PAYMENT_LINK||'';
 var MESSAGE_UNLOCKED=false;
 var PLATFORMS_KEY='afterstate-platforms-v2';
 var SUPABASE_CONFIG={
@@ -1992,6 +1842,12 @@ function togglePlatformsNav(){
   btn.style.color=open?'var(--a)':'';
   if(open)scrollToMemberCard('member-platforms');
 }
+function openPlatformsNav(){
+  var sub=document.getElementById('nav-platforms-sub');
+  var btn=document.getElementById('nav-platforms-btn');
+  if(sub)sub.style.display='block';
+  if(btn)btn.style.color='var(--a)';
+}
 function openPlatformCategory(cat){
   currentCategory=cat;
   var data=PLATFORM_CATALOG[cat];
@@ -2077,10 +1933,11 @@ var PLATFORM_COSTS={
   patreon:0,adsense:0,upwork:0,fiverr:0,ebay:0,amazon_seller:40,appstore:100,playstore:25
 };
 var PLAN_LIMITS={
-  none:{platforms:999,contacts:999,messages:20,finalMessage:true,changes:999,label:'No tier selected'},
-  basic:{platforms:5,contacts:2,messages:0,finalMessage:false,changes:1,label:'Signal'},
-  plus:{platforms:15,contacts:5,messages:20,finalMessage:true,changes:10,label:'Relay'},
-  pro:{platforms:999,contacts:999,messages:20,finalMessage:true,changes:999,label:'Legacy'}
+  none:{platforms:999,contacts:999,messages:0,finalMessage:true,changes:999,label:'No plan selected'},
+  basic:{platforms:999,contacts:999,messages:0,finalMessage:true,changes:999,label:'Lifetime'},
+  plus:{platforms:999,contacts:999,messages:0,finalMessage:true,changes:999,label:'Lifetime'},
+  pro:{platforms:999,contacts:999,messages:0,finalMessage:true,changes:999,label:'Lifetime'},
+  lifetime:{platforms:999,contacts:999,messages:0,finalMessage:true,changes:999,label:'Lifetime'}
 };
 function getCoverageData(){
   var all=getPlatformData();
@@ -2128,11 +1985,11 @@ function updatePlanLimitBanner(totalPlats){
   var banner=document.getElementById('plan-limit-banner');
   var text=document.getElementById('plan-limit-text');
   if(!banner)return;
-  if(plan==='pro'){banner.style.display='none';return;}
+  if(plan==='pro'||plan==='lifetime'){banner.style.display='none';return;}
   if(plan==='none'){
     if(totalPlats>0){
       banner.style.display='block';
-      text.innerHTML='<strong style="color:var(--a)">No tier selected.</strong> Your platforms are saved. Choose a tier and join the waitlist so your setup is ready for launch. <button onclick="smartStartPlan(\'plus\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Join waitlist →</button>';
+      text.innerHTML='<strong style="color:var(--a)">No plan selected.</strong> Your platforms are saved. Buy lifetime access so your setup is ready. <button onclick="smartStartPlan(\'lifetime\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Buy lifetime →</button>';
     }else{
       banner.style.display='none';
     }
@@ -2141,14 +1998,14 @@ function updatePlanLimitBanner(totalPlats){
   var remaining=limits.platforms-totalPlats;
   if(remaining<=2&&remaining>=0){
     banner.style.display='block';
-    var planLabel=plan==='none'?'No tier selected':(plan==='basic'?'Signal tier':'Relay tier');
-    var ctaBtn=plan==='none'?'<button onclick="smartStartPlan(\'plus\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Join waitlist →</button>':(plan==='basic'?'<button onclick="smartStartPlan(\'plus\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Switch to Relay →</button>':'<button onclick="smartStartPlan(\'pro\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Switch to Legacy →</button>');
-    text.innerHTML='<strong style="color:var(--ink)">'+planLabel+'</strong> — your saved setup currently fits <strong style="color:var(--ink)">'+limits.platforms+'</strong> activated platforms at launch. '+(remaining>0?remaining+' slot'+(remaining>1?'s':'')+' remaining in this tier. ':'This tier is full. ')+ctaBtn;
+    var planLabel=plan==='none'?'No plan selected':'Lifetime';
+    var ctaBtn='<button onclick="smartStartPlan(\'lifetime\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Buy lifetime →</button>';
+    text.innerHTML='<strong style="color:var(--ink)">'+planLabel+'</strong> — your saved setup currently fits <strong style="color:var(--ink)">'+limits.platforms+'</strong> activated platforms. '+(remaining>0?remaining+' slot'+(remaining>1?'s':'')+' remaining. ':'This plan is full. ')+ctaBtn;
   }else if(remaining<0){
     banner.style.display='block';
-    var up=(plan==='none'||plan==='basic')?'plus':'pro';
-    var upLabel=(up==='plus')?'Switch to Relay →':'Switch to Legacy →';
-    text.innerHTML='<strong style="color:var(--a)">Tier limit reached.</strong> You can keep adding platforms, but only '+limits.platforms+' fit inside your current launch tier. <button onclick="smartStartPlan(\''+up+'\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">'+upLabel+'</button>';
+    var up='lifetime';
+    var upLabel='Buy lifetime →';
+    text.innerHTML='<strong style="color:var(--a)">Plan limit reached.</strong> You can keep adding platforms, but only '+limits.platforms+' fit inside your current plan. <button onclick="smartStartPlan(\''+up+'\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">'+upLabel+'</button>';
   }else{
     banner.style.display='none';
   }
@@ -2160,7 +2017,7 @@ function checkPlatformLimitBeforeSave(cat,platId){
   var data=getCoverageData();
   var alreadySaved=Boolean((getPlatformData()[cat]||{})[platId]);
   if(plan!=='pro'&&plan!=='none'&&!alreadySaved&&data.total>=limits.platforms){
-    toast('Only '+limits.platforms+' platforms fit inside your current selected tier. The rest stay saved for later.','dark');
+    toast('Only '+limits.platforms+' platforms fit inside your current plan. The rest stay saved for later.','dark');
   }
   return true;
 }
@@ -2240,10 +2097,6 @@ function updatePlatformStats(){
       if(all[cat][pid].contact)contacts.add(all[cat][pid].contact);
     });
   });
-  var el=document.getElementById('member-stat-platforms');
-  var el2=document.getElementById('member-stat-contacts');
-  if(el)el.textContent=String(total);
-  if(el2)el2.textContent=String(contacts.size);
   updateCategoryCounts();
 }
 function updateCategoryCounts(){
@@ -2276,44 +2129,75 @@ function updateAuthUI(){
 function isSupabaseConfigured(){
   return Boolean(SUPABASE_CONFIG.url&&SUPABASE_CONFIG.anonKey&&SUPABASE_CONFIG.url.indexOf('YOUR_')===-1&&SUPABASE_CONFIG.anonKey.indexOf('YOUR_')===-1);
 }
-function getWaitlistCache(){
-  try{return JSON.parse(localStorage.getItem(WAITLIST_CACHE_KEY)||'[]');}catch(e){return [];}
+function getCheckoutCache(){
+  try{return JSON.parse(localStorage.getItem(CHECKOUT_CACHE_KEY)||'[]');}catch(e){return [];}
 }
-function saveWaitlistCache(entries){
-  localStorage.setItem(WAITLIST_CACHE_KEY,JSON.stringify(entries));
+function saveCheckoutCache(entries){
+  localStorage.setItem(CHECKOUT_CACHE_KEY,JSON.stringify(entries));
 }
-function cacheWaitlistEntry(entry){
-  var entries=getWaitlistCache().filter(function(item){return item.email!==entry.email;});
+function cacheCheckoutEntry(entry){
+  var entries=getCheckoutCache().filter(function(item){return item.email!==entry.email;});
   entries.unshift(entry);
-  saveWaitlistCache(entries);
+  saveCheckoutCache(entries);
 }
-function buildWaitlistEntry(fullName,email,plan,user){
+function buildCheckoutEntry(fullName,email,plan,user){
   var coverage=getCoverageData();
   var contacts=getTrustedContacts();
   var checkin=getCheckinData();
-  var futureMessages=getFutureMessages();
   return {
     email:email,
     full_name:fullName,
-    selected_tier:plan,
-    status:'waitlist',
+    selected_plan:plan,
+    status:'checkout_started',
     source:'afterstate-web',
     joined_at:new Date().toISOString(),
     session_email:user&&user.email?user.email:email,
     platform_count:coverage.total,
     trusted_contact_count:contacts.length,
-    future_message_count:futureMessages.length,
-    future_message_credits:getFutureCreditsUsed(futureMessages),
     final_message_saved:Boolean(localStorage.getItem(FINAL_MESSAGE_KEY)),
     checkin_period_months:checkin&&checkin.periodMonths?checkin.periodMonths:null
   };
 }
-async function syncWaitlistEntry(entry){
-  cacheWaitlistEntry(entry);
+async function syncCheckoutEntry(entry){
+  cacheCheckoutEntry(entry);
   if(!isSupabaseConfigured()){
     return {ok:false,mode:'local'};
   }
-  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/waitlist_entries';
+  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/waitlist_entries?on_conflict=email';
+  var response=await fetch(url,{
+    method:'POST',
+    headers:{
+      'Content-Type':'application/json',
+      apikey:SUPABASE_CONFIG.anonKey,
+      Authorization:'Bearer '+SUPABASE_CONFIG.anonKey,
+      Prefer:'resolution=merge-duplicates,return=representation'
+    },
+    body:JSON.stringify([entry])
+  });
+  if(!response.ok){
+    var errorText='';
+    try{errorText=await response.text();}catch(err){}
+    throw new Error(errorText||('Supabase sync failed with status '+response.status));
+  }
+  return {ok:true,mode:'supabase'};
+}
+function getContactCache(){
+  try{return JSON.parse(localStorage.getItem(CONTACT_CACHE_KEY)||'[]');}catch(e){return [];}
+}
+function saveContactCache(entries){
+  localStorage.setItem(CONTACT_CACHE_KEY,JSON.stringify(entries));
+}
+function cacheContactMessage(entry){
+  var entries=getContactCache();
+  entries.unshift(entry);
+  saveContactCache(entries.slice(0,25));
+}
+async function syncContactMessage(entry){
+  cacheContactMessage(entry);
+  if(!isSupabaseConfigured()){
+    return {ok:false,mode:'local'};
+  }
+  var url=SUPABASE_CONFIG.url.replace(/\/$/,'')+'/rest/v1/contact_messages';
   var response=await fetch(url,{
     method:'POST',
     headers:{
@@ -2327,7 +2211,7 @@ async function syncWaitlistEntry(entry){
   if(!response.ok){
     var errorText='';
     try{errorText=await response.text();}catch(err){}
-    throw new Error(errorText||('Supabase sync failed with status '+response.status));
+    throw new Error(errorText||('Contact sync failed with status '+response.status));
   }
   return {ok:true,mode:'supabase'};
 }
@@ -2340,24 +2224,23 @@ function scrollToMemberCard(id){
   var el=document.getElementById(id);
   if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
 }
-function seedDemoAccount(){
-  if(!localStorage.getItem(DEMO_KEY)){
-    localStorage.setItem(DEMO_KEY,JSON.stringify({
-      fullName:'D',
-      email:'d',
-      password:'d',
-      plan:'pro'
-    }));
+function goToLaunchStep(step){
+  if(step==='trusted'){
+    scrollToMemberCard('member-trusted');
+    return;
   }
-  if(!localStorage.getItem(DEMO_ITEMS_KEY)){
-    localStorage.setItem(DEMO_ITEMS_KEY,JSON.stringify([
-      {key:'social',action:'Memorialize',recipient:'Morgan Lee'},
-      {key:'subscriptions',action:'Cancel',recipient:'Morgan Lee'}
-    ]));
+  if(step==='verification'){
+    scrollToMemberCard('member-verification');
+    return;
+  }
+  if(step==='vault'||step==='instructions'){
+    openPlatformsNav();
+    if(step==='vault'&&typeof closePlatformCategory==='function')closePlatformCategory();
+    scrollToMemberCard('member-platforms');
   }
 }
 function getStoredUser(email){
-  var rawUsers=[localStorage.getItem(DEMO_KEY),localStorage.getItem(CUSTOM_KEY)];
+  var rawUsers=[localStorage.getItem(CUSTOM_KEY)];
   for(var i=0;i<rawUsers.length;i++){
     if(!rawUsers[i])continue;
     try{
@@ -2486,7 +2369,7 @@ function unlockFinalMessage(){
 function hydrateMemberPage(user){
   var safeUser=user||getSessionUser();
   if(!safeUser)return;
-  var selectedPlan=(safeUser.plan&&safeUser.plan!=='none')?safeUser.plan:(safeUser.intendedPlan||'none');
+  var selectedPlan=(safeUser.plan&&safeUser.plan!=='none')?safeUser.plan:'none';
   var items=getOnboardingItems();
   var contacts=Array.from(new Set(items.map(function(item){return item.recipient;}))).filter(Boolean);
   document.getElementById('member-name').value=safeUser.fullName||'';
@@ -2496,26 +2379,22 @@ function hydrateMemberPage(user){
   var upgradeBtn=document.getElementById('member-plan-display').querySelector('button');
   if(planName){
     if(selectedPlan==='none'){
-      planName.textContent='No tier selected';
+      planName.textContent=safeUser.intendedPlan?'Launch interest saved':'No plan selected';
       planName.style.color='rgba(14,14,14,.4)';
       if(upgradeBtn)upgradeBtn.style.display='';
     }else{
-      planName.textContent=(PLAN_LIMITS[selectedPlan]?PLAN_LIMITS[selectedPlan].label:selectedPlan)+' — waitlist';
+      planName.textContent=(PLAN_LIMITS[selectedPlan]?PLAN_LIMITS[selectedPlan].label:selectedPlan);
       planName.style.color='var(--a)';
-      if(upgradeBtn)upgradeBtn.style.display=(selectedPlan==='pro'?'none':'');
+      if(upgradeBtn)upgradeBtn.style.display=(selectedPlan==='lifetime'||selectedPlan==='pro'?'none':'');
     }
   }
   document.getElementById('member-message').value=localStorage.getItem(FINAL_MESSAGE_KEY)||'If anything happens to me, please follow the instructions saved in my Afterstate profile.';
-  document.getElementById('member-stat-platforms').textContent=String(items.length);
-  document.getElementById('member-stat-contacts').textContent=String(contacts.length||0);
-  document.getElementById('member-stat-plan').textContent=(selectedPlan&&selectedPlan!=='none')?(PLAN_LIMITS[selectedPlan]?PLAN_LIMITS[selectedPlan].label:selectedPlan):'Not selected';
-  document.getElementById('member-hero-copy').textContent='Signed in as '+safeUser.email+'. Review your platform instructions, edit your final note, and keep the plan current.';
+  document.getElementById('member-hero-copy').textContent='Signed in as '+safeUser.email+'. Work through Vault, Instructions, Trusted Network, and Verification.';
   renderPlatformCategories(items);
   lockFinalMessage();
   updatePlatformStats();
   updateCoverageSummary();
   renderTrustedContacts();
-  renderFutureMessages();
   updateCheckinUI();
   updateHealthScore();
 }
@@ -2529,29 +2408,21 @@ function openMemberPage(){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function selectPayPlan(plan){
+  plan='lifetime';
   document.getElementById('pm-plan').value=plan;
   var user=getSessionUser();
   var greeting=document.getElementById('pm-user-greeting');
-  var label=(PLAN_LIMITS[plan]&&PLAN_LIMITS[plan].label)||'Legacy';
+  var label=(PLAN_LIMITS[plan]&&PLAN_LIMITS[plan].label)||'Lifetime';
   var nameInput=document.getElementById('pm-waitlist-name');
   var emailInput=document.getElementById('pm-waitlist-email');
   if(nameInput&&user&&user.fullName)nameInput.value=user.fullName;
   if(emailInput&&user&&user.email)emailInput.value=user.email;
   if(greeting&&user){
     greeting.style.display='block';
-    greeting.textContent='Signed in as '+user.email+'. Your profile is saved. Join the '+label+' waitlist to reserve your spot.';
+    greeting.textContent='Signed in as '+user.email+'. Your profile is saved. Continue to Stripe for '+label+' access.';
   }else if(greeting){
     greeting.style.display='none';
   }
-  var basicBtn=document.getElementById('pm-basic-btn');
-  var plusBtn=document.getElementById('pm-plus-btn');
-  var proBtn=document.getElementById('pm-pro-btn');
-  function styleOff(btn){if(!btn)return;btn.style.borderColor='var(--r)';btn.style.background='rgba(255,255,255,.15)';}
-  function styleOn(btn){if(!btn)return;btn.style.borderColor='var(--a)';btn.style.background='rgba(200,64,26,.04)';}
-  styleOff(basicBtn);styleOff(plusBtn);styleOff(proBtn);
-  if(plan==='basic')styleOn(basicBtn);
-  else if(plan==='plus')styleOn(plusBtn);
-  else styleOn(proBtn);
 }
 function subPayment(e){
   e.preventDefault();
@@ -2559,34 +2430,35 @@ function subPayment(e){
   var fullName=document.getElementById('pm-waitlist-name').value.trim();
   var email=normalizeEmail(document.getElementById('pm-waitlist-email').value);
   if(!fullName){showError('payment-error','Enter your full name.');document.getElementById('pm-waitlist-name').focus();return;}
-  if(!validEmail(email) && email!=='d'){showError('payment-error','Enter a valid email address.');document.getElementById('pm-waitlist-email').focus();return;}
+  if(!validEmail(email)){showError('payment-error','Enter a valid email address.');document.getElementById('pm-waitlist-email').focus();return;}
   showError('payment-error','');
   var user=getSessionUser();
   if(user){
     user.fullName=fullName;
     user.email=email;
     user.intendedPlan=plan;
+    user.plan=user.plan&&user.plan!=='none'?user.plan:'none';
     user.waitlistJoinedAt=new Date().toISOString();
-    user.waitlistStatus='joined';
-    var storeKey=user.email==='d'?DEMO_KEY:CUSTOM_KEY;
-    localStorage.setItem(storeKey,JSON.stringify(user));
+    user.waitlistStatus='checkout_started';
+    localStorage.setItem(CUSTOM_KEY,JSON.stringify(user));
     localStorage.setItem(SESSION_KEY,user.email);
     updateAuthUI();
     hydrateMemberPage(user);
   }
-  // Sync to Supabase
-  var entry=buildWaitlistEntry(fullName,email,plan,user);
-  syncWaitlistEntry(entry).catch(function(err){console.warn("Waitlist sync failed:",err);});
-
+  syncCheckoutEntry(buildCheckoutEntry(fullName,email,plan,user)).catch(function(){});
+  var stripeUrl=STRIPE_PAYMENT_LINK;
+  if(!stripeUrl){
+    document.getElementById('pm-form-wrap').style.display='none';
+    document.getElementById('pm-success').style.display='block';
+    document.getElementById('pm-success-title').textContent='Launch interest saved.';
+    document.getElementById('pm-success-copy').textContent='Live Stripe checkout is not configured yet. Your details were saved for launch follow-up.';
+    return;
+  }
   document.getElementById('pm-form-wrap').style.display='none';
   document.getElementById('pm-success').style.display='block';
-  setTimeout(function(){
-    cM('pm');
-    document.getElementById('pm-form-wrap').style.display='block';
-    document.getElementById('pm-success').style.display='none';
-    document.getElementById('payment-form').reset();
-    toast('Waitlist joined. We saved your preferred tier.','ok');
-  },1600);
+  document.getElementById('pm-success-title').textContent='Opening Stripe.';
+  document.getElementById('pm-success-copy').textContent='Your setup is saved locally before checkout.';
+  window.location.href=stripeUrl+'?prefilled_email='+encodeURIComponent(email);
 }
 function saveMemberProfile(){
   var user=getSessionUser();
@@ -2598,24 +2470,20 @@ function saveMemberProfile(){
     document.getElementById('member-name').focus();
     return;
   }
-  if(!validEmail(nextEmail) && nextEmail!=='d'){
+  if(!validEmail(nextEmail)){
     toast('Enter a valid email address.','dark');
     document.getElementById('member-email').focus();
     return;
   }
   user.fullName=nextName;
   user.email=nextEmail;
-  if(user.email==='d'){
-    localStorage.setItem(DEMO_KEY,JSON.stringify(user));
-  }else{
-    localStorage.setItem(CUSTOM_KEY,JSON.stringify(user));
-  }
+  localStorage.setItem(CUSTOM_KEY,JSON.stringify(user));
   localStorage.setItem(SESSION_KEY,user.email);
   updateAuthUI();
   hydrateMemberPage(user);
   updateHealthScore();
   if(!user.waitlistJoinedAt){
-    selectPayPlan(user.intendedPlan||'pro');
+    selectPayPlan('lifetime');
     oM('pm');
   }else{
     toast('Profile saved.','ok');
@@ -2624,8 +2492,8 @@ function saveMemberProfile(){
 function saveFinalMessage(){
   var limits=getCurrentPlanLimits();
   if(!limits.finalMessage){
-    toast('Final Message is available in Relay and Legacy. Switch your preferred tier to save it.','dark');
-    selectPayPlan('plus');
+    toast('Buy lifetime access to save it.','dark');
+    selectPayPlan('lifetime');
     setTimeout(function(){oM('pm');},200);
     return;
   }
@@ -2652,10 +2520,6 @@ function renderAppDashboard(user){
   document.body.style.overflow='hidden';
   document.getElementById('app-db-user').textContent='Signed in as '+user.email;
   document.getElementById('app-db-greeting').textContent='Welcome, '+user.fullName+'.';
-  var selectedPlan=(user.plan&&user.plan!=='none')?user.plan:(user.intendedPlan||'basic');
-  document.getElementById('app-db-stat-plan').textContent=(PLAN_LIMITS[selectedPlan]?PLAN_LIMITS[selectedPlan].label:selectedPlan);
-  document.getElementById('app-db-stat-accounts').textContent=String(items.length);
-  document.getElementById('app-db-stat-recipients').textContent=String(uniqueContacts.length||1);
   var container=document.getElementById('app-db-list');
   if(!items.length){
     container.innerHTML='<div class="db-empty">No platform groups selected yet. Go back and choose at least one type.</div>';
@@ -2690,7 +2554,7 @@ function refreshAppOnboardingSummary(){
   var summary=document.getElementById('app-onb-summary');
   var btn=document.getElementById('app-onb-continue');
   if(summary){
-    summary.textContent=items.length?items.length+' categorie'+(items.length>1?'s are':' is')+' configured for the dashboard.':'Select at least one platform group to continue.';
+    summary.textContent=items.length?items.length+' categorie'+(items.length>1?'s are':' is')+' configured for your plan.':'Select at least one platform group to continue.';
   }
   if(btn){
     btn.disabled=!items.length;
@@ -2704,7 +2568,8 @@ function finishAppOnboarding(){
     return;
   }
   localStorage.setItem(DEMO_ITEMS_KEY,JSON.stringify(items));
-  var user=getStoredUser(localStorage.getItem(SESSION_KEY)||'d')||getStoredUser('d');
+  var user=getSessionUser();
+  if(!user){toast('Sign in first.','dark');return;}
   renderAppDashboard(user);
 }
 function openOnboarding(user){
@@ -2723,7 +2588,7 @@ function refreshOnboardingSummary(){
   var summary=document.getElementById('onb-summary');
   var btn=document.getElementById('onb-continue');
   if(summary){
-    summary.textContent=activeCards.length?activeCards.length+' categorie'+(activeCards.length>1?'s are':' is')+' ready for your dashboard.':'Select at least one platform group to continue.';
+    summary.textContent=activeCards.length?activeCards.length+' categorie'+(activeCards.length>1?'s are':' is')+' ready for your plan.':'Select at least one platform group to continue.';
   }
   if(btn)btn.disabled=!activeCards.length;
   if(btn)btn.style.opacity=activeCards.length?'1':'.45';
@@ -2741,10 +2606,10 @@ function finishOnboarding(){
     return;
   }
   localStorage.setItem(DEMO_ITEMS_KEY,JSON.stringify(items));
-  openDashboard(getStoredUser(localStorage.getItem(SESSION_KEY)||'d'));
+  openDashboard(getSessionUser());
 }
 function openDashboard(user){
-  var safeUser=user||getStoredUser('d');
+  var safeUser=user||getSessionUser();
   if(!safeUser)return;
   hydrateAppOnboarding();
   renderAppDashboard(safeUser);
@@ -2772,9 +2637,6 @@ function subF(){
   var createdUser={fullName:n,email:normalizeEmail(em),password:pw,plan:'none',intendedPlan:intended};
   localStorage.setItem(CUSTOM_KEY,JSON.stringify(createdUser));
   localStorage.setItem(SESSION_KEY,createdUser.email);
-  // Sync signup to Supabase
-  var signupEntry={email:createdUser.email,full_name:createdUser.fullName,selected_tier:intended,status:'signup',source:'afterstate-web',joined_at:new Date().toISOString(),platform_count:0,trusted_contact_count:0,future_message_count:0,future_message_credits:0,final_message_saved:false,checkin_period_months:null};
-  syncWaitlistEntry(signupEntry).catch(function(err){console.warn('Signup sync failed:',err);});
   document.getElementById('mfi').style.display='none';
   document.getElementById('fsuc').style.display='block';
   setTimeout(function(){
@@ -2795,9 +2657,9 @@ function signInDemo(){
   }
   var email=normalizeEmail(document.getElementById('le').value.trim());
   var password=document.getElementById('lp').value.trim();
-  if(!email){showError('login-error','Enter your username or email.');document.getElementById('le').focus();return;}
+  if(!email){showError('login-error','Enter your email.');document.getElementById('le').focus();return;}
+  if(!validEmail(email)){showError('login-error','Enter a valid email address.');document.getElementById('le').focus();return;}
   if(!password){showError('login-error','Enter your password to continue.');document.getElementById('lp').focus();return;}
-  seedDemoAccount();
   var user=getStoredUser(email);
   if(!user||password!==user.password){
     showError('login-error','Email or password is incorrect.');return;
@@ -2827,7 +2689,7 @@ function forgotPassword(){
     document.getElementById('le').focus();
     return;
   }
-  if(!validEmail(email) && email!=='d'){
+  if(!validEmail(email)){
     showError('login-error','Enter a valid email address first.');
     document.getElementById('le').focus();
     return;
@@ -2835,17 +2697,45 @@ function forgotPassword(){
   showError('login-error','');
   toast('Password reset link sent. Check your inbox.','ok');
 }
-function subC(){
+async function subC(){
   var name=document.getElementById('cn').value.trim();
   var email=document.getElementById('ce').value.trim();
+  var company=document.getElementById('cc').value.trim();
   var message=document.getElementById('cmg').value.trim();
   if(!name){showError('contact-error','Full name is required.');document.getElementById('cn').focus();return;}
   if(!validEmail(email)){showError('contact-error','Enter a valid email address.');document.getElementById('ce').focus();return;}
   if(message.length<10){showError('contact-error','Please add at least 10 characters so we can understand what you need.');document.getElementById('cmg').focus();return;}
   showError('contact-error','');
+  var form=document.getElementById('contact-form');
+  var submit=form.querySelector('button[type="submit"]');
+  var originalText=submit.textContent;
+  submit.disabled=true;
+  submit.style.opacity='.55';
+  submit.textContent='Sending...';
+  var entry={
+    name:name,
+    email:email,
+    company:company||null,
+    message:message,
+    source:'afterstate-web',
+    page_url:location.href,
+    created_at:new Date().toISOString()
+  };
+  try{
+    await syncContactMessage(entry);
+  }catch(err){
+    submit.disabled=false;
+    submit.style.opacity='';
+    submit.textContent=originalText;
+    showError('contact-error','Message could not be sent. Please email hello@afterstate.xyz directly.');
+    return;
+  }
+  submit.disabled=false;
+  submit.style.opacity='';
+  submit.textContent=originalText;
   cM('cm');
   toast('✓ Message received. We will get back to you within 24 hours.','ok');
-  document.getElementById('contact-form').reset();
+  form.reset();
 }
 
 function toast(message,mode){
@@ -2986,7 +2876,7 @@ function addTrustedContact(){
   var limits=PLAN_LIMITS[plan]||PLAN_LIMITS.none;
   if(contacts.length>=limits.contacts){
     if(plan==='pro'){toast('You can add more trusted contacts.','dark');return;}
-    toast('Your selected tier allows '+limits.contacts+' trusted contact'+(limits.contacts===1?'':'s')+'. Switch tiers to add more.','dark');
+    toast('Your selected plan allows '+limits.contacts+' trusted contact'+(limits.contacts===1?'':'s')+'.','dark');
     var target=(plan==='none'||plan==='basic')?'plus':'pro';
     selectPayPlan(target);
     setTimeout(function(){oM('pm');},200);
@@ -3036,210 +2926,10 @@ function escapeAttr(s){
 function escapeHtml(s){
   return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
-// FUTURE MESSAGES
-var FUTURE_MESSAGES_KEY='afterstate-future-messages';
-function getFutureMessages(){try{return JSON.parse(localStorage.getItem(FUTURE_MESSAGES_KEY)||'[]');}catch(e){return [];}}
-function saveFutureMessages(arr){localStorage.setItem(FUTURE_MESSAGES_KEY,JSON.stringify(arr));}
 function getCurrentPlanLimits(){
   var user=getSessionUser();
-  var plan=user&&user.plan&&user.plan!=='none'?user.plan:(user&&user.intendedPlan?user.intendedPlan:'none');
+  var plan=user&&user.plan&&user.plan!=='none'?user.plan:'none';
   return PLAN_LIMITS[plan]||PLAN_LIMITS.none;
-}
-function futureTriggerLabel(msg){
-  var labels={
-    activation:'After activation',
-    specific:'Specific date after activation',
-    '6months':'Every 6 months after activation',
-    '12months':'Every 12 months after activation',
-    birthday:'Every birthday after activation',
-    anniversary:'Every anniversary after activation',
-    relative:'One year after activation'
-  };
-  var repeat=(msg.repeatYears&&msg.repeatYears>1)?' · repeats '+msg.repeatYears+' years':'';
-  return (labels[msg.trigger]||'Specific date after activation')+(msg.date?' · '+msg.date:'')+repeat;
-}
-function futureMessageCreditCost(msg){
-  return msg&&msg.trigger==='specific'?Math.max(1,parseInt(msg.repeatYears||1,10)||1):1;
-}
-function getFutureCreditsUsed(messages,skipIndex){
-  return (messages||getFutureMessages()).reduce(function(sum,msg,i){
-    return sum+(i===skipIndex?0:futureMessageCreditCost(msg));
-  },0);
-}
-function renderFutureMessages(){
-  var list=document.getElementById('future-messages-list');
-  var count=document.getElementById('future-message-count');
-  var warning=document.getElementById('future-message-limit');
-  var warningText=document.getElementById('future-message-limit-text');
-  if(!list)return;
-  var messages=getFutureMessages();
-  var user=getSessionUser();
-  var plan=user&&user.plan&&user.plan!=='none'?user.plan:(user&&user.intendedPlan?user.intendedPlan:'none');
-  var limits=getCurrentPlanLimits();
-  var max=limits.messages;
-  var used=getFutureCreditsUsed(messages);
-  if(count)count.textContent=used+' / '+max;
-  toggleFutureDateField();
-  if(warning&&warningText){
-    if(plan==='none'&&messages.length){
-      warning.style.display='block';
-      warningText.innerHTML='<strong style="color:var(--a)">No tier selected.</strong> Future messages are saved. Choose a tier and join the waitlist so they are ready for launch. <button onclick="smartStartPlan(\'plus\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Join waitlist →</button>';
-    }else if(plan==='basic'){
-      warning.style.display='block';
-      warningText.innerHTML='<strong style="color:var(--a)">Relay or Legacy required.</strong> Future Messages are not included in Signal. <button onclick="smartStartPlan(\'plus\')" style="background:none;border:none;cursor:pointer;font:inherit;color:var(--a);text-decoration:underline;padding:0;line-height:inherit">Switch tier →</button>';
-    }else if(plan!=='none'&&used>=limits.messages){
-      warning.style.display='block';
-      var next=plan==='basic'?'plus':'pro';
-      warningText.innerHTML='<strong style="color:var(--a)">Message pool full.</strong> Future Messages has a total pool of '+limits.messages+' messages. You can use it for 20 people once, or one person across 20 scheduled messages.';
-    }else{
-      warning.style.display='none';
-    }
-  }
-  if(!messages.length){
-    list.innerHTML='<p style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:rgba(14,14,14,.45);padding:16px 0">No future messages yet.</p>';
-    return;
-  }
-  list.innerHTML=messages.map(function(msg,i){
-    var credits=futureMessageCreditCost(msg);
-    return '<div class="fm-card">'+
-      '<div>'+
-        '<div class="fm-title">'+escapeHtml(msg.title||('Message for '+msg.recipient))+'</div>'+
-        '<div class="fm-meta">'+escapeHtml(msg.recipient||'No recipient')+' · '+futureTriggerLabel(msg)+' · '+credits+' credit'+(credits>1?'s':'')+'</div>'+
-        '<div class="fm-preview">'+escapeHtml((msg.body||'').slice(0,220))+(msg.body&&msg.body.length>220?'...':'')+'</div>'+
-      '</div>'+
-      '<div class="fm-actions">'+
-        '<button class="tc-mini" type="button" onclick="editFutureMessage('+i+')">Edit</button>'+
-        '<button class="tc-remove" type="button" onclick="removeFutureMessage('+i+')">Remove</button>'+
-      '</div>'+
-    '</div>';
-  }).join('');
-}
-function toggleFutureDateField(){
-  var trigger=document.getElementById('fm-trigger');
-  var wrap=document.getElementById('fm-date-wrap');
-  var repeatWrap=document.getElementById('fm-repeat-wrap');
-  if(!trigger||!wrap)return;
-  setFutureMinDate();
-  wrap.style.display=trigger.value==='specific'?'block':'none';
-  if(repeatWrap)repeatWrap.style.display=trigger.value==='specific'?'block':'none';
-  updateFutureCreditHint();
-}
-function setFutureMinDate(){
-  var input=document.getElementById('fm-date');
-  if(!input)return;
-  var today=new Date();
-  today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
-  var min=today.toISOString().slice(0,10);
-  input.min=min;
-  if(input.value && input.value<min)input.value=min;
-}
-function updateFutureCreditHint(){
-  var hint=document.getElementById('fm-credit-hint');
-  var input=document.getElementById('fm-repeat-years');
-  if(!hint||!input)return;
-  var messages=getFutureMessages();
-  var editIndex=document.getElementById('fm-body').getAttribute('data-edit-index');
-  var skipIndex=editIndex===null?-1:parseInt(editIndex,10);
-  var limits=getCurrentPlanLimits();
-  var used=getFutureCreditsUsed(messages,skipIndex);
-  var remaining=Math.max(0,limits.messages-used);
-  if(limits.messages<=0)remaining=0;
-  input.max=String(Math.max(1,remaining));
-  var requested=Math.max(1,parseInt(input.value||'1',10)||1);
-  if(requested>remaining&&remaining>0){requested=remaining;input.value=String(remaining);}
-  if(remaining===0){input.value='1';}
-  hint.textContent=limits.messages<=0?'Switch to Relay or Legacy to use Future Messages.':'Uses '+requested+' message credit'+(requested>1?'s':'')+'. '+remaining+' credit'+(remaining===1?'':'s')+' available.';
-}
-function resetFutureMessageForm(){
-  document.getElementById('fm-recipient').value='';
-  document.getElementById('fm-trigger').value='specific';
-  document.getElementById('fm-date').value='';
-  document.getElementById('fm-repeat-years').value='1';
-  document.getElementById('fm-tone').value='';
-  document.getElementById('fm-title').value='';
-  document.getElementById('fm-body').value='';
-  document.getElementById('fm-body').removeAttribute('data-edit-index');
-  toggleFutureDateField();
-}
-function saveFutureMessage(){
-  var recipient=document.getElementById('fm-recipient').value.trim();
-  var trigger=document.getElementById('fm-trigger').value;
-  var date=document.getElementById('fm-date').value;
-  var repeatYears=Math.max(1,parseInt(document.getElementById('fm-repeat-years').value||'1',10)||1);
-  var title=document.getElementById('fm-title').value.trim();
-  var body=document.getElementById('fm-body').value.trim();
-  var editIndex=document.getElementById('fm-body').getAttribute('data-edit-index');
-  if(!recipient){toast('Choose a recipient first.','dark');document.getElementById('fm-recipient').focus();return;}
-  setFutureMinDate();
-  if(trigger==='specific'&&!date){toast('Choose a date for this trigger.','dark');document.getElementById('fm-date').focus();return;}
-  if(trigger==='specific'&&date<document.getElementById('fm-date').min){toast('Choose today or a future date.','dark');document.getElementById('fm-date').focus();return;}
-  if(!body){toast('Write the message first.','dark');document.getElementById('fm-body').focus();return;}
-  var messages=getFutureMessages();
-  var user=getSessionUser();
-  var plan=user&&user.plan&&user.plan!=='none'?user.plan:(user&&user.intendedPlan?user.intendedPlan:'none');
-  var limits=getCurrentPlanLimits();
-  if(limits.messages<=0){
-    toast('Future Messages are included in Relay and Legacy. Switch your preferred tier to save them.','dark');
-    selectPayPlan('plus');
-    setTimeout(function(){oM('pm');},200);
-    return;
-  }
-  var skipIndex=editIndex===null?-1:parseInt(editIndex,10);
-  var usedWithoutCurrent=getFutureCreditsUsed(messages,skipIndex);
-  var cost=trigger==='specific'?repeatYears:1;
-  if(usedWithoutCurrent+cost>limits.messages){
-    toast('Not enough message credits for that repeat length. Reduce the years or remove another message.','dark');
-    document.getElementById('fm-repeat-years').focus();
-    return;
-  }
-  var item={recipient:recipient,trigger:trigger,date:trigger==='specific'?date:'',repeatYears:trigger==='specific'?repeatYears:1,title:title||('Message for '+recipient),body:body,createdAt:new Date().toISOString()};
-  if(editIndex!==null){messages[parseInt(editIndex,10)]=item;}else{messages.push(item);}
-  saveFutureMessages(messages);
-  resetFutureMessageForm();
-  renderFutureMessages();
-  updateHealthScore();
-  toast('Future message saved.','ok');
-}
-function editFutureMessage(i){
-  var msg=getFutureMessages()[i];
-  if(!msg)return;
-  document.getElementById('fm-recipient').value=msg.recipient||'';
-  document.getElementById('fm-trigger').value=msg.trigger||'specific';
-  document.getElementById('fm-date').value=msg.date||'';
-  document.getElementById('fm-repeat-years').value=msg.repeatYears||'1';
-  document.getElementById('fm-tone').value=msg.tone||'';
-  document.getElementById('fm-title').value=msg.title||'';
-  document.getElementById('fm-body').value=msg.body||'';
-  document.getElementById('fm-body').setAttribute('data-edit-index',String(i));
-  toggleFutureDateField();
-  scrollToMemberCard('member-future-messages');
-}
-function removeFutureMessage(i){
-  var messages=getFutureMessages();
-  messages.splice(i,1);
-  saveFutureMessages(messages);
-  renderFutureMessages();
-  updateHealthScore();
-  toast('Future message removed.','dark');
-}
-function draftFutureMessage(){
-  var recipient=document.getElementById('fm-recipient').value.trim();
-  if(!recipient){toast('Choose a recipient first.','dark');document.getElementById('fm-recipient').focus();return;}
-  var trigger=document.getElementById('fm-trigger').value;
-  var tone=document.getElementById('fm-tone').value.trim()||'warm and personal';
-  var repeatYears=Math.max(1,parseInt(document.getElementById('fm-repeat-years').value||'1',10)||1);
-  var triggerText=futureTriggerLabel({trigger:trigger,date:document.getElementById('fm-date').value,repeatYears:repeatYears});
-  var title=document.getElementById('fm-title').value.trim()||('For '+recipient+' · '+triggerText);
-  document.getElementById('fm-title').value=title;
-  document.getElementById('fm-tone').value=tone;
-  document.getElementById('fm-body').value=
-    'Hi '+recipient+',\n\n'+
-    'This message was written ahead of time and should only reach you after my plan has been activated. '+
-    'I wanted you to have something clear and personal from me, not just a notification.\n\n'+
-    'Please read this in a '+tone+' voice. I hope it feels direct, human, and easy to hold onto. '+
-    'I am grateful that you were part of my life. If this arrives on a difficult day, take only what helps and leave the rest.\n\n'+
-    'With love.';
-  toast('Message drafted. Review and save when ready.','ok');
 }
 // CHECK-IN
 var CHECKIN_KEY='afterstate-checkin';
@@ -3358,7 +3048,7 @@ function changePassword(){
   if(newPw!==confirm){showPwErr('Passwords do not match.');return;}
   errEl.style.display='none';
   // Update stored password
-  var storageKey=user.email==='d'?'afterstate-demo-user':'afterstate-custom-user';
+  var storageKey=CUSTOM_KEY;
   var stored=JSON.parse(localStorage.getItem(storageKey)||'{}');
   stored.password=newPw;
   localStorage.setItem(storageKey,JSON.stringify(stored));
@@ -3374,7 +3064,6 @@ function exportPlan(){
   var platforms=getPlatformData();
   var contacts=getTrustedContacts();
   var checkin=getCheckinData();
-  var futureMessages=getFutureMessages();
   var payload={
     exportedAt:new Date().toISOString(),
     version:'1.0',
@@ -3382,7 +3071,6 @@ function exportPlan(){
     platforms:platforms,
     trustedContacts:contacts.map(function(c){return {name:c.name,email:c.email,relation:c.relation};}),
     checkin:{periodMonths:checkin.periodMonths||null,lastConfirmed:checkin.lastConfirmed||null},
-    futureMessages:futureMessages,
     finalMessageSaved:Boolean(localStorage.getItem('afterstate-final-message'))
   };
   var blob=new Blob([JSON.stringify(payload,null,2)],{type:'application/json'});
@@ -3399,7 +3087,6 @@ function exportPlanText(){
   var platforms=getPlatformData();
   var contacts=getTrustedContacts();
   var checkin=getCheckinData();
-  var futureMessages=getFutureMessages();
   var lines=[];
   lines.push('AFTERSTATE — DIGITAL ESTATE PLAN');
   lines.push('Exported: '+new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}));
@@ -3442,21 +3129,6 @@ function exportPlanText(){
   lines.push('─────────────────────────────────');
   lines.push('Frequency: every '+(checkin.periodMonths||'—')+' months');
   lines.push('Last confirmed: '+(checkin.lastConfirmed?new Date(checkin.lastConfirmed).toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}):'Never'));
-  lines.push('');
-  lines.push('─────────────────────────────────');
-  lines.push('FUTURE MESSAGES ('+futureMessages.length+')');
-  lines.push('─────────────────────────────────');
-  if(futureMessages.length){
-    futureMessages.forEach(function(m,i){
-      lines.push('');
-      lines.push((i+1)+'. '+(m.title||'Untitled'));
-      lines.push('To: '+(m.recipient||'—'));
-      lines.push('Send: '+futureTriggerLabel(m));
-    });
-  }else{
-    lines.push('No future messages.');
-  }
-  lines.push('');
   lines.push('─────────────────────────────────');
   lines.push('Keep this document somewhere safe. Share the physical copy with your most trusted contact.');
   var blob=new Blob([lines.join('\n')],{type:'text/plain'});
@@ -3476,24 +3148,20 @@ function updateHealthScore(){
   var contacts=getTrustedContacts();
   var checkin=getCheckinData();
   var msgSaved=Boolean(localStorage.getItem(FINAL_MESSAGE_KEY));
-  var futureMessages=getFutureMessages();
-  var selectedTier=user&&((user.plan&&user.plan!=='none')?user.plan:(user.intendedPlan||'none'));
+  var selectedTier=user&&user.plan&&user.plan!=='none'?user.plan:'none';
   var hasPlan=selectedTier&&selectedTier!=='none';
   var checks=[
     {label:'At least one platform configured',done:totalPlats>0,action:function(){togglePlatformsNav();scrollToMemberCard('member-platforms');}},
     {label:'At least one trusted contact added',done:contacts.length>0,action:function(){scrollToMemberCard('member-trusted');}},
     {label:'Check-in frequency set',done:Boolean(checkin.periodMonths),action:function(){scrollToMemberCard('member-checkin');}},
     {label:'I\'m alive confirmed at least once',done:Boolean(checkin.lastConfirmed),action:function(){scrollToMemberCard('member-checkin');}},
-    {label:'Waitlist joined',done:Boolean(user&&user.waitlistJoinedAt),action:function(){selectPayPlan(selectedTier&&selectedTier!=='none'?selectedTier:'pro');oM('pm');}},
+    {label:'Launch interest submitted',done:Boolean(user&&user.waitlistJoinedAt),action:function(){selectPayPlan('lifetime');oM('pm');}},
     {label:'3 or more platforms configured',done:totalPlats>=3,action:function(){togglePlatformsNav();scrollToMemberCard('member-platforms');}},
     {label:'2 trusted contacts added',done:contacts.length>=2,action:function(){scrollToMemberCard('member-trusted');}}
   ];
   var limits=getCurrentPlanLimits();
   if(limits.finalMessage){
     checks.splice(2,0,{label:'Final message written',done:msgSaved,action:function(){scrollToMemberCard('member-final-message');}});
-  }
-  if(limits.messages>0){
-    checks.splice(3,0,{label:'Future message prepared',done:futureMessages.length>0,action:function(){scrollToMemberCard('member-future-messages');}});
   }
   var done=checks.filter(function(ch){return ch.done;}).length;
   var pct=Math.round((done/checks.length)*100);
@@ -3517,7 +3185,7 @@ function updateHealthScore(){
 function smartStartPlan(plan){
   var user=getSessionUser();
   if(user){
-    // Already signed in — go straight to waitlist
+    // Already signed in: go straight to checkout.
     selectPayPlan(plan||'pro');
     oM('pm');
   }else{
@@ -3609,7 +3277,6 @@ function copyRequestLetter(){
   navigator.clipboard.writeText(document.getElementById('rl-text').value)
     .then(function(){toast('Letter copied to clipboard.','ok');});
 }
-seedDemoAccount();
 // Clean up any stuck app-mode state from previous sessions
 document.body.classList.remove('app-mode');
 document.body.classList.remove('member-view');
@@ -3641,7 +3308,7 @@ refreshAppOnboardingSummary();
       </div>
       <div style="border-top:1px solid var(--r);padding-top:20px">
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">Get in touch</p>
-        <p>Questions, press inquiries, or partnership interest? Reach us at <span style="color:var(--a)">hello@afterstate.io</span></p>
+        <p>Questions, press inquiries, or partnership interest? Reach us at <span style="color:var(--a)">hello@afterstate.xyz</span></p>
       </div>
     </div>
   </div>
@@ -3681,7 +3348,7 @@ refreshAppOnboardingSummary();
       </div>
       <div style="border:1px solid var(--r);padding:18px;background:rgba(255,255,255,.22)">
         <p style="font-family:'EB Garamond',serif;font-size:18px;color:var(--ink);margin-bottom:8px">How to exercise your rights</p>
-        <p>Send a request to <span style="color:var(--a)">privacy@afterstate.io</span> from the email address registered to your account. We may ask you to verify your identity before processing sensitive requests. All requests are acknowledged within 72 hours and fulfilled within 30 days.</p>
+        <p>Send a request to <span style="color:var(--a)">privacy@afterstate.xyz</span> from the email address registered to your account. We may ask you to verify your identity before processing sensitive requests. All requests are acknowledged within 72 hours and fulfilled within 30 days.</p>
         <p style="margin-top:10px">You also have the right to lodge a complaint with your local data protection authority if you believe your rights have not been respected.</p>
       </div>
     </div>
@@ -3721,7 +3388,7 @@ refreshAppOnboardingSummary();
         <p>You can delete or block cookies at any time through your browser settings. Note that disabling strictly necessary cookies will prevent you from signing in to your account. For more information on managing cookies, visit your browser's help documentation or <span style="color:var(--a)">aboutcookies.org</span>.</p>
       </div>
       <div style="border-top:1px solid var(--r);padding-top:18px">
-        <p>Questions about our cookie practices? Contact <span style="color:var(--a)">privacy@afterstate.io</span></p>
+        <p>Questions about our cookie practices? Contact <span style="color:var(--a)">privacy@afterstate.xyz</span></p>
       </div>
     </div>
   </div>
