@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>OUT · Bebek</title>
+<style>
+:root{--bg:#f3efe6;--paper:#fffdf8;--ink:#111;--muted:#79736a;--line:#ded8cd;--accent:#ff654f;--lime:#dfff6a}
+*{box-sizing:border-box}html,body{margin:0;background:#ddd8cf;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",Inter,Arial,sans-serif}button,input{font:inherit}button{border:0;cursor:pointer}.app{width:min(100vw,430px);height:100dvh;margin:auto;background:var(--bg);position:relative;overflow:hidden}.screen{position:absolute;inset:0;display:none;overflow:auto;padding:env(safe-area-inset-top) 16px 104px}.screen.active{display:block}.top{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;padding:14px 0 12px;background:linear-gradient(var(--bg) 78%,transparent)}.brand{font-weight:950;font-size:28px;letter-spacing:-1.7px}.pill,.circlebtn{background:rgba(255,255,255,.8);border:1px solid rgba(0,0,0,.08)}.pill{border-radius:999px;padding:9px 12px;font-weight:850}.circlebtn{width:42px;height:42px;border-radius:50%;display:grid;place-items:center}.circlebtn svg,.nav svg,.fab svg,.icon svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2}.hero{padding:10px 0}.hero small{font-size:11px;color:var(--muted);font-weight:900;letter-spacing:.12em}.hero h1{font-size:37px;line-height:.98;letter-spacing:-2px;margin:8px 0}.hero p{color:var(--muted);margin:0;font-size:14px}.filters{display:flex;gap:8px;overflow:auto;padding:10px 0 14px}.filter{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 13px;font-size:12px;font-weight:850;white-space:nowrap}.filter.on{background:#111;color:#fff;border-color:#111}.sectiontitle{display:flex;justify-content:space-between;align-items:end;margin:6px 0 10px}.sectiontitle strong{font-size:18px}.sectiontitle span{font-size:12px;color:var(--muted)}.card{height:465px;border-radius:30px;overflow:hidden;position:relative;margin-bottom:16px;background:#222;box-shadow:0 14px 30px rgba(0,0,0,.12)}.card>img{width:100%;height:100%;object-fit:cover}.shade{position:absolute;inset:0;background:linear-gradient(transparent 35%,rgba(0,0,0,.06) 50%,rgba(0,0,0,.9) 100%)}.cardtag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.9);padding:9px 12px;border-radius:999px;font-size:11px;font-weight:900}.timer{position:absolute;top:14px;right:14px;background:rgba(0,0,0,.55);color:white;padding:9px 12px;border-radius:999px;font-size:11px;font-weight:900}.selfie{position:absolute;right:15px;bottom:150px;width:84px;height:108px;border-radius:20px;object-fit:cover;border:3px solid white}.body{position:absolute;left:16px;right:16px;bottom:15px;color:white}.person{display:flex;gap:10px;align-items:center}.person img{width:42px;height:42px;border-radius:50%;object-fit:cover}.person strong{display:block}.person span{font-size:12px;opacity:.72}.body h2{font-size:25px;letter-spacing:-.8px;margin:12px 0 4px}.body p{margin:0 0 12px;font-size:13px;opacity:.78}.quorum{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:800}.actions{display:grid;grid-template-columns:1fr 52px;gap:9px;margin-top:12px}.join{height:50px;border-radius:17px;background:white;color:#111;font-weight:950}.skip{height:50px;border-radius:17px;background:rgba(255,255,255,.16);color:#fff}.empty{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;text-align:center;color:var(--muted)}.soon{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:12px;display:grid;grid-template-columns:78px 1fr;gap:12px;margin-bottom:10px}.soon img{width:78px;height:78px;border-radius:16px;object-fit:cover}.soon small{color:var(--muted);font-weight:800}.soon h3{margin:5px 0 3px;font-size:16px}.soon p{margin:0;color:var(--muted);font-size:12px}.soonfoot{display:flex;justify-content:flex-end;margin-top:8px}.soft{padding:9px 11px;border-radius:12px;background:#111;color:#fff;font-weight:850;font-size:12px}.soft.on{background:var(--lime);color:#111}.nav{position:absolute;z-index:50;bottom:0;left:0;right:0;height:92px;padding:8px 14px calc(8px + env(safe-area-inset-bottom));background:rgba(250,248,243,.94);backdrop-filter:blur(22px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr 72px 1fr 1fr;align-items:center}.nav button{background:none;color:#807a71;font-size:10px;font-weight:850;display:grid;place-items:center;gap:4px}.nav button.on{color:#111}.fab{width:62px;height:62px;border-radius:20px;background:var(--accent)!important;color:white!important;transform:translateY(-10px);box-shadow:0 10px 28px rgba(255,101,79,.35)}.sheet{position:absolute;z-index:120;inset:0;background:rgba(0,0,0,.35);display:none;align-items:flex-end}.sheet.open{display:flex}.sheetin{width:100%;background:var(--paper);border-radius:28px 28px 0 0;padding:10px 18px calc(22px + env(safe-area-inset-bottom))}.grab{width:40px;height:5px;border-radius:10px;background:#d7d0c4;margin:0 auto 16px}.sheet h2{font-size:26px;letter-spacing:-1px;margin:0 0 6px}.sheet p{color:var(--muted);font-size:14px;line-height:1.45}.row{display:flex;gap:10px}.primary,.secondary{height:50px;border-radius:16px;font-weight:950;flex:1}.primary{background:#111;color:white}.secondary{background:#ebe6dd}.choice{width:100%;background:none;border-bottom:1px solid var(--line);padding:15px 2px;text-align:left;display:flex;justify-content:space-between}.choice small{display:block;color:var(--muted);margin-top:3px}.camera{padding:0;background:#0b0b0b;color:white}.camstage{position:absolute;inset:0}.camstage video,.camstage .fallback{width:100%;height:100%;object-fit:cover}.fallback{display:grid;place-items:center;padding:36px;text-align:center;background:#191919;color:#bbb}.camtop{position:absolute;z-index:5;top:calc(16px + env(safe-area-inset-top));left:16px;right:16px;display:flex;justify-content:space-between}.darkbtn{width:44px;height:44px;border-radius:50%;background:rgba(0,0,0,.5);color:white}.camcopy{position:absolute;z-index:5;left:20px;right:20px;bottom:170px}.camcopy small{font-weight:900;letter-spacing:.1em;opacity:.7}.camcopy h2{font-size:32px;line-height:1;margin:7px 0}.camcontrols{position:absolute;z-index:5;left:0;right:0;bottom:calc(28px + env(safe-area-inset-bottom));display:grid;grid-template-columns:1fr 90px 1fr;align-items:center}.camcontrols button{background:none;color:white}.shutter{width:80px;height:80px;border-radius:50%;border:6px solid white!important;background:rgba(255,255,255,.2)!important}.preview{height:48vh;margin:0 -16px 18px;position:relative;overflow:hidden;border-radius:0 0 28px 28px;background:#222}.preview>img{width:100%;height:100%;object-fit:cover}.preview .self{position:absolute;width:84px;height:108px;right:14px;bottom:14px;border-radius:18px;border:3px solid white;object-fit:cover}.chips{display:flex;gap:8px;overflow:auto;margin:10px 0 18px}.chip{background:#fff;border:1px solid var(--line);padding:10px 12px;border-radius:999px;font-weight:850;font-size:12px}.chip.on{background:#111;color:white}.bigpost{width:100%;height:54px;border-radius:18px;background:var(--accent);color:white;font-weight:950}.listcard{background:#fff;border:1px solid var(--line);border-radius:22px;padding:14px;margin-bottom:10px}.listcard button{background:#111;color:white;border-radius:13px;padding:10px 12px;font-weight:850}.chatitem{width:100%;background:#fff;border:1px solid var(--line);border-radius:20px;padding:12px;display:flex;gap:12px;align-items:center;text-align:left;margin-bottom:9px}.chatitem img{width:50px;height:50px;border-radius:50%;object-fit:cover}.chatitem p{margin:3px 0 0;color:var(--muted);font-size:12px}.thread{padding-bottom:90px}.msgs{display:flex;flex-direction:column;gap:8px;padding:10px 0 76px}.bubble{max-width:78%;padding:11px 13px;border-radius:17px;background:#fff}.bubble.me{align-self:flex-end;background:#111;color:white}.composebar{position:absolute;left:12px;right:12px;bottom:14px;display:flex;gap:8px}.composebar input{flex:1;height:48px;border:1px solid var(--line);border-radius:16px;padding:0 14px}.composebar button{width:50px;border-radius:16px;background:#111;color:white}.profile{text-align:center}.profile img{width:90px;height:90px;border-radius:50%;object-fit:cover;margin-top:20px}.settings{text-align:left;margin-top:22px}.setting{display:flex;justify-content:space-between;align-items:center;background:#fff;border-bottom:1px solid var(--line);padding:15px}.setting:first-child{border-radius:18px 18px 0 0}.setting:last-child{border-radius:0 0 18px 18px;border-bottom:0}.setting small{display:block;color:var(--muted);margin-top:3px}.toggle{width:50px;height:29px;border-radius:999px;background:#d7d2c9;padding:3px}.toggle:after{content:"";display:block;width:23px;height:23px;border-radius:50%;background:white;transition:.2s}.toggle.on{background:#111}.toggle.on:after{transform:translateX(21px)}.match{background:#111;color:white;text-align:center;padding:80px 22px}.match h1{font-size:48px;line-height:.92;letter-spacing:-2px}.match p{color:#aaa}.matchbox{background:#1e1e1e;border-radius:22px;padding:17px;text-align:left;margin:24px 0}.toast{position:absolute;z-index:200;left:18px;right:18px;bottom:110px;background:#111;color:white;padding:14px 15px;border-radius:16px;opacity:0;transform:translateY(20px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<section class="screen active" id="now">
+  <div class="top"><div class="brand">OUT.</div><button class="pill" data-action="location">Bebek</button></div>
+  <div class="hero"><small id="liveCount">9 PEOPLE OUT NOW</small><h1>Your neighborhood,<br>right now.</h1><p>Join something already happening.</p></div>
+  <div class="filters" id="filters">
+    <button class="filter on" data-action="filter" data-value="all">All</button><button class="filter" data-action="filter" data-value="dog">Dog walk</button><button class="filter" data-action="filter" data-value="coffee">Coffee</button><button class="filter" data-action="filter" data-value="walk">Walk</button><button class="filter" data-action="filter" data-value="parent">Parents</button>
+  </div>
+  <div class="sectiontitle"><strong>Happening now</strong><span>expires fast</span></div>
+  <div id="feed"></div>
+  <div class="sectiontitle"><strong>Soon</strong><span>soft plans</span></div>
+  <div id="soon"></div>
+</section>
+
+<section class="screen" id="circles">
+  <div class="top"><div class="brand">Circles.</div><button class="circlebtn" data-action="nav" data-target="now"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button></div>
+  <div class="hero"><small>REPEAT ENGINE</small><h1>People you keep<br>running into.</h1><p>Circles are earned by real meetups, not created from scratch.</p></div>
+  <div class="listcard"><strong>Bebek evening walk</strong><p id="circleText" style="color:var(--muted)">You met the same 4 people three times.</p><button data-action="circle" id="circleBtn">Make it a Circle</button></div>
+  <div class="listcard"><strong>Going out?</strong><p style="color:var(--muted)">Ping people you already met instead of broadcasting wider.</p><button data-action="ping">Ping regulars</button></div>
+</section>
+
+<section class="screen" id="chats">
+  <div class="top"><div class="brand">Chats.</div><button class="circlebtn" data-action="nav" data-target="now"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button></div>
+  <div id="chatList"></div>
+</section>
+
+<section class="screen" id="profile">
+  <div class="top"><div class="brand">You.</div><button class="circlebtn" data-action="nav" data-target="now"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button></div>
+  <div class="profile"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=85"><h1>Eren</h1><p style="color:var(--muted)">Verified · Bebek</p></div>
+  <div class="settings">
+    <div class="setting"><div><strong>Verified only</strong><small>Show verified people first</small></div><button class="toggle on" data-action="toggle"></button></div>
+    <div class="setting"><div><strong>Friends of friends</strong><small>Prioritize warmer connections</small></div><button class="toggle" data-action="toggle"></button></div>
+    <div class="setting"><div><strong>Women only</strong><small>Optional discovery preference</small></div><button class="toggle" data-action="toggle"></button></div>
+  </div>
+</section>
+
+<section class="screen camera" id="camera">
+  <div class="camstage"><video id="video" autoplay playsinline muted></video><div class="fallback" id="fallback" hidden>Camera access is unavailable here. Choose a real photo from your library instead.</div></div>
+  <div class="camtop"><button class="darkbtn" data-action="nav" data-target="now">Close</button><button class="darkbtn" data-action="flip">Flip</button></div>
+  <div class="camcopy"><small>LIVE PRESENCE</small><h2>Show what<br>you are doing.</h2></div>
+  <div class="camcontrols"><button data-action="library">Library</button><button class="shutter" data-action="capture"></button><button data-action="dual" id="dualBtn">Dual</button></div>
+  <input type="file" id="fileInput" accept="image/*" hidden>
+</section>
+
+<section class="screen" id="compose">
+  <div class="preview"><img id="previewMain"><img id="previewSelf" class="self" hidden></div>
+  <div class="sectiontitle"><strong>What are you doing?</strong></div>
+  <div class="chips" id="activityChips"><button class="chip on" data-action="activity" data-value="dog">Dog walk</button><button class="chip" data-action="activity" data-value="coffee">Coffee</button><button class="chip" data-action="activity" data-value="walk">Walk</button><button class="chip" data-action="activity" data-value="parent">Playground</button></div>
+  <div class="sectiontitle"><strong>How long?</strong></div>
+  <div class="chips"><button class="chip" data-action="duration" data-value="30">30 min</button><button class="chip on" data-action="duration" data-value="45">45 min</button><button class="chip" data-action="duration" data-value="60">1 hour</button></div>
+  <button class="bigpost" data-action="post">I am out</button>
+</section>
+
+<section class="screen thread" id="thread">
+  <div class="top"><button class="circlebtn" data-action="nav" data-target="chats"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg></button><div class="brand" id="threadTitle">Ece + Mochi</div><span></span></div>
+  <div class="msgs" id="messages"></div>
+  <div class="composebar"><input id="messageInput" placeholder="Message"><button data-action="send">Send</button></div>
+</section>
+
+<section class="screen match" id="match">
+  <small>MUTUAL JOIN</small><h1>You are<br>both in.</h1><p id="matchText">Ece accepted your join.</p><div class="matchbox"><small>MEET HERE</small><h3>Bebek Parkı · seaside entrance</h3><p>Exact meeting point unlocked only after both sides agreed.</p></div><button class="bigpost" data-action="openchat">Open chat</button><button class="secondary" style="width:100%;margin-top:10px" data-action="nav" data-target="now">Back to Bebek</button>
+</section>
+
+<nav class="nav" id="nav">
+<button class="on" data-action="nav" data-target="now"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9H6v-9Z"/></svg><span>Now</span></button>
+<button data-action="nav" data-target="circles"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M3 19c0-4 2-6 5-6s5 2 5 6"/></svg><span>Circles</span></button>
+<button class="fab" data-action="nav" data-target="camera"><svg viewBox="0 0 24 24"><path d="M4 8h4l2-3h4l2 3h4v11H4V8Z"/><circle cx="12" cy="13" r="4"/></svg></button>
+<button data-action="nav" data-target="chats"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 3V5Z"/></svg><span>Chats</span></button>
+<button data-action="nav" data-target="profile"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg><span>You</span></button>
+</nav>
+
+<div class="sheet" id="joinSheet"><div class="sheetin"><div class="grab"></div><h2>Join this moment?</h2><p id="joinCopy">They will see your request. Exact location stays hidden until they accept.</p><div class="row"><button class="secondary" data-action="close" data-target="joinSheet">Not now</button><button class="primary" data-action="confirmjoin">Send request</button></div></div></div>
+<div class="sheet" id="locationSheet"><div class="sheetin"><div class="grab"></div><h2>Choose neighborhood</h2><button class="choice" data-action="setlocation" data-value="Bebek"><span><strong>Bebek</strong><small>Current pilot</small></span></button><button class="choice" data-action="setlocation" data-value="Arnavutköy"><span><strong>Arnavutköy</strong><small>Preview</small></span></button><button class="choice" data-action="setlocation" data-value="Nişantaşı"><span><strong>Nişantaşı</strong><small>Preview</small></span></button></div></div>
+<div class="toast" id="toast"></div>
+</div>
+<script>
+const S={screen:'now',filter:'all',location:'Bebek',activity:'dog',duration:45,selected:null,dual:false,dualStage:0,mainPhoto:'',selfPhoto:'',circle:false,currentChat:'ece'};
+let stream=null,facing='environment';
+let moments=[
+{id:'ece',type:'dog',label:'Dog walk',name:'Ece + Mochi',distance:'420m',time:34,title:'Slow walk by the water.',caption:'Mochi still has energy. Come say hi.',main:'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=1000&q=85',self:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=85',count:2},
+{id:'coffee',type:'coffee',label:'Coffee',name:'Can + Selin',distance:'680m',time:21,title:'One quick coffee?',caption:'Outdoor table. Leaving around 19:30.',main:'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=1000&q=85',self:'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=85',count:3},
+{id:'walk',type:'walk',label:'Walk',name:'Deniz',distance:'910m',time:43,title:'Heading toward Arnavutköy.',caption:'Slow walk, no destination.',main:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85',self:'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=85',count:2}
+];
+let soon=[{id:'s1',time:'19:45',title:'Sunset walk',desc:'Bebek seaside',count:4,on:false,img:'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=300&q=85'},{id:'s2',time:'20:15',title:'Coffee outside',desc:'Bebek center',count:3,on:false,img:'https://images.unsplash.com/photo-1511081692775-05d0f180a065?auto=format&fit=crop&w=300&q=85'}];
+let chats=[{id:'ece',name:'Ece + Mochi',avatar:'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=300&q=85',last:'See you by the park entrance.'}];
+let messages={ece:[{me:false,text:'We are still by the water.'},{me:true,text:'Perfect. I can be there in 5.'}]};
+
+const q=s=>document.querySelector(s), qa=s=>[...document.querySelectorAll(s)];
+function toast(t){const el=q('#toast');el.textContent=t;el.classList.add('show');clearTimeout(window.__to);window.__to=setTimeout(()=>el.classList.remove('show'),2200)}
+function svgX(){return '<svg class="icon" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>'}
+function renderFeed(){const list=moments.filter(m=>S.filter==='all'||m.type===S.filter);q('#feed').innerHTML=list.length?list.map(m=>`<article class="card"><img src="${m.main}" alt=""><div class="shade"></div><div class="cardtag">${m.label}</div><div class="timer">${m.time} min left</div><img class="selfie" src="${m.self}" alt=""><div class="body"><div class="person"><img src="${m.self}" alt=""><div><strong>${m.name}</strong><span>${m.distance} away</span></div></div><h2>${m.title}</h2><p>${m.caption}</p><div class="quorum"><span>${m.count}/3 nearby</span><span>${m.count<3?'One more makes it happen':'Quorum reached'}</span></div><div class="actions"><button class="join" data-action="join" data-id="${m.id}">I am in</button><button class="skip" data-action="skip" data-id="${m.id}">${svgX()}</button></div></div></article>`).join(''):'<div class="empty">Nothing in this filter right now. Try All.</div>'}
+function renderSoon(){q('#soon').innerHTML=soon.map(s=>`<div class="soon"><img src="${s.img}" alt=""><div><small>${s.time} · ${s.count} likely</small><h3>${s.title}</h3><p>${s.desc}</p><div class="soonfoot"><button class="soft ${s.on?'on':''}" data-action="soon" data-id="${s.id}">${s.on?'Likely':'I might join'}</button></div></div></div>`).join('')}
+function renderChats(){q('#chatList').innerHTML=chats.map(c=>`<button class="chatitem" data-action="openchatitem" data-id="${c.id}"><img src="${c.avatar}" alt=""><div><strong>${c.name}</strong><p>${c.last}</p></div></button>`).join('')||'<div class="empty">No chats yet. Chat opens after a mutual join.</div>'}
+function renderThread(){const c=chats.find(x=>x.id===S.currentChat);if(!c)return;q('#threadTitle').textContent=c.name;q('#messages').innerHTML=(messages[c.id]||[]).map(m=>`<div class="bubble ${m.me?'me':''}">${m.text}</div>`).join('')}
+function show(id){qa('.screen').forEach(x=>x.classList.toggle('active',x.id===id));S.screen=id;q('#nav').style.display=['camera','compose','thread','match'].includes(id)?'none':'grid';qa('.nav>button').forEach(x=>x.classList.toggle('on',x.dataset.target===id));if(id==='camera')startCamera();else stopCamera();if(id==='chats')renderChats();if(id==='thread')renderThread()}
+function openSheet(id){q('#'+id).classList.add('open')}function closeSheet(id){q('#'+id).classList.remove('open')}
+function setLocation(v){S.location=v;qa('[data-action="location"]').forEach(x=>x.textContent=v);closeSheet('locationSheet');toast(v+' selected')}
+async function startCamera(){try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:facing}},audio:false});q('#video').srcObject=stream;q('#video').hidden=false;q('#fallback').hidden=true}catch(e){q('#video').hidden=true;q('#fallback').hidden=false}}
+function stopCamera(){if(stream){stream.getTracks().forEach(t=>t.stop());stream=null}}
+function shot(){const v=q('#video');if(!v.videoWidth)return null;const c=document.createElement('canvas');c.width=v.videoWidth;c.height=v.videoHeight;c.getContext('2d').drawImage(v,0,0);return c.toDataURL('image/jpeg',.86)}
+function openCompose(){q('#previewMain').src=S.mainPhoto;q('#previewSelf').hidden=!S.selfPhoto;if(S.selfPhoto)q('#previewSelf').src=S.selfPhoto;show('compose')}
+function ensureChat(m){if(!chats.some(c=>c.id===m.id)){chats.unshift({id:m.id,name:m.name,avatar:m.self,last:'Meetup point unlocked'});messages[m.id]=[{me:false,text:'Meetup point unlocked: Bebek Parkı seaside entrance.'}]}S.currentChat=m.id}
+function send(){const inp=q('#messageInput'),v=inp.value.trim();if(!v)return;(messages[S.currentChat]||(messages[S.currentChat]=[])).push({me:true,text:v});const c=chats.find(x=>x.id===S.currentChat);if(c)c.last=v;inp.value='';renderThread()}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;
+ if(a==='nav')show(b.dataset.target);
+ if(a==='location')openSheet('locationSheet');
+ if(a==='setlocation')setLocation(b.dataset.value);
+ if(a==='close')closeSheet(b.dataset.target);
+ if(a==='filter'){S.filter=b.dataset.value;qa('.filter').forEach(x=>x.classList.toggle('on',x===b));renderFeed()}
+ if(a==='join'){S.selected=b.dataset.id;const m=moments.find(x=>x.id===S.selected);q('#joinCopy').textContent=m.name+' will see your request. Exact location stays hidden until they accept.';openSheet('joinSheet')}
+ if(a==='confirmjoin'){const m=moments.find(x=>x.id===S.selected);closeSheet('joinSheet');toast('Join request sent');setTimeout(()=>{ensureChat(m);q('#matchText').textContent=m.name+' accepted your join.';show('match')},700)}
+ if(a==='skip'){const i=moments.findIndex(x=>x.id===b.dataset.id);if(i>-1){moments.splice(i,1);renderFeed();toast('Hidden for now')}}
+ if(a==='soon'){const s=soon.find(x=>x.id===b.dataset.id);s.on=!s.on;s.count+=s.on?1:-1;renderSoon();toast(s.on?'Added to soft plans':'Removed from soft plans')}
+ if(a==='circle'){S.circle=!S.circle;q('#circleBtn').textContent=S.circle?'Circle created':'Make it a Circle';q('#circleText').textContent=S.circle?'Your Bebek evening walk circle is active.':'You met the same 4 people three times.';toast(S.circle?'Circle created':'Circle removed')}
+ if(a==='ping')toast('Ping sent to your regulars');
+ if(a==='toggle'){b.classList.toggle('on');toast('Preference updated')}
+ if(a==='openchatitem'){S.currentChat=b.dataset.id;show('thread')}
+ if(a==='openchat')show('thread');
+ if(a==='send')send();
+ if(a==='flip'){facing=facing==='environment'?'user':'environment';stopCamera();startCamera()}
+ if(a==='dual'){S.dual=!S.dual;S.dualStage=0;b.style.color=S.dual?'#dfff6a':'white';toast(S.dual?'Dual camera on':'Dual camera off')}
+ if(a==='library')q('#fileInput').click();
+ if(a==='capture'){const p=shot();if(!p){q('#fileInput').click();return}if(S.dual&&S.dualStage===0){S.mainPhoto=p;S.dualStage=1;facing='user';stopCamera();startCamera();toast('Now take the selfie')}else{if(S.dual)S.selfPhoto=p;else S.mainPhoto=p;openCompose()}}
+ if(a==='activity'){S.activity=b.dataset.value;qa('#activityChips .chip').forEach(x=>x.classList.toggle('on',x===b))}
+ if(a==='duration'){S.duration=Number(b.dataset.value);b.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.toggle('on',x===b))}
+ if(a==='post'){const label={dog:'Dog walk',coffee:'Coffee',walk:'Walk',parent:'Playground'}[S.activity];moments.unshift({id:'me'+Date.now(),type:S.activity,label,name:'You',distance:'here',time:S.duration,title:'Out in '+S.location+'.',caption:'Join if you are already nearby.',main:S.mainPhoto,self:S.selfPhoto||'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=85',count:1});q('#liveCount').textContent=(moments.length+6)+' PEOPLE OUT NOW';renderFeed();show('now');toast('You are live for '+S.duration+' minutes')}
+});
+q('#messageInput').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
+q('#fileInput').addEventListener('change',e=>{const f=e.target.files?.[0];if(!f)return;const r=new FileReader();r.onload=()=>{S.mainPhoto=r.result;S.selfPhoto='';openCompose()};r.readAsDataURL(f);e.target.value=''});
+qa('.sheet').forEach(s=>s.addEventListener('click',e=>{if(e.target===s)s.classList.remove('open')}));
+renderFeed();renderSoon();renderChats();
+</script>
+</body></html>
