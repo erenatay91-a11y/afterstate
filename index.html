@@ -4,91 +4,382 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
 <meta name="theme-color" content="#5F9C9D"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
 <title>BARNEY & the Family</title>
 <style>
-:root{--g:#5F9C9D;--gd:#477F80;--gs:#E9F3F2;--peach:#E3B4A4;--ps:#F8E9E3;--violet:#6868AC;--vs:#EEEEF9;--wine:#894B5D;--ws:#F5E9ED;--ink:#1F2D2D;--muted:#778181;--line:#E5EAE8;--bg:#F8FAF9;--white:#fff;--shadow:0 6px 20px rgba(30,54,54,.06)}
-*{box-sizing:border-box}html,body{margin:0;background:#EEF2F1;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{width:min(100%,430px);min-height:100dvh;margin:auto;background:var(--bg);padding-bottom:82px;overflow-x:hidden}.top{height:68px;padding:12px 16px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,250,249,.96);backdrop-filter:blur(16px);position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:9px}.brand img{width:44px;height:44px;object-fit:cover;border-radius:13px}.brand b{font-family:Georgia,serif;font-size:17px;font-weight:500;display:block}.brand small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.round{border:0;background:#fff;width:39px;height:39px;border-radius:50%;display:grid;place-items:center;box-shadow:var(--shadow)}.screen{display:none;padding:17px 16px 26px}.screen.active{display:block}.title{font-size:28px;letter-spacing:-.035em;margin:2px 0 5px}.sub{font-size:13px;color:var(--muted);margin:0 0 16px;line-height:1.45}.section{margin-top:20px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}.section-head h2{font-size:18px;margin:0}.link{border:0;background:none;color:var(--gd);font-weight:700;font-size:13px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px;box-shadow:var(--shadow)}.stack{display:grid;gap:9px}.row{display:flex;align-items:center;gap:11px}.between{justify-content:space-between}.grow{flex:1;min-width:0}.meta{font-size:12px;color:var(--muted);line-height:1.42;margin-top:3px}.avatar{width:52px;height:52px;border-radius:16px;object-fit:cover;background:#eee;flex:none}.avatar.sm{width:42px;height:42px;border-radius:13px}.today{padding:15px}.today + .today{margin-top:8px}.dot{width:10px;height:10px;border-radius:50%;background:var(--g);flex:none}.dot.wine{background:var(--wine)}.dot.violet{background:var(--violet)}.dot.peach{background:var(--peach)}.primary,.secondary,.ghost{border-radius:13px;padding:11px 14px;font-weight:750;font-size:13px}.primary{border:0;background:var(--g);color:#fff}.secondary{border:1px solid var(--g);background:#fff;color:var(--gd)}.ghost{border:1px solid var(--line);background:#fff;color:var(--ink)}.action-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.action{border:1px solid var(--line);background:#fff;border-radius:15px;padding:13px 8px;text-align:center;min-height:76px}.action svg{width:22px;height:22px;color:var(--gd);margin-bottom:7px}.action b{display:block;font-size:12px}.dog-switch{width:100%;display:flex;align-items:center;gap:10px;border:0;background:#fff;border:1px solid var(--line);border-radius:17px;padding:10px;text-align:left}.dog-switch b{display:block;font-size:14px}.dog-switch span{font-size:11px;color:var(--muted)}.deal{background:var(--ws);border-color:#E8D6DC}.deal strong{color:var(--wine)}.chips{display:flex;gap:7px;overflow:auto;scrollbar-width:none;padding-bottom:2px}.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;white-space:nowrap;font-size:12px;font-weight:700;color:#64706F}.chip.active{background:var(--g);color:#fff;border-color:var(--g)}
-.map{height:230px;border-radius:20px;background:linear-gradient(145deg,#DDEDE9,#EEF0F5);position:relative;overflow:hidden;border:1px solid #DDE7E4;margin-bottom:12px}.road{position:absolute;background:#fff;opacity:.94;border-radius:30px}.r1{width:390px;height:16px;left:-45px;top:95px;transform:rotate(23deg)}.r2{width:320px;height:13px;left:70px;top:97px;transform:rotate(-34deg)}.r3{width:270px;height:10px;left:-35px;top:165px;transform:rotate(-8deg)}.you{position:absolute;left:48%;top:44%;width:18px;height:18px;border-radius:50%;background:#2B78E4;border:4px solid #fff;box-shadow:0 3px 10px rgba(43,120,228,.3)}.mpin{position:absolute;width:38px;height:38px;border:3px solid #fff;border-radius:50%;display:grid;place-items:center;color:#fff;font-size:10px;font-weight:900;box-shadow:0 5px 15px rgba(0,0,0,.15)}.mpin.wb{background:var(--g);left:14%;top:28%}.mpin.friend{background:var(--violet);right:16%;top:18%}.mpin.place{background:var(--peach);color:#643D35;right:13%;bottom:18%}.mpin.vet{background:var(--wine);left:28%;bottom:16%}.legend{display:flex;gap:10px;flex-wrap:wrap;margin:0 2px 15px}.legend span{font-size:10px;color:var(--muted);display:flex;align-items:center;gap:4px}.legend i{width:8px;height:8px;border-radius:50%;display:inline-block}.result{padding:0;overflow:hidden}.result-img{width:86px;height:86px;object-fit:cover;flex:none}.result .body{padding:12px;flex:1}.result b{font-size:14px}.badge{font-size:10px;border-radius:999px;padding:5px 8px;background:var(--gs);color:var(--gd);font-weight:700}.care-list{display:grid;gap:9px}.care-row{width:100%;border:1px solid var(--line);background:#fff;border-radius:17px;padding:13px;text-align:left;display:flex;align-items:center;gap:12px}.ci{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--gs);color:var(--gd);flex:none}.ci svg{width:20px}.care-row b{display:block;font-size:14px}.care-row small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.care-chevron{color:#A5AEAC;font-size:20px;line-height:1;flex:none}.add-record{width:100%;margin-top:14px;border:0;border-radius:14px;padding:13px 14px;background:var(--gs);color:var(--gd);font-weight:750}.booking-note{background:var(--gs);border-radius:14px;padding:11px 12px;color:var(--gd);font-size:11px;line-height:1.45;margin-top:10px}.provider{padding:0;overflow:hidden}.provider img{width:100%;height:126px;object-fit:cover;display:block}.provider-body{padding:13px}.provider-actions{display:flex;gap:8px;margin-top:11px}.provider-actions button{flex:1}.profile-card{display:flex;align-items:center;gap:12px}.dogs{display:grid;gap:8px}.dog-line{display:flex;align-items:center;gap:11px}.dog-line .grow b{display:block}.dog-line .grow small{color:var(--muted);font-size:11px}.food{padding:14px}.food .progress{height:7px;background:#EDF1F0;border-radius:99px;overflow:hidden;margin:10px 0}.food .progress i{display:block;height:100%;background:var(--g)}.food-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.metric{background:var(--bg);border-radius:11px;padding:8px}.metric b{font-size:12px;display:block}.metric small{font-size:9px;color:var(--muted)}.bottom{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(100%,430px);background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding:6px 7px calc(6px + env(safe-area-inset-bottom));z-index:30}.nav{border:0;background:none;color:#8A9492;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;font-weight:700;padding:6px 1px}.nav svg{width:20px;height:20px}.nav.active{color:var(--gd)}.modalback{position:fixed;inset:0;background:rgba(15,30,30,.38);z-index:60;display:none;align-items:flex-end;justify-content:center}.modalback.open{display:flex}.sheet{width:min(100%,430px);background:#fff;border-radius:25px 25px 0 0;padding:17px 17px calc(22px + env(safe-area-inset-bottom));max-height:88dvh;overflow:auto}.sheet h3{font-size:21px;margin:2px 0 12px}.field{margin:10px 0}.field label{display:block;font-size:11px;color:var(--muted);font-weight:700;margin-bottom:5px}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:13px;padding:12px;background:#fff}.actions{display:flex;gap:8px;margin-top:14px}.actions button{flex:1}.history{display:grid;gap:8px;margin-top:12px}.hist{padding:12px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}.hist:last-child{border-bottom:0}.hist b{font-size:13px}.hist small{font-size:11px;color:var(--muted)}.photoadd{border:1px dashed #AFCBC7;border-radius:17px;padding:14px;text-align:center;background:var(--gs)}.photoadd img{width:82px;height:82px;border-radius:22px;object-fit:cover;display:none;margin:0 auto 10px}.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;background:#203031;color:#fff;border-radius:13px;padding:11px 14px;font-size:12px;z-index:100;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(min-width:700px){body{padding:20px 0}.app{border-radius:30px;min-height:850px}.bottom{bottom:20px;border-radius:0 0 30px 30px}}
+:root{
+  --g:#5F9C9D;
+  --gd:#477F80;
+  --gs:#EAF3F2;
+  --peach:#E3B4A4;
+  --violet:#6868AC;
+  --wine:#894B5D;
+  --ink:#1F2929;
+  --muted:#7B8583;
+  --line:#E7ECEA;
+  --bg:#F7F9F8;
+  --white:#FFFFFF;
+  --shadow:0 10px 30px rgba(35,58,58,.08);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:#EDF1EF;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Arial,sans-serif}
+button,input,select{font:inherit}
+button{cursor:pointer}
+body{min-height:100vh}
+.app{width:min(100%,430px);min-height:100dvh;margin:auto;background:var(--bg);position:relative;padding-bottom:96px;overflow-x:hidden}
+.screen{display:none;padding:18px 16px 28px}
+.screen.active{display:block}
+.topbar{height:66px;display:flex;align-items:center;justify-content:space-between;padding:10px 16px;position:sticky;top:0;background:rgba(247,249,248,.96);backdrop-filter:blur(16px);z-index:30;border-bottom:1px solid var(--line)}
+.brand-img{width:112px;height:38px;border-radius:11px;object-fit:cover;object-position:center}
+.top-action{border:0;background:#fff;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;color:var(--gd);box-shadow:var(--shadow)}
+.title{font-size:29px;letter-spacing:-.04em;margin:3px 0 6px}
+.sub{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 5px 18px rgba(35,58,58,.045)}
+.section{margin-top:22px}
+.section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.section-head h2{font-size:18px;margin:0;letter-spacing:-.02em}
+.link{border:0;background:none;padding:0;color:var(--gd);font-size:13px;font-weight:750}
+.dog-switch{width:100%;border:1px solid var(--line);background:#fff;border-radius:20px;padding:12px;display:flex;align-items:center;gap:12px;text-align:left;box-shadow:0 5px 18px rgba(35,58,58,.045)}
+.avatar{width:54px;height:54px;border-radius:17px;object-fit:cover;background:#e9eceb;flex:none}
+.avatar.lg{width:96px;height:96px;border-radius:28px}
+.avatar.sm{width:46px;height:46px;border-radius:14px}
+.grow{flex:1;min-width:0}
+.dog-switch b{display:block;font-size:16px}
+.dog-switch span{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.chev{color:#A3ADAA;font-size:22px}
+.radar-card{padding:14px;overflow:hidden}
+.radar-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:12px}
+.radar-top b{font-size:18px}
+.radar-top small{display:block;color:var(--muted);font-size:12px;margin-top:3px}
+.map{height:230px;border-radius:18px;position:relative;overflow:hidden;background:#EEF4F2;border:1px solid #E1E9E6}
+.map:before{content:"";position:absolute;inset:-20px;background:
+linear-gradient(28deg,transparent 46%,rgba(255,255,255,.95) 47% 53%,transparent 54%),
+linear-gradient(145deg,transparent 42%,rgba(255,255,255,.8) 43% 50%,transparent 51%);
+background-size:130px 130px,160px 160px;opacity:.9}
+.map:after{content:"";position:absolute;width:180px;height:70px;border-radius:50%;background:#D9ECE7;left:-45px;bottom:25px;transform:rotate(-10deg);opacity:.7}
+.you{position:absolute;width:18px;height:18px;border-radius:50%;background:#2D7FF0;border:4px solid #fff;left:49%;top:46%;z-index:4;box-shadow:0 3px 9px rgba(45,127,240,.28)}
+.pin{position:absolute;width:34px;height:34px;border:0;border-radius:50%;display:grid;place-items:center;z-index:5;box-shadow:0 6px 14px rgba(35,58,58,.14);color:#fff}
+.pin svg{width:16px;height:16px}
+.p1{left:18%;top:23%;background:var(--g)}
+.p2{right:17%;top:18%;background:var(--violet)}
+.p3{left:27%;bottom:15%;background:var(--wine)}
+.p4{right:21%;bottom:18%;background:var(--peach);color:#69453D}
+.radar-counts{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.count{font-size:11px;padding:7px 9px;border-radius:999px;background:var(--gs);color:var(--gd);font-weight:750}
+.primary,.secondary{border:0;border-radius:14px;min-height:46px;padding:12px 15px;font-weight:780}
+.primary{background:var(--g);color:#fff}
+.secondary{background:#fff;color:var(--gd);border:1px solid var(--line)}
+.full{width:100%}
+.today{display:grid;gap:8px}
+.today-row{border:1px solid var(--line);background:#fff;border-radius:17px;padding:13px 14px;display:flex;align-items:center;gap:11px;text-align:left}
+.today-row .ico{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--gs);color:var(--gd);flex:none}
+.today-row:nth-child(2) .ico{background:#F8E9E3;color:#7B4C40}
+.today-row:nth-child(3) .ico{background:#EEEEF9;color:var(--violet)}
+.today-row b{display:block;font-size:14px}
+.today-row small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.footer{position:fixed;left:50%;transform:translateX(-50%);bottom:0;width:min(100%,430px);height:76px;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr 1fr;align-items:end;padding:8px 22px calc(9px + env(safe-area-inset-bottom));z-index:80}
+.nav{border:0;background:none;color:#929A98;display:flex;flex-direction:column;align-items:center;gap:4px;font-size:10px;font-weight:700}
+.nav.active{color:var(--gd)}
+.nav svg{width:22px;height:22px}
+.super-wrap{position:relative;display:flex;justify-content:center}
+.super-btn{position:absolute;bottom:10px;width:62px;height:62px;border-radius:50%;border:5px solid var(--bg);background:var(--g);color:#fff;display:grid;place-items:center;box-shadow:0 10px 25px rgba(71,127,128,.28)}
+.super-btn svg{width:30px;height:30px}
+.profile-hero{padding:16px;display:flex;align-items:center;gap:14px}
+.profile-hero h2{margin:0 0 4px;font-size:22px}
+.profile-hero p{margin:0;color:var(--muted);font-size:12px;line-height:1.45}
+.profile-hero .primary{margin-top:12px;min-height:40px;padding:9px 12px;font-size:12px}
+.dogs-strip{display:flex;gap:12px;overflow:auto;padding:2px 1px 4px;scrollbar-width:none}
+.dogs-strip::-webkit-scrollbar{display:none}
+.dog-mini{border:0;background:none;padding:0;min-width:64px;text-align:center}
+.dog-mini img{width:58px;height:58px;border-radius:18px;object-fit:cover;border:3px solid #fff;box-shadow:0 4px 12px rgba(35,58,58,.08)}
+.dog-mini.active img{outline:2px solid var(--g)}
+.dog-mini span{font-size:11px;display:block;margin-top:6px;color:var(--ink)}
+.add-dog{min-width:58px;height:58px;border-radius:18px;border:1px dashed #9FC3BF;background:var(--gs);color:var(--gd);display:grid;place-items:center}
+.settings{display:grid;gap:8px}
+.setting{width:100%;border:1px solid var(--line);background:#fff;border-radius:16px;padding:14px;display:flex;align-items:center;gap:11px;text-align:left}
+.setting svg{width:20px;height:20px;color:var(--gd)}
+.setting b{font-size:13px}
+.setting .chev{margin-left:auto}
+.overlay{position:fixed;inset:0;background:rgba(22,35,35,.35);display:none;align-items:flex-end;justify-content:center;z-index:120}
+.overlay.open{display:flex}
+.sheet{width:min(100%,430px);background:#fff;border-radius:28px 28px 0 0;padding:10px 16px calc(22px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto;animation:up .18s ease}
+@keyframes up{from{transform:translateY(30px);opacity:.6}to{transform:none;opacity:1}}
+.grab{width:42px;height:5px;background:#D9DEDC;border-radius:999px;margin:2px auto 16px}
+.sheet h3{font-size:22px;margin:0 0 4px}
+.sheet .sub{margin-bottom:15px}
+.super-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.module{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;text-align:left;min-height:142px;display:flex;flex-direction:column;justify-content:space-between}
+.module.primary-module{background:var(--g);color:#fff;border-color:var(--g);box-shadow:0 10px 25px rgba(71,127,128,.18)}
+.module .micon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:var(--gs);color:var(--gd)}
+.module.primary-module .micon{background:rgba(255,255,255,.18);color:#fff}
+.module:nth-child(2) .micon{background:#F8E9E3;color:#7B4C40}
+.module:nth-child(3) .micon{background:#EEEEF9;color:var(--violet)}
+.module:nth-child(4) .micon{background:#F5E9ED;color:var(--wine)}
+.module b{font-size:16px;display:block}
+.module small{font-size:11px;line-height:1.4;color:var(--muted);display:block;margin-top:4px}
+.module.primary-module small{color:rgba(255,255,255,.82)}
+.module svg{width:22px;height:22px}
+.module-screen{position:fixed;inset:0;background:var(--bg);z-index:110;display:none;overflow:auto}
+.module-screen.open{display:block}
+.module-shell{width:min(100%,430px);min-height:100vh;margin:auto;background:var(--bg);padding:18px 16px 28px}
+.module-top{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.back{width:40px;height:40px;border:0;border-radius:50%;background:#fff;color:var(--gd);display:grid;place-items:center;box-shadow:var(--shadow)}
+.module-top h1{font-size:27px;margin:0}
+.filter-row{display:flex;gap:7px;overflow:auto;scrollbar-width:none;margin:12px 0 14px}
+.filter-row::-webkit-scrollbar{display:none}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:9px 12px;font-size:11px;font-weight:750;color:var(--muted);white-space:nowrap}
+.chip.active{background:var(--g);border-color:var(--g);color:#fff}
+.placeholder{padding:18px;text-align:center}
+.placeholder b{display:block;font-size:18px}
+.placeholder p{font-size:12px;color:var(--muted);line-height:1.5;margin:7px 0 0}
+.form{display:grid;gap:11px}
+.field label{display:block;font-size:11px;font-weight:750;color:#5D6765;margin-bottom:5px}
+.field input,.field select{width:100%;border:1px solid var(--line);border-radius:14px;padding:12px;background:#fff;outline:none}
+.photo-field{border:1px dashed #A7C8C4;background:var(--gs);border-radius:18px;padding:14px;text-align:center}
+.photo-field img{display:none;width:90px;height:90px;border-radius:24px;object-fit:cover;margin:0 auto 10px}
+.sheet-actions{display:flex;gap:8px;margin-top:14px}
+.sheet-actions button{flex:1}
+.toast{position:fixed;left:50%;bottom:98px;transform:translate(-50%,18px);opacity:0;background:#1E2C2C;color:#fff;padding:11px 14px;border-radius:13px;font-size:12px;z-index:200;transition:.2s}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(min-width:700px){body{padding:20px 0}.app{min-height:850px;border-radius:30px}.footer{bottom:20px;border-radius:0 0 30px 30px}.module-shell{min-height:850px;border-radius:30px}}
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="brand"><img id="brandLogo"><div><b>BARNEY</b><small>& the Family</small></div></div><button class="round" onclick="toast('Bildirim yok')" aria-label="Bildirimler"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></button></header>
-<main>
-<section class="screen active" id="home">
-  <h1 class="title">Bugün</h1><p class="sub">İhtiyacın olan şeyler, tek bakışta.</p>
-  <button class="dog-switch" onclick="pickDog()"><img class="avatar" id="homeDogPhoto"><div class="grow"><b id="homeDogName"></b><span id="homeDogMeta"></span></div><span style="font-size:20px;color:var(--muted)">⌄</span></button>
-  <div class="section"><div class="stack" id="todayList"></div></div>
-  <div class="section"><div class="section-head"><h2>Hızlı</h2></div><div class="action-row">
-    <button class="action" onclick="go('explore');setExplore('buddy')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 11a4 4 0 100-8 4 4 0 000 8zm8 2a3 3 0 100-6 3 3 0 000 6zM2 21c.5-5 3-7 6-7s5.5 2 6 7m0-5c3 0 5 1.6 6 5"/></svg><b>WalkBuddy</b></button>
-    <button class="action" onclick="go('care')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-8-4.7-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.3-8 11-8 11z"/></svg><b>Bakım</b></button>
-    <button class="action" onclick="go('services')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20v-8h16v8M7 12V7a5 5 0 0110 0v5"/></svg><b>Hizmet bul</b></button>
-  </div></div>
-</section>
-<section class="screen" id="explore">
-  <h1 class="title">Keşfet</h1><p class="sub">Yakınındaki köpekler, yürüyüşler ve dog-friendly yerler.</p>
-  <div class="chips"><button class="chip active" data-exp="radar" onclick="setExplore('radar')">Radar</button><button class="chip" data-exp="buddy" onclick="setExplore('buddy')">WalkBuddy</button><button class="chip" data-exp="friends" onclick="setExplore('friends')">Köpek arkadaşları</button><button class="chip" data-exp="places" onclick="setExplore('places')">Mekanlar</button><button class="chip" data-exp="vets" onclick="setExplore('vets')">Veteriner</button></div>
-  <div class="map"><div class="road r1"></div><div class="road r2"></div><div class="road r3"></div><div class="you"></div><button class="mpin wb" onclick="radarOpen('buddy')">WB</button><button class="mpin friend" onclick="radarOpen('friends')">K</button><button class="mpin place" onclick="radarOpen('places')">M</button><button class="mpin vet" onclick="radarOpen('vets')">V</button></div>
-  <div class="legend"><span><i style="background:var(--g)"></i>WalkBuddy</span><span><i style="background:var(--violet)"></i>Köpek</span><span><i style="background:var(--peach)"></i>Mekan</span><span><i style="background:var(--wine)"></i>Veteriner</span></div>
-  <div id="exploreList" class="stack"></div>
-</section>
-<section class="screen" id="care">
-  <h1 class="title">Bakım</h1><p class="sub">Kaydet, geçmişi gör, zamanı gelince hatırlatalım.</p>
-  <button class="dog-switch" onclick="pickDog()"><img class="avatar" id="careDogPhoto"><div class="grow"><b id="careDogName"></b><span>Takip edilen köpek</span></div><span style="font-size:20px;color:var(--muted)">⌄</span></button>
-  <div class="section care-list" id="careList"></div>
-</section>
-<section class="screen" id="services">
-  <h1 class="title">Hizmetler</h1><p class="sub">Kayıtlı ve puanlanmış hizmet sağlayıcıları bul.</p>
-  <div class="chips"><button class="chip active" data-svc="walker" onclick="setService('walker')">Walker</button><button class="chip" data-svc="sitter" onclick="setService('sitter')">Sitter</button><button class="chip" data-svc="grooming" onclick="setService('grooming')">Grooming</button><button class="chip" data-svc="training" onclick="setService('training')">Eğitim</button><button class="chip" data-svc="taxi" onclick="setService('taxi')">Pet taksi</button><button class="chip" data-svc="boarding" onclick="setService('boarding')">Pansiyon</button></div>
-  <div id="serviceList" class="stack" style="margin-top:13px"></div>
-</section>
-<section class="screen" id="profile">
-  <h1 class="title">Profil</h1><p class="sub">Köpeklerin ve mama planların burada.</p>
-  <div class="card profile-card"><img class="avatar" id="profileDogPhoto"><div class="grow"><b id="profileDogName"></b><div class="meta" id="profileDogMeta"></div></div><button class="secondary" onclick="editActiveDog()">Düzenle</button></div>
-  <div class="section"><div class="section-head"><h2 id="dogsHeading">Köpeğim</h2><button class="link" onclick="openAddDog()">Köpek ekle</button></div><div class="dogs" id="dogsList"></div></div>
-  <div class="section"><div class="section-head"><h2>Mama planı</h2><button class="link" onclick="openFoodForm()">Plan ekle</button></div><div class="stack" id="foodList"></div></div>
-</section>
-</main>
-<nav class="bottom">
-<button class="nav active" data-go="home" onclick="go('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3V11z"/></svg><span>Ana Sayfa</span></button>
-<button class="nav" data-go="explore" onclick="go('explore')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg><span>Keşfet</span></button>
-<button class="nav" data-go="care" onclick="go('care')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-8-4.7-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.3-8 11-8 11z"/></svg><span>Bakım</span></button>
-<button class="nav" data-go="services" onclick="go('services')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20v-8h16v8M7 12V7a5 5 0 0110 0v5"/></svg><span>Hizmetler</span></button>
-<button class="nav" data-go="profile" onclick="go('profile')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg><span>Profil</span></button>
-</nav>
+  <header class="topbar">
+    <img class="brand-img" id="brandImg" alt="BARNEY & the Family"/>
+    <button class="top-action" onclick="toast('Yeni bildirim yok')" aria-label="Bildirimler">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section id="summary" class="screen active">
+      <button class="dog-switch" onclick="openDogPicker()">
+        <img class="avatar" id="sumDogPhoto"/>
+        <div class="grow"><b id="sumDogName"></b><span id="sumDogMeta"></span></div>
+        <span class="chev">›</span>
+      </button>
+
+      <div class="section">
+        <div class="radar-card card">
+          <div class="radar-top">
+            <div><b>Yakınında</b><small>BARNEY Radar</small></div>
+            <button class="link" onclick="openModule('radar')">Tam ekran</button>
+          </div>
+          <div class="map">
+            <div class="you"></div>
+            <button class="pin p1" onclick="openModule('radar')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M5 19c.5-4 2-6 5-6s4.5 2 5 6m1-5c2.4 0 3.8 1.5 4 4"/></svg></button>
+            <button class="pin p2" onclick="openModule('radar')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.2 7-12a7 7 0 10-14 0c0 6.8 7 12 7 12z"/><circle cx="12" cy="9" r="2"/></svg></button>
+            <button class="pin p3" onclick="openModule('radar')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V8l8-5 8 5v12H4z"/><path d="M9 20v-6h6v6"/></svg></button>
+            <button class="pin p4" onclick="openModule('radar')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/></svg></button>
+          </div>
+          <div class="radar-counts"><span class="count">3 WalkBuddy</span><span class="count">5 köpek arkadaşı</span><span class="count">4 mekan</span></div>
+          <button class="primary full" onclick="openModule('radar')">Radarı aç</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><h2>Bugün</h2></div>
+        <div class="today" id="todayRows"></div>
+      </div>
+    </section>
+
+    <section id="profile" class="screen">
+      <h1 class="title">Profil</h1>
+      <p class="sub">Köpeklerin ve hesabın. Başka hiçbir şey değil.</p>
+      <div class="section card profile-hero">
+        <img class="avatar lg" id="profilePhoto"/>
+        <div class="grow">
+          <h2 id="profileName"></h2>
+          <p id="profileMeta"></p>
+          <button class="primary" onclick="openEditDog()">Profili düzenle</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><h2 id="dogsTitle">Köpeğim</h2></div>
+        <div class="dogs-strip" id="dogsStrip"></div>
+      </div>
+
+      <div class="section settings">
+        <button class="setting" onclick="toast('Hesap ayarları prototipte')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg>
+          <b>Hesabım</b><span class="chev">›</span>
+        </button>
+        <button class="setting" onclick="toast('Bildirim tercihleri prototipte')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 8a6 6 0 00-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"/></svg>
+          <b>Bildirimler</b><span class="chev">›</span>
+        </button>
+        <button class="setting" onclick="toast('Ayarlar prototipte')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 00.3 1.8l.1.1-2.9 2.9-.1-.1a1.6 1.6 0 00-1.8-.3 1.6 1.6 0 00-1 1.5V21h-4v-.1a1.6 1.6 0 00-1-1.5 1.6 1.6 0 00-1.8.3l-.1.1-2.9-2.9.1-.1a1.6 1.6 0 00.3-1.8 1.6 1.6 0 00-1.5-1H3v-4h.1a1.6 1.6 0 001.5-1 1.6 1.6 0 00-.3-1.8l-.1-.1 2.9-2.9.1.1a1.6 1.6 0 001.8.3 1.6 1.6 0 001-1.5V3h4v.1a1.6 1.6 0 001 1.5 1.6 1.6 0 001.8-.3l.1-.1 2.9 2.9-.1.1a1.6 1.6 0 00-.3 1.8 1.6 1.6 0 001.5 1h.1v4h-.1a1.6 1.6 0 00-1.5 1z"/></svg>
+          <b>Ayarlar</b><span class="chev">›</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <nav class="footer">
+    <button class="nav active" data-nav="summary" onclick="go('summary')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 11l9-8 9 8v10h-6v-6H9v6H3V11z"/></svg>
+      <span>Özet</span>
+    </button>
+    <div class="super-wrap">
+      <button class="super-btn" onclick="openSuper()" aria-label="BARNEY super app">
+        <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="6.5" cy="8" r="2.3"/><circle cx="10" cy="5.4" r="2.2"/><circle cx="14" cy="5.4" r="2.2"/><circle cx="17.5" cy="8" r="2.3"/><path d="M12 10.2c-3.6 0-6.5 2.7-6.5 5.6 0 2.4 2 3.8 4.1 3.8 1.1 0 1.7-.5 2.4-.5s1.3.5 2.4.5c2.1 0 4.1-1.4 4.1-3.8 0-2.9-2.9-5.6-6.5-5.6z"/></svg>
+      </button>
+    </div>
+    <button class="nav" data-nav="profile" onclick="go('profile')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-5 4-7 8-7s7 2 8 7"/></svg>
+      <span>Profil</span>
+    </button>
+  </nav>
 </div>
-<div class="modalback" id="modal"><div class="sheet" id="sheet"></div></div><div class="toast" id="toast"></div>
+
+<div class="overlay" id="overlay" onclick="if(event.target.id==='overlay')closeSheet()">
+  <div class="sheet" id="sheet"><div class="grab"></div></div>
+</div>
+
+<div class="module-screen" id="moduleScreen">
+  <div class="module-shell">
+    <div class="module-top">
+      <button class="back" onclick="closeModule()"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <h1 id="moduleTitle">Radar</h1>
+    </div>
+    <div id="moduleBody"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
 <script>
 const logoData='data:image/webp;base64,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';
-const P=['https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=500&q=82','https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500&q=82','https://images.unsplash.com/photo-1537151608828-ea2b11777ee8?auto=format&fit=crop&w=500&q=82','https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=500&q=82','https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=82','https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=500&q=82'];
-const base={activeDog:1,dogs:[{id:1,name:'Obi',breed:'Pug',kg:10,photo:P[0]},{id:2,name:'Lokum',breed:'Cocker Spaniel',kg:12,photo:P[1]},{id:3,name:'Maya',breed:'Cocker Spaniel',kg:11,photo:P[2]},{id:4,name:'Barney',breed:'Pug',kg:9.5,photo:P[3]},{id:5,name:'Rocky',breed:'Labrador',kg:29,photo:P[4]},{id:6,name:'Milo',breed:'Pug',kg:10.2,photo:P[5]}],foods:[{id:1,name:'Royal Canin Mini Adult',bagKg:12,remainingKg:7.2,daily:[{dog:1,g:150},{dog:2,g:180},{dog:3,g:170},{dog:4,g:145}],price:1949,oldPrice:2490},{id:2,name:'N&D Adult',bagKg:12,remainingKg:9.4,daily:[{dog:5,g:300},{dog:6,g:155}],price:2290,oldPrice:2590}],care:{1:{weight:[{date:'22.09.2026',value:'12,0 kg'},{date:'21.09.2026',value:'10,0 kg'},{date:'10.09.2026',value:'10,1 kg'}],vaccines:[{date:'26.09.2026',value:'Karma aşı, planlandı'},{date:'20.09.2025',value:'Kuduz aşısı'}],meds:[{date:'12.09.2026',value:'İç parazit tableti'}],vet:[{date:'12.08.2026',value:'Rutin kontrol, sorun yok'}],grooming:[{date:'02.09.2026',value:'Banyo ve tırnak'}],records:[{date:'12.08.2026',value:'Kan tahlili yüklendi'}]}},tempPhoto:null};
-let state=(()=>{try{return JSON.parse(localStorage.getItem('barneySimpleV3'))||structuredClone(base)}catch{return structuredClone(base)}})();
-function save(){localStorage.setItem('barneySimpleV3',JSON.stringify(state))}function dog(){return state.dogs.find(x=>x.id===state.activeDog)||state.dogs[0]}function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>e.classList.remove('show'),1800)}function openSheet(h){document.getElementById('sheet').innerHTML=h;document.getElementById('modal').classList.add('open')}function closeSheet(){document.getElementById('modal').classList.remove('open')}document.getElementById('modal').onclick=e=>{if(e.target.id==='modal')closeSheet()};
-function go(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));document.querySelectorAll('.nav').forEach(b=>b.classList.toggle('active',b.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'});if(id==='care')renderCare();if(id==='profile')renderProfile();if(id==='services')setService(document.querySelector('[data-svc].active')?.dataset.svc||'walker')}
-function renderAll(){document.getElementById('brandLogo').src=logoData;renderHome();renderCare();renderProfile();setExplore('radar');setService('walker')}
-function renderHome(){const d=dog();homeDogPhoto.src=d.photo;homeDogName.textContent=d.name;homeDogMeta.textContent=`${d.breed} · ${d.kg} kg`;const food=state.foods.find(f=>f.daily.some(x=>x.dog===d.id));let foodTxt='Mama planı ekle';if(food){const total=food.daily.reduce((s,x)=>s+x.g,0);foodTxt=`${food.name}, yaklaşık ${Math.floor(food.remainingKg*1000/Math.max(total,1))} gün kaldı`}todayList.innerHTML=`<div class="card today row"><span class="dot wine"></span><div class="grow"><b>Mama</b><div class="meta">${foodTxt}</div></div><button class="link" onclick="go('profile')">Gör</button></div><div class="card today row"><span class="dot"></span><div class="grow"><b>Bakım</b><div class="meta">Kilo ve sağlık geçmişi güncel</div></div><button class="link" onclick="go('care')">Gör</button></div><div class="card today row"><span class="dot violet"></span><div class="grow"><b>Yakında</b><div class="meta">3 WalkBuddy, 5 köpek arkadaşı</div></div><button class="link" onclick="go('explore')">Keşfet</button></div>`}
-function pickDog(){openSheet(`<h3>Köpek seç</h3><div class="stack">${state.dogs.map(d=>`<button class="dog-switch" onclick="selectDog(${d.id})"><img class="avatar sm" src="${d.photo}"><div class="grow"><b>${d.name}</b><span>${d.breed}</span></div></button>`).join('')}</div><div class="actions"><button class="secondary" onclick="closeSheet()">Kapat</button></div>`)}function selectDog(id){state.activeDog=id;save();closeSheet();renderHome();renderCare();renderProfile()}
-const exploreData={buddy:[{title:'Bebek Sahil WalkBuddy',meta:'Bugün 18:30 · 1,4 km · 4 köpek',img:P[1],badge:'WalkBuddy'},{title:'Maçka Parkı sabah yürüyüşü',meta:'Yarın 09:00 · 6 köpek',img:P[2],badge:'WalkBuddy'}],friends:[{title:'Luna',meta:'Golden Retriever · 3 yaş · %92 uyum',img:P[1],badge:'Köpek arkadaşı'},{title:'Max',meta:'Beagle · 2 yaş · %88 uyum',img:P[4],badge:'Köpek arkadaşı'}],places:[{title:'Mürver Cafe',meta:'Dog-friendly · 1,1 km · içeri kabul ediyor',img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80',badge:'Mekan'},{title:'Maçka Parkı',meta:'Köpek parkı · 2,5 km',img:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80',badge:'Mekan'}],vets:[{title:'PetCode Veteriner',meta:'1,3 km · bugün 22:00’ye kadar açık',img:'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500&q=80',badge:'Veteriner'},{title:'Bosphorus Vet',meta:'2,1 km · 4,8 puan',img:'https://images.unsplash.com/photo-1628009368231-7bb7cfcb0def?auto=format&fit=crop&w=500&q=80',badge:'Veteriner'}]};
-function setExplore(type){document.querySelectorAll('[data-exp]').forEach(b=>b.classList.toggle('active',b.dataset.exp===type));let arr=type==='radar'?[exploreData.buddy[0],exploreData.friends[0],exploreData.places[0],exploreData.vets[0]]:exploreData[type];exploreList.innerHTML=arr.map((x,i)=>`<div class="card result row"><img class="result-img" src="${x.img}"><div class="body"><div class="row between"><b>${x.title}</b><span class="badge">${x.badge}</span></div><div class="meta">${x.meta}</div><button class="link" style="padding:8px 0 0" onclick="exploreAction('${x.badge}','${x.title}')">${x.badge==='WalkBuddy'?'Katıl':x.badge==='Köpek arkadaşı'?'Tanış':'İncele'}</button></div></div>`).join('')}function radarOpen(type){setExplore(type);document.querySelector('#exploreList').scrollIntoView({behavior:'smooth',block:'start'})}function exploreAction(type,name){openSheet(`<h3>${name}</h3><p class="sub">${type} detayları.</p><div class="card"><b>${type==='WalkBuddy'?'Yürüyüşe katıl':type==='Köpek arkadaşı'?'Tanışma isteği gönder':'Bilgileri gör'}</b><div class="meta">Bu demo akışta profil, saat ve konum bilgileri burada gösterilir.</div></div><div class="actions"><button class="secondary" onclick="closeSheet()">Kapat</button><button class="primary" onclick="toast('Kaydedildi');closeSheet()">Devam</button></div>`)}
-const careMeta={weight:{label:'Kilo',desc:'Son ölçüm',unit:'kg'},vaccines:{label:'Aşılar',desc:'Takvim ve geçmiş'},meds:{label:'İlaçlar',desc:'İlaç ve parazit'},vet:{label:'Veteriner',desc:'Ziyaret geçmişi'},grooming:{label:'Grooming',desc:'Bakım geçmişi'},records:{label:'Sağlık kayıtları',desc:'Tahlil ve rapor'}};
-function ensureCare(){const id=dog().id;if(!state.care[id])state.care[id]={weight:[],vaccines:[],meds:[],vet:[],grooming:[],records:[]};return state.care[id]}
-function renderCare(){const d=dog(),c=ensureCare();careDogPhoto.src=d.photo;careDogName.textContent=d.name;const keys=['weight','vaccines','meds','vet','grooming','records'];careList.innerHTML=keys.map(k=>{const last=c[k][0];return `<button class="care-row" onclick="openHistory('${k}')"><span class="ci">${careIcon(k)}</span><div class="grow"><b>${careMeta[k].label}</b><small>${last?last.date+' · '+last.value:careMeta[k].desc}</small></div><span class="care-chevron">›</span></button>`}).join('')}
-function careIcon(k){const p={weight:'<path d="M4 20V4m0 16h16M7 16l4-5 3 2 5-7"/>',vaccines:'<path d="M6 18L18 6m-8-2l10 10M4 20l4-1-3-3-1 4z"/>',meds:'<path d="M8 4a4 4 0 015.7 0l6.3 6.3a4 4 0 01-5.7 5.7L8 9.7A4 4 0 018 4z"/>',vet:'<path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/>',grooming:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 7.5L20 18M8.5 16.5L20 6"/>',records:'<path d="M4 5h6l2 2h8v12H4V5z"/>'};return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">${p[k]}</svg>`}
-function careAddLabel(k){return {weight:'Yeni kilo ölçümü',vaccines:'Yeni aşı kaydı',meds:'Yeni ilaç kaydı',vet:'Yeni veteriner ziyareti',grooming:'Yeni bakım kaydı',records:'Yeni sağlık kaydı'}[k]||'Yeni kayıt'}
-function openHistory(k){const c=ensureCare()[k];openSheet(`<h3>${careMeta[k].label}</h3><div class="meta">${dog().name} · geçmiş kayıtlar</div><div class="history">${c.length?c.map(x=>`<div class="hist"><small>${x.date}</small><div><b>${x.value}</b></div></div>`).join(''):'<div class="meta">Henüz kayıt yok.</div>'}</div><button class="add-record" onclick="addCare('${k}')">${careAddLabel(k)}</button><div class="actions"><button class="secondary" onclick="closeSheet()">Kapat</button></div>`)}
-function addCare(k){openSheet(`<h3>${careMeta[k].label} ekle</h3><div class="field"><label>Tarih</label><input id="cd" type="date" value="2026-09-23"></div><div class="field"><label>${k==='weight'?'Kilo':'Not'}</label><input id="cv" placeholder="${k==='weight'?'Örn. 10,4 kg':'Örn. Karma aşı yapıldı'}"></div><div class="actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="saveCare('${k}')">Kaydet</button></div>`)}function saveCare(k){const v=cv.value.trim();if(!v)return toast('Bilgi gir');const raw=cd.value.split('-');const date=raw.length===3?`${raw[2]}.${raw[1]}.${raw[0]}`:cd.value;ensureCare()[k].unshift({date,value:v});save();renderCare();openHistory(k);toast('Kayıt eklendi')}
-const providers={walker:[{n:'Ece Kaya',m:'4,9 · 0,8 km · bugün uygun',p:'450 TL / yürüyüş',img:'https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=600&q=80'},{n:'Can Walks',m:'4,8 · 1,7 km · 126 değerlendirme',p:'390 TL / yürüyüş',img:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80'}],sitter:[{n:'Pati Evde',m:'4,9 · 1,2 km · evde bakım',p:'900 TL / gece',img:'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&fit=crop&w=600&q=80'}],grooming:[{n:'Bark & Bath',m:'4,8 · 2,0 km · bugün boşluk var',p:'750 TL’den',img:'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=600&q=80'}],training:[{n:'Good Dog Academy',m:'4,9 · 3,1 km · birebir eğitim',p:'1.250 TL / seans',img:'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80'}],taxi:[{n:'PetRide İstanbul',m:'4,8 · 12 dk uzakta',p:'350 TL’den',img:'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80'}],boarding:[{n:'HomePaws',m:'4,9 · 4,2 km · ev tipi pansiyon',p:'1.100 TL / gece',img:'https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=600&q=80'}]};
-function setService(k){document.querySelectorAll('[data-svc]').forEach(b=>b.classList.toggle('active',b.dataset.svc===k));serviceList.innerHTML=providers[k].map((x,i)=>`<div class="card provider"><img src="${x.img}"><div class="provider-body"><div class="row between"><div><b>${x.n}</b><div class="meta">${x.m}</div></div><b>${x.p}</b></div><div class="provider-actions"><button class="secondary" onclick="providerProfile('${k}',${i})">Profili gör</button><button class="primary" onclick="bookProvider('${k}',${i})">Uygunluk gör</button></div></div></div>`).join('')}
-function providerProfile(k,i){const x=providers[k][i];openSheet(`<h3>${x.n}</h3><img src="${x.img}" style="width:100%;height:180px;object-fit:cover;border-radius:17px"><div class="card" style="margin-top:10px"><b>${x.m}</b><div class="meta">Doğrulanmış hizmet sağlayıcı · Barney kullanıcı değerlendirmeleri mevcut.</div></div><div class="booking-note">Önce uygun zamanı seçersin. Sağlayıcı talebi onayladığında randevu kesinleşir ve mesajlaşma açılır.</div><div class="actions"><button class="secondary" onclick="closeSheet()">Kapat</button><button class="primary" onclick="bookProvider('${k}',${i})">Uygunluk gör</button></div>`)}
-function bookProvider(k,i){const x=providers[k][i];openSheet(`<h3>Uygunluk</h3><div class="card"><b>${x.n}</b><div class="meta">${x.p}</div></div><div class="field"><label>Köpek</label><select id="bdog">${state.dogs.map(d=>`<option value="${d.id}" ${d.id===state.activeDog?'selected':''}>${d.name}</option>`).join('')}</select></div><div class="field"><label>Tarih</label><input id="bdate" type="date" value="2026-09-24"></div><div class="field"><label>Saat</label><select id="btime"><option>10:00</option><option>14:00</option><option selected>18:00</option><option>20:00</option></select></div><div class="field"><label>Not (opsiyonel)</label><input id="bnote" placeholder="Örn. tasma çekiyor, 45 dk yürüyüş"></div><div class="booking-note">Bu bir genel ilan değil. Seçtiğin hizmet sağlayıcısına doğrudan talep gider. Onaydan sonra uygulama içi mesajlaşma açılır.</div><div class="actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="sendBooking('${k}',${i})">Talep gönder</button></div>`)}
-function sendBooking(k,i){const x=providers[k][i];state.requests=state.requests||[];state.requests.unshift({provider:x.n,service:k,dog:Number(bdog.value),date:bdate.value,time:btime.value,note:bnote.value,status:'pending'});save();openSheet(`<h3>Talep gönderildi</h3><div class="card"><b>${x.n}</b><div class="meta">${bdate.value} · ${btime.value}</div></div><div class="booking-note">Sağlayıcı onayladığında randevu kesinleşir. O anda “Mesajlaş” butonu açılır.</div><button class="add-record" onclick="closeSheet()">Tamam</button>`)}
-function renderProfile(){const d=dog();profileDogPhoto.src=d.photo;profileDogName.textContent=d.name;profileDogMeta.textContent=`${d.breed} · ${d.kg} kg`;dogsHeading.textContent=state.dogs.length===1?'Köpeğim':`Köpeklerim (${state.dogs.length})`;dogsList.innerHTML=state.dogs.map(x=>`<button class="card dog-line" onclick="selectDog(${x.id})"><img class="avatar sm" src="${x.photo}"><div class="grow"><b>${x.name}</b><small>${x.breed} · ${x.kg} kg</small></div>${x.id===state.activeDog?'<span class="badge">Aktif</span>':''}</button>`).join('');renderFoods()}
-function renderFoods(){foodList.innerHTML=state.foods.length?state.foods.map((f,i)=>{const total=f.daily.reduce((s,x)=>s+x.g,0),days=Math.floor(f.remainingKg*1000/Math.max(total,1)),names=f.daily.map(x=>state.dogs.find(d=>d.id===x.dog)?.name).filter(Boolean).join(', ');return `<div class="card food"><div class="row between"><div><b>${f.name}</b><div class="meta">${names}</div></div><span class="badge">${days} gün</span></div><div class="progress"><i style="width:${Math.min(100,f.remainingKg/f.bagKg*100)}%"></i></div><div class="food-metrics"><div class="metric"><b>${f.remainingKg.toFixed(1)} kg</b><small>Kalan</small></div><div class="metric"><b>${total} g</b><small>Günlük toplam</small></div><div class="metric"><b>${f.bagKg} kg</b><small>Paket</small></div></div><div class="row between" style="margin-top:11px"><div><b>${f.price.toLocaleString('tr-TR')} TL</b><div class="meta"><s>${f.oldPrice.toLocaleString('tr-TR')} TL</s> · fiyat düşmüş</div></div><button class="secondary" onclick="priceSheet(${i})">Fiyatlara bak</button></div></div>`}).join(''):'<div class="card"><b>Mama planı yok</b><div class="meta">Mama, paket boyutu ve günlük miktarı ekle.</div></div>'}
-function priceSheet(i){const f=state.foods[i];openSheet(`<h3>${f.name}</h3><div class="card deal"><strong>Fiyat düştü</strong><div class="meta">Henüz ihtiyacın olmasa bile mevcut fiyat son döneme göre düşük.</div></div><div class="stack" style="margin-top:10px"><div class="card row between"><b>Hepsiburada</b><button class="primary">${f.price.toLocaleString('tr-TR')} TL</button></div><div class="card row between"><b>Trendyol</b><button class="primary">${(f.price+50).toLocaleString('tr-TR')} TL</button></div><div class="card row between"><b>n11</b><button class="primary">${(f.price+90).toLocaleString('tr-TR')} TL</button></div></div><div class="meta" style="margin-top:10px">Mağaza butonları affiliate bağlantıya yönlendirilebilir.</div><div class="actions"><button class="secondary" onclick="closeSheet()">Kapat</button></div>`)}
-function openAddDog(){state.tempPhoto=null;openSheet(`<h3>Köpek ekle</h3><div class="photoadd"><img id="dogPreview"><b>Fotoğraf ekle</b><div class="meta">Kameradan çek veya galeriden seç</div><input id="dogPhoto" type="file" accept="image/*" style="margin-top:10px;width:100%" onchange="previewDogPhoto(event)"></div><div class="field"><label>Adı</label><input id="dn" placeholder="Örn. Barney"></div><div class="field"><label>Irk</label><input id="db" placeholder="Örn. Pug"></div><div class="field"><label>Kilo</label><input id="dk" type="number" step="0.1" placeholder="10.4"></div><div class="actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="addDog()">Köpeği ekle</button></div>`)}function previewDogPhoto(e){const f=e.target.files[0];if(!f)return;const r=new FileReader;r.onload=()=>{state.tempPhoto=r.result;dogPreview.src=r.result;dogPreview.style.display='block'};r.readAsDataURL(f)}function addDog(){const n=dn.value.trim();if(!n)return toast('Köpeğin adını yaz');state.dogs.push({id:Date.now(),name:n,breed:db.value.trim()||'Belirtilmedi',kg:+dk.value||0,photo:state.tempPhoto||P[state.dogs.length%P.length]});state.activeDog=state.dogs.at(-1).id;state.tempPhoto=null;save();closeSheet();renderHome();renderCare();renderProfile();toast('Köpek eklendi')}
-function editActiveDog(){const d=dog();openSheet(`<h3>${d.name}</h3><div class="field"><label>Irk</label><input id="eb" value="${d.breed}"></div><div class="field"><label>Kilo</label><input id="ek" type="number" step="0.1" value="${d.kg}"></div><div class="actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="saveDog()">Kaydet</button></div>`)}function saveDog(){const d=dog();d.breed=eb.value;d.kg=+ek.value||d.kg;save();closeSheet();renderAll();toast('Profil güncellendi')}
-function openFoodForm(){openSheet(`<h3>Mama planı ekle</h3><div class="field"><label>Mama</label><input id="fn" placeholder="Örn. Royal Canin Mini Adult"></div><div class="field"><label>Paket boyutu (kg)</label><input id="fb" type="number" value="12"></div><div class="field"><label>Günlük gram</label><input id="fg" type="number" value="150"></div><div class="field"><label>Hangi köpek?</label><select id="fd">${state.dogs.map(d=>`<option value="${d.id}">${d.name}</option>`).join('')}</select></div><div class="actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="addFood()">Ekle</button></div>`)}function addFood(){const id=+fd.value,g=+fg.value||150,b=+fb.value||12,n=fn.value.trim()||'Yeni mama';let ex=state.foods.find(f=>f.name.toLowerCase()===n.toLowerCase());if(ex)ex.daily.push({dog:id,g});else state.foods.push({id:Date.now(),name:n,bagKg:b,remainingKg:b,daily:[{dog:id,g}],price:1990,oldPrice:2290});save();closeSheet();renderProfile();renderHome();toast('Mama planı eklendi')}
-renderAll();
+const dogPhotos=[
+'https://images.unsplash.com/photo-1517423440428-a5a00ad493e8?auto=format&fit=crop&w=500&q=82',
+'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=500&q=82',
+'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=500&q=82',
+'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=500&q=82',
+'https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=500&q=82',
+'https://images.unsplash.com/photo-1543466835-00a7907e9de1?auto=format&fit=crop&w=500&q=82'
+];
+const base={
+  activeDog:1,
+  dogs:[
+    {id:1,name:'Obi',breed:'Pug',sex:'Erkek',age:'5 yaş',kg:10.2,birth:'2021-02-07',photo:dogPhotos[0]},
+    {id:2,name:'Lokum',breed:'Cocker Spaniel',sex:'Dişi',age:'4 yaş',kg:12,birth:'2022-04-11',photo:dogPhotos[1]},
+    {id:3,name:'Maya',breed:'Cocker Spaniel',sex:'Dişi',age:'3 yaş',kg:11,birth:'2023-01-10',photo:dogPhotos[2]},
+    {id:4,name:'Barney',breed:'Pug',sex:'Erkek',age:'2 yaş',kg:9.5,birth:'2024-03-04',photo:dogPhotos[3]},
+    {id:5,name:'Rocky',breed:'Labrador',sex:'Erkek',age:'6 yaş',kg:29,birth:'2020-06-20',photo:dogPhotos[4]},
+    {id:6,name:'Milo',breed:'Pug',sex:'Erkek',age:'1 yaş',kg:10.2,birth:'2025-01-12',photo:dogPhotos[5]}
+  ],
+  tempPhoto:null
+};
+let state=(()=>{try{return JSON.parse(localStorage.getItem('barneySuperAppV1'))||structuredClone(base)}catch{return structuredClone(base)}})();
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem('barneySuperAppV1',JSON.stringify(state))}
+function dog(){return state.dogs.find(d=>d.id===state.activeDog)||state.dogs[0]}
+function toast(t){const el=$('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),1800)}
+function go(id){
+  document.querySelectorAll('.screen').forEach(x=>x.classList.toggle('active',x.id===id));
+  document.querySelectorAll('.nav').forEach(x=>x.classList.toggle('active',x.dataset.nav===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  render();
+}
+function icon(type){
+ const icons={
+ food:'<path d="M5 4h14l-1 16H6L5 4zM8 8h8"/>',
+ care:'<path d="M12 21s-8-4.7-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.3-8 11-8 11z"/>',
+ vet:'<path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/>'
+ };
+ return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+icons[type]+'</svg>'
+}
+function render(){
+  $('brandImg').src=logoData;
+  const d=dog();
+  $('sumDogPhoto').src=d.photo;
+  $('sumDogName').textContent=d.name;
+  $('sumDogMeta').textContent=d.breed+' · '+String(d.kg).replace('.',',')+' kg';
+  $('profilePhoto').src=d.photo;
+  $('profileName').textContent=d.name;
+  $('profileMeta').textContent=d.breed+' · '+d.sex+' · '+d.age+' · '+String(d.kg).replace('.',',')+' kg';
+  $('dogsTitle').textContent=state.dogs.length>1?'Köpeklerim':'Köpeğim';
+  $('dogsStrip').innerHTML=state.dogs.map(x=>'<button class="dog-mini '+(x.id===state.activeDog?'active':'')+'" onclick="selectDog('+x.id+')"><img src="'+x.photo+'"><span>'+x.name+'</span></button>').join('')+
+  '<button class="dog-mini" onclick="openAddDog()"><span class="add-dog"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 5v14M5 12h14"/></svg></span><span>Köpek ekle</span></button>';
+
+  $('todayRows').innerHTML=
+  '<button class="today-row" onclick="openModule(\'food\')"><span class="ico">'+icon('food')+'</span><div class="grow"><b>Mama</b><small>Royal Canin · yaklaşık 12 gün kaldı</small></div><span class="chev">›</span></button>'+
+  '<button class="today-row" onclick="openModule(\'care\')"><span class="ico">'+icon('care')+'</span><div class="grow"><b>Bakım</b><small>Son kilo '+String(d.kg).replace('.',',')+' kg</small></div><span class="chev">›</span></button>'+
+  '<button class="today-row" onclick="openModule(\'care\')"><span class="ico">'+icon('vet')+'</span><div class="grow"><b>Veteriner</b><small>Sonraki ziyaret 26 Eylül</small></div><span class="chev">›</span></button>';
+}
+function openSheet(content){
+  $('sheet').innerHTML='<div class="grab"></div>'+content;
+  $('overlay').classList.add('open');
+}
+function closeSheet(){$('overlay').classList.remove('open')}
+function openDogPicker(){
+  openSheet('<h3>Köpek seç</h3><p class="sub">Özet ve takip bilgileri seçtiğin köpeğe göre değişir.</p><div class="settings">'+
+  state.dogs.map(d=>'<button class="setting" onclick="selectDog('+d.id+');closeSheet()"><img class="avatar sm" src="'+d.photo+'"><div><b>'+d.name+'</b><div class="sub" style="margin:2px 0 0">'+d.breed+'</div></div><span class="chev">›</span></button>').join('')+
+  '</div>');
+}
+function selectDog(id){state.activeDog=id;save();render()}
+function openSuper(){
+  openSheet('<h3>BARNEY</h3><p class="sub">Köpeğin için ihtiyacın olan her şey burada.</p><div class="super-grid">'+
+  moduleCard('radar','Radar','Yakındakileri keşfet',true)+
+  moduleCard('care','Bakım','Sağlık ve bakım takibi')+
+  moduleCard('services','Hizmetler','Güvendiğin kişileri bul')+
+  moduleCard('food','Mama','Takip et, doğru zamanda al')+
+  '</div>');
+}
+function moduleCard(k,t,s,main=false){
+  const p={
+    radar:'<path d="M12 3a9 9 0 109 9M12 12l6-6M12 12h7"/>',
+    care:'<path d="M12 21s-8-4.7-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.3-8 11-8 11z"/>',
+    services:'<path d="M4 20v-8h16v8M7 12V7a5 5 0 0110 0v5"/>',
+    food:'<path d="M5 4h14l-1 16H6L5 4zM8 8h8"/>'
+  }[k];
+  return '<button class="module '+(main?'primary-module':'')+'" onclick="closeSheet();openModule(\''+k+'\')"><span class="micon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+p+'</svg></span><div><b>'+t+'</b><small>'+s+'</small></div></button>'
+}
+function openModule(k){
+  const titles={radar:'Radar',care:'Bakım',services:'Hizmetler',food:'Mama'};
+  $('moduleTitle').textContent=titles[k];
+  $('moduleBody').innerHTML=moduleContent(k);
+  $('moduleScreen').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModule(){$('moduleScreen').classList.remove('open');document.body.style.overflow=''}
+function moduleContent(k){
+  if(k==='radar') return '<p class="sub">Yakınındaki köpekler, yürüyüşler ve köpek dostu yerler tek radarda.</p><div class="filter-row"><button class="chip active">Tümü</button><button class="chip">WalkBuddy</button><button class="chip">Arkadaşlar</button><button class="chip">Mekanlar</button><button class="chip">Veteriner</button><button class="chip">Grooming</button></div><div class="map" style="height:520px"><div class="you"></div><button class="pin p1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M5 19c.5-4 2-6 5-6s4.5 2 5 6"/></svg></button><button class="pin p2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.2 7-12a7 7 0 10-14 0c0 6.8 7 12 7 12z"/><circle cx="12" cy="9" r="2"/></svg></button><button class="pin p3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V8l8-5 8 5v12H4z"/></svg></button><button class="pin p4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/></svg></button></div>';
+  if(k==='care') return '<div class="card placeholder"><b>Bakım</b><p>Kilo, aşılar, ilaçlar, veteriner ziyaretleri ve grooming geçmişi burada olacak. Bu turda detay ekranını bilerek açmıyoruz.</p></div>';
+  if(k==='services') return '<div class="card placeholder"><b>Hizmetler</b><p>Walker, sitter, pet taksi, eğitmen ve pansiyon sağlayıcıları burada olacak. Bu turda detay ekranını bilerek açmıyoruz.</p></div>';
+  return '<div class="card placeholder"><b>Mama</b><p>Paket kilosu, açılış tarihi, günlük tüketim, kalan miktar, fiyat takibi ve sipariş burada olacak. Bu turda detay ekranını bilerek açmıyoruz.</p></div>';
+}
+function openAddDog(){
+  state.tempPhoto=null;
+  openSheet('<h3>Köpek ekle</h3><p class="sub">Sadece temel bilgiler.</p>'+
+  '<div class="photo-field"><img id="newPhotoPreview"><input id="photoInput" type="file" accept="image/*" style="display:none" onchange="readPhoto(this)"><button class="secondary" onclick="photoInput.click()">Fotoğraf ekle</button></div>'+
+  '<div class="form" style="margin-top:12px"><div class="field"><label>İsim</label><input id="newName" placeholder="Örn. Luna"></div><div class="field"><label>Irk</label><input id="newBreed" placeholder="Örn. Golden Retriever"></div><div class="field"><label>Doğum tarihi</label><input id="newBirth" type="date"></div><div class="field"><label>Cinsiyet</label><select id="newSex"><option>Erkek</option><option>Dişi</option></select></div><div class="field"><label>Kilo</label><input id="newKg" inputmode="decimal" placeholder="Örn. 10,4"></div></div>'+
+  '<div class="sheet-actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="saveDog()">Kaydet</button></div>');
+}
+function readPhoto(input){
+  const f=input.files&&input.files[0]; if(!f)return;
+  const r=new FileReader();r.onload=e=>{state.tempPhoto=e.target.result;const p=$('newPhotoPreview');p.src=state.tempPhoto;p.style.display='block'};r.readAsDataURL(f)
+}
+function saveDog(){
+  const name=$('newName').value.trim(),breed=$('newBreed').value.trim(),kg=parseFloat($('newKg').value.replace(',','.'));
+  if(!name||!breed||!kg)return toast('İsim, ırk ve kilo gerekli');
+  const id=Math.max(0,...state.dogs.map(d=>d.id))+1;
+  state.dogs.push({id,name,breed,sex:$('newSex').value,age:'',kg,birth:$('newBirth').value,photo:state.tempPhoto||dogPhotos[(id-1)%dogPhotos.length]});
+  state.activeDog=id;state.tempPhoto=null;save();closeSheet();render();toast('Köpek eklendi');
+}
+function openEditDog(){
+  const d=dog();
+  openSheet('<h3>Profili düzenle</h3><div class="form"><div class="field"><label>İsim</label><input id="editName" value="'+d.name+'"></div><div class="field"><label>Irk</label><input id="editBreed" value="'+d.breed+'"></div><div class="field"><label>Kilo</label><input id="editKg" value="'+String(d.kg).replace('.',',')+'"></div></div><div class="sheet-actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="saveEditDog()">Kaydet</button></div>');
+}
+function saveEditDog(){
+ const d=dog(),kg=parseFloat($('editKg').value.replace(',','.'));
+ d.name=$('editName').value.trim()||d.name;d.breed=$('editBreed').value.trim()||d.breed;if(kg)d.kg=kg;
+ save();closeSheet();render();toast('Profil güncellendi');
+}
+render();
 </script>
-</body></html>
+</body>
+</html>
