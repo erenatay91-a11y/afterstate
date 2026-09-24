@@ -142,6 +142,66 @@ background-size:130px 130px,160px 160px;opacity:.9}
 .toast{position:fixed;left:50%;bottom:98px;transform:translate(-50%,18px);opacity:0;background:#1E2C2C;color:#fff;padding:11px 14px;border-radius:13px;font-size:12px;z-index:200;transition:.2s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @media(min-width:700px){body{padding:20px 0}.app{min-height:850px;border-radius:30px}.footer{bottom:20px;border-radius:0 0 30px 30px}.module-shell{min-height:850px;border-radius:30px}}
+
+.feature-strip{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.feature-card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:14px;text-align:left;min-height:132px;display:flex;flex-direction:column;justify-content:flex-end;box-shadow:0 5px 18px rgba(35,58,58,.04)}
+.feature-card.tip-card{background:linear-gradient(180deg,#fff,#EEF6F5)}
+.feature-card.deal-card{background:linear-gradient(180deg,#fff,#F8ECE8)}
+.feature-card b{font-size:14px;line-height:1.35;margin-top:20px}
+.feature-card small{font-size:10px;color:var(--muted);margin-top:7px}
+.feature-label{font-size:10px;font-weight:800;color:var(--gd);text-transform:uppercase;letter-spacing:.04em}
+.module-list{display:grid;gap:9px;margin-top:12px}
+.list-card{border:1px solid var(--line);background:#fff;border-radius:18px;padding:13px;display:flex;gap:12px;align-items:center;text-align:left}
+.list-card img{width:62px;height:62px;border-radius:16px;object-fit:cover;flex:none}
+.list-card b{font-size:14px;display:block}
+.list-card small{font-size:11px;color:var(--muted);display:block;margin-top:4px;line-height:1.4}
+.list-card .right{margin-left:auto;text-align:right;flex:none}
+.list-card .right strong{font-size:12px;color:var(--gd)}
+.care-menu{display:grid;gap:8px;margin-top:12px}
+.care-entry{width:100%;border:1px solid var(--line);background:#fff;border-radius:17px;padding:13px;display:flex;gap:11px;align-items:center;text-align:left}
+.care-entry .cicon{width:38px;height:38px;border-radius:12px;background:var(--gs);color:var(--gd);display:grid;place-items:center;flex:none}
+.care-entry .cicon svg{width:19px;height:19px}
+.care-entry b{display:block;font-size:14px}
+.care-entry small{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.history-list{display:grid;gap:0;margin-top:14px}
+.history-row{padding:12px 2px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:14px}
+.history-row:last-child{border-bottom:0}
+.history-row b{font-size:13px}
+.history-row small{font-size:11px;color:var(--muted)}
+.provider-card{padding:0;overflow:hidden}
+.provider-card img{width:100%;height:138px;object-fit:cover;display:block}
+.provider-card .pcopy{padding:13px}
+.provider-card .pcopy b{font-size:15px}
+.provider-card .actions{display:flex;gap:8px;margin-top:12px}
+.provider-card .actions button{flex:1;min-height:42px;font-size:12px}
+.food-plan{padding:15px}
+.food-head{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.food-head b{font-size:15px}
+.food-head small{font-size:11px;color:var(--muted);display:block;margin-top:3px}
+.food-number{font-size:22px;font-weight:800;color:var(--gd)}
+.food-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:13px}
+.food-metric{background:var(--bg);border-radius:12px;padding:9px}
+.food-metric b{font-size:12px;display:block}
+.food-metric small{font-size:9px;color:var(--muted);display:block;margin-top:3px}
+.progress{height:8px;background:#EBEFED;border-radius:99px;overflow:hidden;margin:12px 0 7px}
+.progress i{display:block;height:100%;background:var(--g);border-radius:99px}
+.food-actions{display:flex;gap:8px;margin-top:12px}
+.food-actions button{flex:1;font-size:12px;min-height:42px}
+.price-row{display:grid;grid-template-columns:1fr auto auto;gap:9px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.price-row:last-child{border-bottom:0}
+.price-row b{font-size:12px}.price-row small{font-size:10px;color:var(--muted)}
+.article-card{padding:0;overflow:hidden}
+.article-card img{width:100%;height:160px;object-fit:cover;display:block}
+.article-card .acopy{padding:13px}
+.article-card .acopy b{font-size:15px;line-height:1.35}
+.article-card .acopy p{font-size:11px;color:var(--muted);line-height:1.5;margin:7px 0 0}
+.shop-card{padding:13px;display:grid;grid-template-columns:82px 1fr;gap:12px;align-items:center}
+.shop-card img{width:82px;height:82px;border-radius:16px;object-fit:cover;background:#f1f2f1}
+.shop-card b{font-size:13px;display:block}
+.shop-price{font-size:15px;font-weight:850;margin-top:6px}
+.shop-old{font-size:10px;color:#9AA2A0;text-decoration:line-through;margin-left:5px}
+.shop-card .primary{min-height:38px;font-size:11px;margin-top:9px;padding:8px 11px}
+.status-note{background:var(--gs);color:var(--gd);border-radius:13px;padding:10px 11px;font-size:11px;line-height:1.45;margin-top:10px}
 </style>
 </head>
 <body>
@@ -182,6 +242,22 @@ background-size:130px 130px,160px 160px;opacity:.9}
       <div class="section">
         <div class="section-head"><h2>Bugün</h2></div>
         <div class="today" id="todayRows"></div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><h2>Senin için</h2><button class="link" onclick="openSuper()">Tümünü gör</button></div>
+        <div class="feature-strip">
+          <button class="feature-card tip-card" onclick="openModule('tips')">
+            <span class="feature-label">İpucu</span>
+            <b>Sıcak havada yürüyüş saatini nasıl seçmelisin?</b>
+            <small>2 dk okuma</small>
+          </button>
+          <button class="feature-card deal-card" onclick="openModule('shop')">
+            <span class="feature-label">Fiyat düştü</span>
+            <b>Kullandığın mamada %22 indirim var</b>
+            <small>Fiyatları karşılaştır</small>
+          </button>
+        </div>
       </div>
     </section>
 
@@ -274,6 +350,21 @@ const base={
   tempPhoto:null
 };
 let state=(()=>{try{return JSON.parse(localStorage.getItem('barneySuperAppV1'))||structuredClone(base)}catch{return structuredClone(base)}})();
+const demoCare={
+  1:{
+    weight:[{date:'22.09.2026',value:'10,2 kg'},{date:'21.09.2026',value:'10,0 kg'},{date:'10.09.2026',value:'10,1 kg'}],
+    vaccines:[{date:'26.09.2026',value:'Karma aşı · planlandı'},{date:'20.09.2025',value:'Kuduz aşısı'}],
+    meds:[{date:'12.09.2026',value:'İç parazit tableti'}],
+    vet:[{date:'26.09.2026',value:'Kontrol · planlandı'},{date:'12.08.2026',value:'Rutin kontrol · sorun yok'}],
+    grooming:[{date:'02.09.2026',value:'Banyo ve tırnak'}]
+  }
+};
+state.care=state.care||structuredClone(demoCare);
+state.foods=state.foods||[
+  {name:'Royal Canin Mini Adult',bagKg:12,opened:'11.09.2026',remainingKg:7.2,dogs:[1,2,3,4],grams:{1:150,2:180,3:170,4:145},price:1949,oldPrice:2490},
+  {name:'N&D Adult',bagKg:12,opened:'18.09.2026',remainingKg:9.4,dogs:[5,6],grams:{5:300,6:155},price:2290,oldPrice:2590}
+];
+state.requests=state.requests||[];
 const $=id=>document.getElementById(id);
 function save(){localStorage.setItem('barneySuperAppV1',JSON.stringify(state))}
 function dog(){return state.dogs.find(d=>d.id===state.activeDog)||state.dogs[0]}
@@ -320,13 +411,15 @@ function openDogPicker(){
   state.dogs.map(d=>'<button class="setting" onclick="selectDog('+d.id+');closeSheet()"><img class="avatar sm" src="'+d.photo+'"><div><b>'+d.name+'</b><div class="sub" style="margin:2px 0 0">'+d.breed+'</div></div><span class="chev">›</span></button>').join('')+
   '</div>');
 }
-function selectDog(id){state.activeDog=id;save();render()}
+function selectDog(id){state.activeDog=id;save();render();if($('moduleScreen').classList.contains('open')&&$('moduleTitle').textContent==='Bakım')$('moduleBody').innerHTML=careContent()}
 function openSuper(){
-  openSheet('<h3>BARNEY</h3><p class="sub">Köpeğin için ihtiyacın olan her şey burada.</p><div class="super-grid">'+
+  openSheet('<h3>BARNEY</h3><p class="sub">Köpeğin için ihtiyacın olan her şey.</p><div class="super-grid">'+
   moduleCard('radar','Radar','Yakındakileri keşfet',true)+
   moduleCard('care','Bakım','Sağlık ve bakım takibi')+
-  moduleCard('services','Hizmetler','Güvendiğin kişileri bul')+
+  moduleCard('services','Hizmetler','Walker, sitter ve daha fazlası')+
   moduleCard('food','Mama','Takip et, doğru zamanda al')+
+  moduleCard('tips','İpuçları','Kısa ve kişisel öneriler')+
+  moduleCard('shop','Mağaza','İhtiyacın olan ürünler')+
   '</div>');
 }
 function moduleCard(k,t,s,main=false){
@@ -334,23 +427,103 @@ function moduleCard(k,t,s,main=false){
     radar:'<path d="M12 3a9 9 0 109 9M12 12l6-6M12 12h7"/>',
     care:'<path d="M12 21s-8-4.7-8-11a4.5 4.5 0 018-2.8A4.5 4.5 0 0120 10c0 6.3-8 11-8 11z"/>',
     services:'<path d="M4 20v-8h16v8M7 12V7a5 5 0 0110 0v5"/>',
-    food:'<path d="M5 4h14l-1 16H6L5 4zM8 8h8"/>'
+    food:'<path d="M5 4h14l-1 16H6L5 4zM8 8h8"/>',
+    tips:'<path d="M9 18h6M10 22h4M8 14c-1.2-1-2-2.5-2-4a6 6 0 1112 0c0 1.5-.8 3-2 4-1 .8-1.4 1.7-1.5 2.5h-5C9.4 15.7 9 14.8 8 14z"/>',
+    shop:'<path d="M5 8h14l-1 12H6L5 8zM8 8a4 4 0 018 0"/>'
   }[k];
   return '<button class="module '+(main?'primary-module':'')+'" onclick="closeSheet();openModule(\''+k+'\')"><span class="micon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+p+'</svg></span><div><b>'+t+'</b><small>'+s+'</small></div></button>'
 }
+let activeRadar='all',activeService='walker';
 function openModule(k){
-  const titles={radar:'Radar',care:'Bakım',services:'Hizmetler',food:'Mama'};
+  const titles={radar:'Radar',care:'Bakım',services:'Hizmetler',food:'Mama',tips:'İpuçları',shop:'Mağaza'};
   $('moduleTitle').textContent=titles[k];
   $('moduleBody').innerHTML=moduleContent(k);
   $('moduleScreen').classList.add('open');
   document.body.style.overflow='hidden';
 }
 function closeModule(){$('moduleScreen').classList.remove('open');document.body.style.overflow=''}
+const radarItems={
+ buddy:[
+  {t:'Bebek Sahil WalkBuddy',m:'Bugün 18:30 · 1,4 km · 4 köpek',img:dogPhotos[1],a:'Katıl'},
+  {t:'Maçka sabah yürüyüşü',m:'Yarın 09:00 · 2,6 km · 6 köpek',img:dogPhotos[2],a:'Katıl'}
+ ],
+ friends:[
+  {t:'Luna',m:'Golden Retriever · 3 yaş · %92 uyum',img:dogPhotos[4],a:'Tanış'},
+  {t:'Max',m:'Beagle · 2 yaş · %88 uyum',img:dogPhotos[5],a:'Tanış'}
+ ],
+ places:[
+  {t:'Mürver Cafe',m:'Dog-friendly · 1,1 km · içeri kabul ediyor',img:'https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80',a:'Gör'},
+  {t:'Maçka Parkı',m:'Köpek parkı · 2,5 km',img:'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=500&q=80',a:'Gör'}
+ ],
+ vets:[
+  {t:'PetCode Veteriner',m:'1,3 km · açık · 4,9',img:'https://images.unsplash.com/photo-1576201836106-db1758fd1c97?auto=format&fit=crop&w=500&q=80',a:'Gör'}
+ ],
+ grooming:[
+  {t:'Bark & Bath',m:'2,0 km · bugün uygun · 4,8',img:'https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?auto=format&fit=crop&w=500&q=80',a:'Gör'}
+ ]
+};
+function radarContent(){
+  const filters=[['all','Tümü'],['buddy','WalkBuddy'],['friends','Arkadaşlar'],['places','Mekanlar'],['vets','Veteriner'],['grooming','Grooming']];
+  const keys=activeRadar==='all'?['buddy','friends','places','vets','grooming']:[activeRadar];
+  const items=keys.flatMap(k=>radarItems[k].map(x=>({...x,k})));
+  return '<p class="sub">Yakındaki köpekler, yürüyüşler ve köpek dostu yerler tek radarda.</p>'+
+  '<div class="filter-row">'+filters.map(x=>'<button class="chip '+(activeRadar===x[0]?'active':'')+'" onclick="setRadar(\''+x[0]+'\')">'+x[1]+'</button>').join('')+'</div>'+
+  '<div class="map" style="height:300px"><div class="you"></div><button class="pin p1" onclick="radarDetail(\'buddy\',0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M5 19c.5-4 2-6 5-6s4.5 2 5 6"/></svg></button><button class="pin p2" onclick="radarDetail(\'places\',0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.2 7-12a7 7 0 10-14 0c0 6.8 7 12 7 12z"/></svg></button><button class="pin p3" onclick="radarDetail(\'friends\',0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V8l8-5 8 5v12H4z"/></svg></button><button class="pin p4" onclick="radarDetail(\'vets\',0)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/></svg></button></div>'+
+  '<div class="module-list">'+items.map((x,i)=>'<button class="list-card" onclick="radarDetail(\''+x.k+'\','+radarItems[x.k].indexOf(x)+')"><img src="'+x.img+'"><div class="grow"><b>'+x.t+'</b><small>'+x.m+'</small></div><div class="right"><strong>'+x.a+'</strong></div></button>').join('')+'</div>';
+}
+function setRadar(k){activeRadar=k;$('moduleBody').innerHTML=radarContent()}
+function radarDetail(k,i){const x=radarItems[k][i];openSheet('<h3>'+x.t+'</h3><img src="'+x.img+'" style="width:100%;height:190px;object-fit:cover;border-radius:18px"><p class="sub" style="margin-top:10px">'+x.m+'</p><button class="primary full" onclick="toast(\''+(k==='buddy'?'WalkBuddy katılımın kaydedildi':k==='friends'?'Tanışma isteği gönderildi':'Detay açıldı')+'\');closeSheet()">'+x.a+'</button>')}
+const careLabels={
+ weight:['Kilo','Son ölçümler'],
+ vaccines:['Aşılar','Aşı geçmişi ve yaklaşanlar'],
+ meds:['İlaçlar','İlaç ve parazit takibi'],
+ vet:['Veteriner','Son ve sonraki ziyaret'],
+ grooming:['Grooming','Bakım geçmişi']
+};
+function ensureCare(){const id=dog().id;if(!state.care[id])state.care[id]={weight:[],vaccines:[],meds:[],vet:[],grooming:[]};return state.care[id]}
+function careIcon(k){const p={weight:'<path d="M4 20V4m0 16h16M7 16l4-5 3 2 5-7"/>',vaccines:'<path d="M6 18L18 6m-8-2l10 10M4 20l4-1-3-3-1 4z"/>',meds:'<path d="M8 4a4 4 0 015.7 0l6.3 6.3a4 4 0 01-5.7 5.7L8 9.7A4 4 0 018 4z"/>',vet:'<path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/>',grooming:'<circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 7.5L20 18M8.5 16.5L20 6"/>'}[k];return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'+p+'</svg>'}
+function careContent(){const cc=ensureCare();return '<button class="dog-switch" onclick="openDogPicker()"><img class="avatar sm" src="'+dog().photo+'"><div class="grow"><b>'+dog().name+'</b><span>Takip edilen köpek</span></div><span class="chev">›</span></button><div class="care-menu">'+Object.keys(careLabels).map(k=>{const last=cc[k]&&cc[k][0];return '<button class="care-entry" onclick="openCareHistory(\''+k+'\')"><span class="cicon">'+careIcon(k)+'</span><div class="grow"><b>'+careLabels[k][0]+'</b><small>'+(last?last.date+' · '+last.value:careLabels[k][1])+'</small></div><span class="chev">›</span></button>'}).join('')+'</div>'}
+function openCareHistory(k){const arr=ensureCare()[k]||[];openSheet('<h3>'+careLabels[k][0]+'</h3><p class="sub">'+dog().name+' · geçmiş kayıtlar</p><div class="history-list">'+(arr.length?arr.map(x=>'<div class="history-row"><small>'+x.date+'</small><b>'+x.value+'</b></div>').join(''):'<div class="status-note">Henüz kayıt yok.</div>')+'</div><button class="primary full" style="margin-top:14px" onclick="openCareAdd(\''+k+'\')">'+careAddLabel(k)+'</button>')}
+function careAddLabel(k){return {weight:'Yeni kilo ölçümü',vaccines:'Yeni aşı kaydı',meds:'Yeni ilaç kaydı',vet:'Yeni veteriner ziyareti',grooming:'Yeni bakım kaydı'}[k]}
+function openCareAdd(k){openSheet('<h3>'+careAddLabel(k)+'</h3><div class="form"><div class="field"><label>Tarih</label><input id="careDate" type="date" value="2026-09-24"></div><div class="field"><label>'+(k==='weight'?'Kilo':'Bilgi')+'</label><input id="careValue" placeholder="'+(k==='weight'?'Örn. 10,4 kg':'Örn. Karma aşı yapıldı')+'"></div></div><div class="sheet-actions"><button class="secondary" onclick="closeSheet()">Vazgeç</button><button class="primary" onclick="saveCare(\''+k+'\')">Kaydet</button></div>')}
+function saveCare(k){const v=$('careValue').value.trim();if(!v)return toast('Bilgi gir');const raw=$('careDate').value.split('-');const dt=raw.length===3?raw[2]+'.'+raw[1]+'.'+raw[0]:$('careDate').value;ensureCare()[k].unshift({date:dt,value:v});save();closeSheet();$('moduleBody').innerHTML=careContent();toast('Kayıt eklendi')}
+const providers={
+ walker:[{n:'Ece Kaya',m:'4,9 · 0,8 km · bugün uygun',p:'450 TL / yürüyüş',img:'https://images.unsplash.com/photo-1601758174114-e711c0cbaa69?auto=format&fit=crop&w=600&q=80'},{n:'Can Walks',m:'4,8 · 1,7 km · 126 değerlendirme',p:'390 TL / yürüyüş',img:'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=600&q=80'}],
+ sitter:[{n:'Pati Evde',m:'4,9 · 1,2 km · evde bakım',p:'900 TL / gece',img:'https://images.unsplash.com/photo-1601758125946-6ec2ef64daf8?auto=format&fit=crop&w=600&q=80'}],
+ taxi:[{n:'PetRide İstanbul',m:'4,8 · 12 dk uzakta',p:'350 TL’den',img:'https://images.unsplash.com/photo-1518717758536-85ae29035b6d?auto=format&fit=crop&w=600&q=80'}],
+ trainer:[{n:'Good Dog Academy',m:'4,9 · 3,1 km · birebir eğitim',p:'1.250 TL / seans',img:'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=600&q=80'}],
+ boarding:[{n:'HomePaws',m:'4,9 · 4,2 km · ev tipi pansiyon',p:'1.100 TL / gece',img:'https://images.unsplash.com/photo-1551717743-49959800b1f6?auto=format&fit=crop&w=600&q=80'}]
+};
+function servicesContent(){const tabs=[['walker','Walker'],['sitter','Sitter'],['taxi','Pet taksi'],['trainer','Eğitmen'],['boarding','Pansiyon']];return '<p class="sub">Kayıtlı ve puanlanmış hizmet sağlayıcılarını bul.</p><div class="filter-row">'+tabs.map(x=>'<button class="chip '+(activeService===x[0]?'active':'')+'" onclick="setService(\''+x[0]+'\')">'+x[1]+'</button>').join('')+'</div><div class="module-list">'+providers[activeService].map((x,i)=>'<div class="card provider-card"><img src="'+x.img+'"><div class="pcopy"><div style="display:flex;justify-content:space-between;gap:10px"><div><b>'+x.n+'</b><div class="sub" style="margin:3px 0 0">'+x.m+'</div></div><b>'+x.p+'</b></div><div class="actions"><button class="secondary" onclick="providerProfile(\''+activeService+'\','+i+')">Profili gör</button><button class="primary" onclick="bookProvider(\''+activeService+'\','+i+')">Uygunluk gör</button></div></div></div>').join('')+'</div>'}
+function setService(k){activeService=k;$('moduleBody').innerHTML=servicesContent()}
+function providerProfile(k,i){const x=providers[k][i];openSheet('<h3>'+x.n+'</h3><img src="'+x.img+'" style="width:100%;height:190px;object-fit:cover;border-radius:18px"><p class="sub" style="margin-top:10px">'+x.m+'</p><div class="status-note">Doğrulanmış sağlayıcı · fiyat ve uygunluk bilgileri güncel.</div><button class="primary full" style="margin-top:12px" onclick="bookProvider(\''+k+'\','+i+')">Uygunluk gör</button>')}
+function bookProvider(k,i){const x=providers[k][i];openSheet('<h3>Uygunluk</h3><p class="sub">'+x.n+' · '+x.p+'</p><div class="form"><div class="field"><label>Köpek</label><select id="bookDog">'+state.dogs.map(d=>'<option value="'+d.id+'" '+(d.id===state.activeDog?'selected':'')+'>'+d.name+'</option>').join('')+'</select></div><div class="field"><label>Tarih</label><input id="bookDate" type="date" value="2026-09-25"></div><div class="field"><label>Saat</label><select id="bookTime"><option>10:00</option><option>14:00</option><option selected>18:00</option><option>20:00</option></select></div><div class="field"><label>Not</label><input id="bookNote" placeholder="Opsiyonel"></div></div><div class="status-note">Talep seçtiğin sağlayıcıya gider. Kabul edildiğinde randevu kesinleşir ve mesajlaşma açılır.</div><button class="primary full" style="margin-top:12px" onclick="sendBooking(\''+k+'\','+i+')">Talep gönder</button>')}
+function sendBooking(k,i){state.requests.unshift({provider:providers[k][i].n,dog:Number($('bookDog').value),date:$('bookDate').value,time:$('bookTime').value,status:'pending'});save();openSheet('<h3>Talep gönderildi</h3><p class="sub">'+providers[k][i].n+' talebini görecek.</p><div class="status-note">Durum: Onay bekliyor. Sağlayıcı kabul ettiğinde “Mesajlaş” açılacak.</div><button class="primary full" style="margin-top:12px" onclick="closeSheet()">Tamam</button>')}
+function foodContent(){return '<p class="sub">Mama miktarı ve fiyatı arka planda takip edilir.</p><div class="module-list">'+state.foods.map((f,i)=>{const total=f.dogs.reduce((s,id)=>s+(f.grams[id]||0),0);const days=Math.floor(f.remainingKg*1000/Math.max(total,1));const pct=Math.max(0,Math.min(100,Math.round(f.remainingKg/f.bagKg*100)));const names=f.dogs.map(id=>state.dogs.find(d=>d.id===id)?.name).filter(Boolean).join(', ');return '<div class="card food-plan"><div class="food-head"><div><b>'+f.name+'</b><small>'+names+'</small></div><div class="food-number">'+days+' gün</div></div><div class="progress"><i style="width:'+pct+'%"></i></div><div class="food-metrics"><div class="food-metric"><b>'+f.bagKg+' kg</b><small>Paket</small></div><div class="food-metric"><b>'+total+' g</b><small>Günlük</small></div><div class="food-metric"><b>'+String(f.remainingKg).replace('.',',')+' kg</b><small>Kalan</small></div></div><div class="status-note">Paketi açma: '+f.opened+' · tüketim köpeklerin toplam günlük miktarından hesaplanıyor.</div><div class="food-actions"><button class="secondary" onclick="editFood('+i+')">Düzenle</button><button class="primary" onclick="showPrices('+i+')">Fiyatları gör</button></div></div>'}).join('')+'</div>'}
+function editFood(i){const f=state.foods[i];openSheet('<h3>Mama planı</h3><div class="form"><div class="field"><label>Mama</label><input id="foodName" value="'+f.name+'"></div><div class="field"><label>Paket kilosu</label><input id="foodBag" value="'+f.bagKg+'"></div><div class="field"><label>Kalan kilo</label><input id="foodRemain" value="'+f.remainingKg+'"></div><div class="field"><label>Paketi açma tarihi</label><input id="foodOpen" type="date" value="2026-09-11"></div></div><button class="primary full" style="margin-top:12px" onclick="saveFood('+i+')">Kaydet</button>')}
+function saveFood(i){const f=state.foods[i];f.name=$('foodName').value.trim()||f.name;f.bagKg=parseFloat($('foodBag').value.replace(',','.'))||f.bagKg;f.remainingKg=parseFloat($('foodRemain').value.replace(',','.'))||f.remainingKg;save();closeSheet();$('moduleBody').innerHTML=foodContent();toast('Mama planı güncellendi')}
+function showPrices(i){const f=state.foods[i];openSheet('<h3>Fiyatlar</h3><p class="sub">'+f.name+'</p><div class="status-note">Fiyat son 30 güne göre %22 düştü. Henüz acil ihtiyacın yok ama avantajlı olabilir.</div><div class="history-list"><div class="price-row"><div><b>Hepsiburada</b><small>En düşük</small></div><b>'+f.price.toLocaleString('tr-TR')+' TL</b><button class="primary" onclick="affiliate(\'Hepsiburada\')">Git</button></div><div class="price-row"><div><b>Trendyol</b><small>Güncel</small></div><b>'+(f.price+50).toLocaleString('tr-TR')+' TL</b><button class="secondary" onclick="affiliate(\'Trendyol\')">Git</button></div><div class="price-row"><div><b>N11</b><small>Güncel</small></div><b>'+(f.price+100).toLocaleString('tr-TR')+' TL</b><button class="secondary" onclick="affiliate(\'N11\')">Git</button></div></div>')}
+function affiliate(x){toast(x+' mağazasına yönlendiriliyor')}
+const tips=[
+ {t:'Sıcak havada yürüyüş saatini nasıl seçmelisin?',m:'Patileri ve nefes ritmini korumak için basit bir sıcaklık kontrolü.',img:'https://images.unsplash.com/photo-1558788353-f76d92427f16?auto=format&fit=crop&w=800&q=80'},
+ {t:'Kilo değişimini ne sıklıkla takip etmeli?',m:'Küçük değişimler ne zaman normal, ne zaman veterinerle konuşmaya değer?',img:'https://images.unsplash.com/photo-1517849845537-4d257902454a?auto=format&fit=crop&w=800&q=80'},
+ {t:'Yeni bir mamaya geçerken 7 günlük plan',m:'Ani geçiş yerine porsiyonları kademeli değiştir.',img:'https://images.unsplash.com/photo-1552053831-71594a27632d?auto=format&fit=crop&w=800&q=80'}
+];
+function tipsContent(){return '<div class="module-list">'+tips.map((x,i)=>'<button class="card article-card" onclick="readTip('+i+')"><img src="'+x.img+'"><div class="acopy"><b>'+x.t+'</b><p>'+x.m+'</p></div></button>').join('')+'</div>'}
+function readTip(i){const x=tips[i];openSheet('<h3>'+x.t+'</h3><img src="'+x.img+'" style="width:100%;height:190px;object-fit:cover;border-radius:18px"><p style="font-size:13px;line-height:1.65;color:#4E5856">Bu prototipte içerik özetlenmiştir. BARNEY, köpeğin profiline göre kısa ve uygulanabilir önerileri burada gösterecek. Sağlıkla ilgili kararlar için veteriner değerlendirmesi gerekir.</p>')}
+const shopItems=[
+ {n:'Royal Canin Mini Adult 12 kg',p:'1.949 TL',o:'2.490 TL',img:'https://images.unsplash.com/photo-1589924691995-400dc9ecc119?auto=format&fit=crop&w=500&q=80'},
+ {n:'Dayanıklı yürüyüş tasması',p:'749 TL',o:'899 TL',img:'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=500&q=80'},
+ {n:'Katlanabilir su kabı',p:'329 TL',o:'399 TL',img:'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?auto=format&fit=crop&w=500&q=80'}
+];
+function shopContent(){return '<p class="sub">Köpeğinin profilinden ve kullanımından seçilmiş ürünler.</p><div class="module-list">'+shopItems.map((x,i)=>'<div class="card shop-card"><img src="'+x.img+'"><div><b>'+x.n+'</b><div><span class="shop-price">'+x.p+'</span><span class="shop-old">'+x.o+'</span></div><button class="primary" onclick="toast(\'Ürün detayına gidiliyor\')">İncele</button></div></div>').join('')+'</div>'}
 function moduleContent(k){
-  if(k==='radar') return '<p class="sub">Yakınındaki köpekler, yürüyüşler ve köpek dostu yerler tek radarda.</p><div class="filter-row"><button class="chip active">Tümü</button><button class="chip">WalkBuddy</button><button class="chip">Arkadaşlar</button><button class="chip">Mekanlar</button><button class="chip">Veteriner</button><button class="chip">Grooming</button></div><div class="map" style="height:520px"><div class="you"></div><button class="pin p1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M5 19c.5-4 2-6 5-6s4.5 2 5 6"/></svg></button><button class="pin p2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-5.2 7-12a7 7 0 10-14 0c0 6.8 7 12 7 12z"/><circle cx="12" cy="9" r="2"/></svg></button><button class="pin p3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 20V8l8-5 8 5v12H4z"/></svg></button><button class="pin p4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21a8 8 0 008-8V5h-4v6a4 4 0 01-8 0V5H4v8a8 8 0 008 8z"/></svg></button></div>';
-  if(k==='care') return '<div class="card placeholder"><b>Bakım</b><p>Kilo, aşılar, ilaçlar, veteriner ziyaretleri ve grooming geçmişi burada olacak. Bu turda detay ekranını bilerek açmıyoruz.</p></div>';
-  if(k==='services') return '<div class="card placeholder"><b>Hizmetler</b><p>Walker, sitter, pet taksi, eğitmen ve pansiyon sağlayıcıları burada olacak. Bu turda detay ekranını bilerek açmıyoruz.</p></div>';
-  return '<div class="card placeholder"><b>Mama</b><p>Paket kilosu, açılış tarihi, günlük tüketim, kalan miktar, fiyat takibi ve sipariş burada olacak. Bu turda detay ekranını bilerek açmıyoruz.</p></div>';
+  if(k==='radar')return radarContent();
+  if(k==='care')return careContent();
+  if(k==='services')return servicesContent();
+  if(k==='food')return foodContent();
+  if(k==='tips')return tipsContent();
+  return shopContent();
 }
 function openAddDog(){
   state.tempPhoto=null;
